@@ -1,0 +1,3169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_87d981f34f7dfdf58f3b106aaefeec7c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    <div style='position:fixed;bottom:50px;left:50px;width:300px;background:white;border:2px solid grey;z-index:9999;padding:10px;box-shadow:2px 2px 5px rgba(0,0,0,0.3);font-size:14px;'><b>Clientes totais:</b> 68<br><b>Faturamento total:</b> R$ 123,604.09<br><b>Atualizado:</b> 21/07/2025<br><b>Data de Saída:</b> 21/07/2025<br><br><br><b>Datas:</b><br><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:red;border-radius:50%;margin-right:8px;'></div>21/07/2025</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:blue;border-radius:50%;margin-right:8px;'></div>22/07/2025</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:green;border-radius:50%;margin-right:8px;'></div>23/07/2025</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:purple;border-radius:50%;margin-right:8px;'></div>26/07/2025</div></div>
+    
+            <div class="folium-map" id="map_87d981f34f7dfdf58f3b106aaefeec7c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_87d981f34f7dfdf58f3b106aaefeec7c = L.map(
+                "map_87d981f34f7dfdf58f3b106aaefeec7c",
+                {
+                    center: [-3.7572635398641, -38.5854081195323],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b7bb693bbd5f2936ab631ba26bcee65e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b7bb693bbd5f2936ab631ba26bcee65e.addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+        
+    
+            var marker_926008c1ea972b736dbd0ebb661869e8 = L.marker(
+                [-3.7572635398641, -38.5854081195323],
+                {
+}
+            ).addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+        
+    
+            var icon_904e30c35c96d36743d9ba74e48326b8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_926008c1ea972b736dbd0ebb661869e8.bindTooltip(
+                `<div>
+                     CD - VALEMILK
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_926008c1ea972b736dbd0ebb661869e8.setIcon(icon_904e30c35c96d36743d9ba74e48326b8);
+            
+    
+            var feature_group_7ed6e222c7cdeaf1a82e89b5be94c875 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_2458859f559909b66d69da7b176a5e21 = L.marker(
+                [-3.7392121, -38.5924565],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_335d99f8a9a93d597df40c25be04006e = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_2458859f559909b66d69da7b176a5e21.setIcon(div_icon_335d99f8a9a93d597df40c25be04006e);
+        
+    
+        var popup_9b665527ea6ddba8f1cff6447a03248c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90d9171bd11edd5edb8fde21d2c6d4b6 = $(`<div id="html_90d9171bd11edd5edb8fde21d2c6d4b6" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - MISTER HULL                                                                             </b><br>Cód: 151<br>Data: 21/07/2025</div>`)[0];
+                popup_9b665527ea6ddba8f1cff6447a03248c.setContent(html_90d9171bd11edd5edb8fde21d2c6d4b6);
+            
+        
+
+        marker_2458859f559909b66d69da7b176a5e21.bindPopup(popup_9b665527ea6ddba8f1cff6447a03248c)
+        ;
+
+        
+    
+    
+            marker_2458859f559909b66d69da7b176a5e21.bindTooltip(
+                `<div>
+                     COMPREMAX - MISTER HULL                                                                              - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2458859f559909b66d69da7b176a5e21.setIcon(div_icon_335d99f8a9a93d597df40c25be04006e);
+            
+    
+            var marker_2019a86954f1d2bf7d14bc9c0fe9d4e1 = L.marker(
+                [-3.730491, -38.5771848],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_72f43fce003677e9c344faad325d4eb2 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e2\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_2019a86954f1d2bf7d14bc9c0fe9d4e1.setIcon(div_icon_72f43fce003677e9c344faad325d4eb2);
+        
+    
+        var popup_2a437d0b905e3def2da36f8430852a51 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_abe735abd004ef33701d15ee94f83d21 = $(`<div id="html_abe735abd004ef33701d15ee94f83d21" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - SGT HERMINIO                                                                            </b><br>Cód: 348<br>Data: 21/07/2025</div>`)[0];
+                popup_2a437d0b905e3def2da36f8430852a51.setContent(html_abe735abd004ef33701d15ee94f83d21);
+            
+        
+
+        marker_2019a86954f1d2bf7d14bc9c0fe9d4e1.bindPopup(popup_2a437d0b905e3def2da36f8430852a51)
+        ;
+
+        
+    
+    
+            marker_2019a86954f1d2bf7d14bc9c0fe9d4e1.bindTooltip(
+                `<div>
+                     COMPREMAX - SGT HERMINIO                                                                             - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2019a86954f1d2bf7d14bc9c0fe9d4e1.setIcon(div_icon_72f43fce003677e9c344faad325d4eb2);
+            
+    
+            var marker_3f9c42f5d59343dfc07dff2d510d3726 = L.marker(
+                [-3.7560405, -38.5114051],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_31184fd8b2d783f1d9bc4c05cba227bd = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_3f9c42f5d59343dfc07dff2d510d3726.setIcon(div_icon_31184fd8b2d783f1d9bc4c05cba227bd);
+        
+    
+        var popup_f41f1ddf7c30ad86ea692eaad0d13a87 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc84452e3ef1737bde05e2bd10bda207 = $(`<div id="html_fc84452e3ef1737bde05e2bd10bda207" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - TAUAPE                                                                             </b><br>Cód: 368<br>Data: 21/07/2025</div>`)[0];
+                popup_f41f1ddf7c30ad86ea692eaad0d13a87.setContent(html_fc84452e3ef1737bde05e2bd10bda207);
+            
+        
+
+        marker_3f9c42f5d59343dfc07dff2d510d3726.bindPopup(popup_f41f1ddf7c30ad86ea692eaad0d13a87)
+        ;
+
+        
+    
+    
+            marker_3f9c42f5d59343dfc07dff2d510d3726.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - TAUAPE                                                                              - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3f9c42f5d59343dfc07dff2d510d3726.setIcon(div_icon_31184fd8b2d783f1d9bc4c05cba227bd);
+            
+    
+            var marker_b631cbb4b80048a9ed6549188efa4772 = L.marker(
+                [-3.8119541, -38.5972122],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_cb21364c6e8039d7985288706df20f91 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e4\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_b631cbb4b80048a9ed6549188efa4772.setIcon(div_icon_cb21364c6e8039d7985288706df20f91);
+        
+    
+        var popup_262f0e7a2013d23921c80e5bdffc2cc5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cbc213bb19e8e75d62628d5b7b0fa143 = $(`<div id="html_cbc213bb19e8e75d62628d5b7b0fa143" style="width: 100.0%; height: 100.0%;"><b>R CENTER - PRQ SANTA ROSA                                                                           </b><br>Cód: 762<br>Data: 21/07/2025</div>`)[0];
+                popup_262f0e7a2013d23921c80e5bdffc2cc5.setContent(html_cbc213bb19e8e75d62628d5b7b0fa143);
+            
+        
+
+        marker_b631cbb4b80048a9ed6549188efa4772.bindPopup(popup_262f0e7a2013d23921c80e5bdffc2cc5)
+        ;
+
+        
+    
+    
+            marker_b631cbb4b80048a9ed6549188efa4772.bindTooltip(
+                `<div>
+                     R CENTER - PRQ SANTA ROSA                                                                            - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b631cbb4b80048a9ed6549188efa4772.setIcon(div_icon_cb21364c6e8039d7985288706df20f91);
+            
+    
+            var marker_8de51dba9824d67858bed5168d67813f = L.marker(
+                [-3.7899059, -38.495258],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_6712c6e477425307b21c960df0fe455a = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e5\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_8de51dba9824d67858bed5168d67813f.setIcon(div_icon_6712c6e477425307b21c960df0fe455a);
+        
+    
+        var popup_b645e50159293ffbe896b067227b56ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c6a2baf62f9b89e779ac53763fa7cc74 = $(`<div id="html_c6a2baf62f9b89e779ac53763fa7cc74" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - CIDADE DOS FUNC                                                                    </b><br>Cód: 884<br>Data: 21/07/2025</div>`)[0];
+                popup_b645e50159293ffbe896b067227b56ec.setContent(html_c6a2baf62f9b89e779ac53763fa7cc74);
+            
+        
+
+        marker_8de51dba9824d67858bed5168d67813f.bindPopup(popup_b645e50159293ffbe896b067227b56ec)
+        ;
+
+        
+    
+    
+            marker_8de51dba9824d67858bed5168d67813f.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - CIDADE DOS FUNC                                                                     - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8de51dba9824d67858bed5168d67813f.setIcon(div_icon_6712c6e477425307b21c960df0fe455a);
+            
+    
+            var marker_3f9347b3e17bb65da78eb34a94e549c7 = L.marker(
+                [-3.7960364, -38.4990562],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_859b7433560f4e246a165c0c7b079f40 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_3f9347b3e17bb65da78eb34a94e549c7.setIcon(div_icon_859b7433560f4e246a165c0c7b079f40);
+        
+    
+        var popup_cd3c5961fa3117741df1b090330734fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ebb629e59289fbee6580a25b4097615 = $(`<div id="html_1ebb629e59289fbee6580a25b4097615" style="width: 100.0%; height: 100.0%;"><b>COMETA (JULIO LIMA)                                                                                 </b><br>Cód: 1025<br>Data: 21/07/2025</div>`)[0];
+                popup_cd3c5961fa3117741df1b090330734fc.setContent(html_1ebb629e59289fbee6580a25b4097615);
+            
+        
+
+        marker_3f9347b3e17bb65da78eb34a94e549c7.bindPopup(popup_cd3c5961fa3117741df1b090330734fc)
+        ;
+
+        
+    
+    
+            marker_3f9347b3e17bb65da78eb34a94e549c7.bindTooltip(
+                `<div>
+                     COMETA (JULIO LIMA)                                                                                  - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3f9347b3e17bb65da78eb34a94e549c7.setIcon(div_icon_859b7433560f4e246a165c0c7b079f40);
+            
+    
+            var marker_504426b1af13be7101c799583e1d6be0 = L.marker(
+                [-3.8143736, -38.6120921],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_23bc535451fe858c4459b69d04003a36 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e7\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_504426b1af13be7101c799583e1d6be0.setIcon(div_icon_23bc535451fe858c4459b69d04003a36);
+        
+    
+        var popup_bbc553f2c49ec342f62bc680adf8ffeb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2463e9689b6bd76a8c313233b3035e79 = $(`<div id="html_2463e9689b6bd76a8c313233b3035e79" style="width: 100.0%; height: 100.0%;"><b>BARATAO - SIQUEIRA                                                                                  </b><br>Cód: 2726<br>Data: 21/07/2025</div>`)[0];
+                popup_bbc553f2c49ec342f62bc680adf8ffeb.setContent(html_2463e9689b6bd76a8c313233b3035e79);
+            
+        
+
+        marker_504426b1af13be7101c799583e1d6be0.bindPopup(popup_bbc553f2c49ec342f62bc680adf8ffeb)
+        ;
+
+        
+    
+    
+            marker_504426b1af13be7101c799583e1d6be0.bindTooltip(
+                `<div>
+                     BARATAO - SIQUEIRA                                                                                   - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_504426b1af13be7101c799583e1d6be0.setIcon(div_icon_23bc535451fe858c4459b69d04003a36);
+            
+    
+            var marker_1cdf028758733fa610f21d3e3a4aa70d = L.marker(
+                [-3.817788, -38.589921],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_4a49feb1be2583e27714aa45c45a3dad = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e8\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_1cdf028758733fa610f21d3e3a4aa70d.setIcon(div_icon_4a49feb1be2583e27714aa45c45a3dad);
+        
+    
+        var popup_cb06cd87049360789049c5866a650756 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_210a0007106e8ef7d926bd69b1001c75 = $(`<div id="html_210a0007106e8ef7d926bd69b1001c75" style="width: 100.0%; height: 100.0%;"><b>BARATAO - CONJ ESPERANÇA                                                                            </b><br>Cód: 2734<br>Data: 21/07/2025</div>`)[0];
+                popup_cb06cd87049360789049c5866a650756.setContent(html_210a0007106e8ef7d926bd69b1001c75);
+            
+        
+
+        marker_1cdf028758733fa610f21d3e3a4aa70d.bindPopup(popup_cb06cd87049360789049c5866a650756)
+        ;
+
+        
+    
+    
+            marker_1cdf028758733fa610f21d3e3a4aa70d.bindTooltip(
+                `<div>
+                     BARATAO - CONJ ESPERANÇA                                                                             - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1cdf028758733fa610f21d3e3a4aa70d.setIcon(div_icon_4a49feb1be2583e27714aa45c45a3dad);
+            
+    
+            var marker_cae99f8fa0ca331daa3a042d4edebb90 = L.marker(
+                [-3.7872948, -38.5439698],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_8020c8c6b00fd861017784ca2bbfeeba = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_cae99f8fa0ca331daa3a042d4edebb90.setIcon(div_icon_8020c8c6b00fd861017784ca2bbfeeba);
+        
+    
+        var popup_4c3cdb463490fc01abd11cb9bd24de5d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a6cd69171cf44030a80ae1eecd54ac87 = $(`<div id="html_a6cd69171cf44030a80ae1eecd54ac87" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - SERRINHA                                                                           </b><br>Cód: 2807<br>Data: 21/07/2025</div>`)[0];
+                popup_4c3cdb463490fc01abd11cb9bd24de5d.setContent(html_a6cd69171cf44030a80ae1eecd54ac87);
+            
+        
+
+        marker_cae99f8fa0ca331daa3a042d4edebb90.bindPopup(popup_4c3cdb463490fc01abd11cb9bd24de5d)
+        ;
+
+        
+    
+    
+            marker_cae99f8fa0ca331daa3a042d4edebb90.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - SERRINHA                                                                            - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cae99f8fa0ca331daa3a042d4edebb90.setIcon(div_icon_8020c8c6b00fd861017784ca2bbfeeba);
+            
+    
+            var marker_9504220e59e15f68ac6b41b692f0c995 = L.marker(
+                [-3.8546626, -38.6021541],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_84150384964aad0e04dc537f7b118ac7 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e10\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_9504220e59e15f68ac6b41b692f0c995.setIcon(div_icon_84150384964aad0e04dc537f7b118ac7);
+        
+    
+        var popup_fb0cde0d35c8809a97499a12e126f76f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_12552072e5d64317d93ccfe1ac18fcad = $(`<div id="html_12552072e5d64317d93ccfe1ac18fcad" style="width: 100.0%; height: 100.0%;"><b>FRANGOLANDIA - CD                                                                                   </b><br>Cód: 2909<br>Data: 21/07/2025</div>`)[0];
+                popup_fb0cde0d35c8809a97499a12e126f76f.setContent(html_12552072e5d64317d93ccfe1ac18fcad);
+            
+        
+
+        marker_9504220e59e15f68ac6b41b692f0c995.bindPopup(popup_fb0cde0d35c8809a97499a12e126f76f)
+        ;
+
+        
+    
+    
+            marker_9504220e59e15f68ac6b41b692f0c995.bindTooltip(
+                `<div>
+                     FRANGOLANDIA - CD                                                                                    - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9504220e59e15f68ac6b41b692f0c995.setIcon(div_icon_84150384964aad0e04dc537f7b118ac7);
+            
+    
+            var marker_1c8d130e25fe1534bb73bbd01537ba9e = L.marker(
+                [-3.7086442, -38.563186],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_3fc12bf8196989605a8a74e8fa1bd486 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e11\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_1c8d130e25fe1534bb73bbd01537ba9e.setIcon(div_icon_3fc12bf8196989605a8a74e8fa1bd486);
+        
+    
+        var popup_8243a60f116d6bdf4c08e34487cac5f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7f8bdd2ff81f30b4baae4fc43bd1ec1 = $(`<div id="html_a7f8bdd2ff81f30b4baae4fc43bd1ec1" style="width: 100.0%; height: 100.0%;"><b>BARATAO - ALVARO WEYNE                                                                              </b><br>Cód: 2990<br>Data: 21/07/2025</div>`)[0];
+                popup_8243a60f116d6bdf4c08e34487cac5f0.setContent(html_a7f8bdd2ff81f30b4baae4fc43bd1ec1);
+            
+        
+
+        marker_1c8d130e25fe1534bb73bbd01537ba9e.bindPopup(popup_8243a60f116d6bdf4c08e34487cac5f0)
+        ;
+
+        
+    
+    
+            marker_1c8d130e25fe1534bb73bbd01537ba9e.bindTooltip(
+                `<div>
+                     BARATAO - ALVARO WEYNE                                                                               - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1c8d130e25fe1534bb73bbd01537ba9e.setIcon(div_icon_3fc12bf8196989605a8a74e8fa1bd486);
+            
+    
+            var marker_6b51c877a2785f9af2f6ea610221ff9e = L.marker(
+                [-3.7929966, -38.5335303],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_97351af05cee353fbb12418f01e1296e = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e12\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_6b51c877a2785f9af2f6ea610221ff9e.setIcon(div_icon_97351af05cee353fbb12418f01e1296e);
+        
+    
+        var popup_253e860d2dcc7d7f0feceb9eda733a10 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3eca44ef642d1892b3dce9ce2c4615a8 = $(`<div id="html_3eca44ef642d1892b3dce9ce2c4615a8" style="width: 100.0%; height: 100.0%;"><b>SUPER DO POVO - CD                                                                                  </b><br>Cód: 3059<br>Data: 21/07/2025</div>`)[0];
+                popup_253e860d2dcc7d7f0feceb9eda733a10.setContent(html_3eca44ef642d1892b3dce9ce2c4615a8);
+            
+        
+
+        marker_6b51c877a2785f9af2f6ea610221ff9e.bindPopup(popup_253e860d2dcc7d7f0feceb9eda733a10)
+        ;
+
+        
+    
+    
+            marker_6b51c877a2785f9af2f6ea610221ff9e.bindTooltip(
+                `<div>
+                     SUPER DO POVO - CD                                                                                   - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6b51c877a2785f9af2f6ea610221ff9e.setIcon(div_icon_97351af05cee353fbb12418f01e1296e);
+            
+    
+            var marker_70e59c5fa200dff0e8660b03ee495016 = L.marker(
+                [-3.83265451, -38.58103395],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_c3808710867bf78c5a004dcf914d854d = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e13\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_70e59c5fa200dff0e8660b03ee495016.setIcon(div_icon_c3808710867bf78c5a004dcf914d854d);
+        
+    
+        var popup_63fa5bcc2e9d8ce22e788b61355c5f33 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_05e71a2a0e62489a550e830799b24bf8 = $(`<div id="html_05e71a2a0e62489a550e830799b24bf8" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - GODOFREDO                                                                               </b><br>Cód: 709<br>Data: 21/07/2025</div>`)[0];
+                popup_63fa5bcc2e9d8ce22e788b61355c5f33.setContent(html_05e71a2a0e62489a550e830799b24bf8);
+            
+        
+
+        marker_70e59c5fa200dff0e8660b03ee495016.bindPopup(popup_63fa5bcc2e9d8ce22e788b61355c5f33)
+        ;
+
+        
+    
+    
+            marker_70e59c5fa200dff0e8660b03ee495016.bindTooltip(
+                `<div>
+                     COMPREMAX - GODOFREDO                                                                                - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_70e59c5fa200dff0e8660b03ee495016.setIcon(div_icon_c3808710867bf78c5a004dcf914d854d);
+            
+    
+            var marker_781ccc2f92ab8d8a7c821484af110286 = L.marker(
+                [-3.8471524, -38.5283154],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_734cd18ea384e81b5d79f17c1b1614c7 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e14\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_781ccc2f92ab8d8a7c821484af110286.setIcon(div_icon_734cd18ea384e81b5d79f17c1b1614c7);
+        
+    
+        var popup_3fec22a49e0bdae44b8d7470f6a98e21 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_801088b9ffa671f9bae0ad2d7c6ffce3 = $(`<div id="html_801088b9ffa671f9bae0ad2d7c6ffce3" style="width: 100.0%; height: 100.0%;"><b>OFERTASSO - CONJ PALMEIRAS                                                                          </b><br>Cód: 3776<br>Data: 21/07/2025</div>`)[0];
+                popup_3fec22a49e0bdae44b8d7470f6a98e21.setContent(html_801088b9ffa671f9bae0ad2d7c6ffce3);
+            
+        
+
+        marker_781ccc2f92ab8d8a7c821484af110286.bindPopup(popup_3fec22a49e0bdae44b8d7470f6a98e21)
+        ;
+
+        
+    
+    
+            marker_781ccc2f92ab8d8a7c821484af110286.bindTooltip(
+                `<div>
+                     OFERTASSO - CONJ PALMEIRAS                                                                           - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_781ccc2f92ab8d8a7c821484af110286.setIcon(div_icon_734cd18ea384e81b5d79f17c1b1614c7);
+            
+    
+            var marker_ed25c6ee2e449de7bedd6dfba0f5545d = L.marker(
+                [-3.83330121, -38.55298266],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_3d5dcc4b4f68637ef19ca234a6a722f1 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e15\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_ed25c6ee2e449de7bedd6dfba0f5545d.setIcon(div_icon_3d5dcc4b4f68637ef19ca234a6a722f1);
+        
+    
+        var popup_994fda8cb73b1555502b6fd6e005dd73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2dbbbc92e02a804ac28a004ed634eb8 = $(`<div id="html_b2dbbbc92e02a804ac28a004ed634eb8" style="width: 100.0%; height: 100.0%;"><b>OFERTASSO - JOSE WALTER                                                                             </b><br>Cód: 4057<br>Data: 21/07/2025</div>`)[0];
+                popup_994fda8cb73b1555502b6fd6e005dd73.setContent(html_b2dbbbc92e02a804ac28a004ed634eb8);
+            
+        
+
+        marker_ed25c6ee2e449de7bedd6dfba0f5545d.bindPopup(popup_994fda8cb73b1555502b6fd6e005dd73)
+        ;
+
+        
+    
+    
+            marker_ed25c6ee2e449de7bedd6dfba0f5545d.bindTooltip(
+                `<div>
+                     OFERTASSO - JOSE WALTER                                                                              - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed25c6ee2e449de7bedd6dfba0f5545d.setIcon(div_icon_3d5dcc4b4f68637ef19ca234a6a722f1);
+            
+    
+            var marker_25b14290e1e6366edb6bdd309ba23f05 = L.marker(
+                [-3.7130283, -38.5534343],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_c5bbb8d8b8656ee9a0023d5348720742 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e16\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_25b14290e1e6366edb6bdd309ba23f05.setIcon(div_icon_c5bbb8d8b8656ee9a0023d5348720742);
+        
+    
+        var popup_8d166ab25d7ceb52c74a31c3b45ac961 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82d061e7d01f0fa4e6d6a35fa4bd381d = $(`<div id="html_82d061e7d01f0fa4e6d6a35fa4bd381d" style="width: 100.0%; height: 100.0%;"><b>MERCANTIL POPULAR                                                                                   </b><br>Cód: 2340<br>Data: 21/07/2025</div>`)[0];
+                popup_8d166ab25d7ceb52c74a31c3b45ac961.setContent(html_82d061e7d01f0fa4e6d6a35fa4bd381d);
+            
+        
+
+        marker_25b14290e1e6366edb6bdd309ba23f05.bindPopup(popup_8d166ab25d7ceb52c74a31c3b45ac961)
+        ;
+
+        
+    
+    
+            marker_25b14290e1e6366edb6bdd309ba23f05.bindTooltip(
+                `<div>
+                     MERCANTIL POPULAR                                                                                    - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_25b14290e1e6366edb6bdd309ba23f05.setIcon(div_icon_c5bbb8d8b8656ee9a0023d5348720742);
+            
+    
+            var marker_432b8183155b98c8bdc503627dc2429e = L.marker(
+                [-3.8782661, -38.59633799],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_97ca6773afd3688a48b01dd607b4e81f = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e17\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_432b8183155b98c8bdc503627dc2429e.setIcon(div_icon_97ca6773afd3688a48b01dd607b4e81f);
+        
+    
+        var popup_29427bccd3d981b2b3a5c85e52794c9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a4d4156ab748f12a4caeb1fed1a943e7 = $(`<div id="html_a4d4156ab748f12a4caeb1fed1a943e7" style="width: 100.0%; height: 100.0%;"><b>MATEUS - MARACANAU                                                                                  </b><br>Cód: 9635<br>Data: 21/07/2025</div>`)[0];
+                popup_29427bccd3d981b2b3a5c85e52794c9b.setContent(html_a4d4156ab748f12a4caeb1fed1a943e7);
+            
+        
+
+        marker_432b8183155b98c8bdc503627dc2429e.bindPopup(popup_29427bccd3d981b2b3a5c85e52794c9b)
+        ;
+
+        
+    
+    
+            marker_432b8183155b98c8bdc503627dc2429e.bindTooltip(
+                `<div>
+                     MATEUS - MARACANAU                                                                                   - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_432b8183155b98c8bdc503627dc2429e.setIcon(div_icon_97ca6773afd3688a48b01dd607b4e81f);
+            
+    
+            var marker_34f7048003b8a5e8fb600560ea4f42d7 = L.marker(
+                [-3.75714249, -38.59061584],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_03c13b23f5467ede6e3c6305a0e409d0 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e18\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_34f7048003b8a5e8fb600560ea4f42d7.setIcon(div_icon_03c13b23f5467ede6e3c6305a0e409d0);
+        
+    
+        var popup_5825a7f0b34088f6b31d2f963ccb69ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b3a4ebf26ef6b4687c208620b34a775 = $(`<div id="html_1b3a4ebf26ef6b4687c208620b34a775" style="width: 100.0%; height: 100.0%;"><b>MATEUS - HENRIQUE JORGE                                                                             </b><br>Cód: 10756<br>Data: 21/07/2025</div>`)[0];
+                popup_5825a7f0b34088f6b31d2f963ccb69ad.setContent(html_1b3a4ebf26ef6b4687c208620b34a775);
+            
+        
+
+        marker_34f7048003b8a5e8fb600560ea4f42d7.bindPopup(popup_5825a7f0b34088f6b31d2f963ccb69ad)
+        ;
+
+        
+    
+    
+            marker_34f7048003b8a5e8fb600560ea4f42d7.bindTooltip(
+                `<div>
+                     MATEUS - HENRIQUE JORGE                                                                              - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34f7048003b8a5e8fb600560ea4f42d7.setIcon(div_icon_03c13b23f5467ede6e3c6305a0e409d0);
+            
+    
+            var marker_983e27394cc4215f580decd428cabcf7 = L.marker(
+                [-3.89666198, -38.67373332],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_05caabac790fcc0dd8158d914bb7356d = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e19\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_983e27394cc4215f580decd428cabcf7.setIcon(div_icon_05caabac790fcc0dd8158d914bb7356d);
+        
+    
+        var popup_861f57634f574d175822f2bd049854c8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ee438f669f576d20472de96bd1ee05d = $(`<div id="html_5ee438f669f576d20472de96bd1ee05d" style="width: 100.0%; height: 100.0%;"><b>MATEUS - MARANGUAPE                                                                                 </b><br>Cód: 10758<br>Data: 21/07/2025</div>`)[0];
+                popup_861f57634f574d175822f2bd049854c8.setContent(html_5ee438f669f576d20472de96bd1ee05d);
+            
+        
+
+        marker_983e27394cc4215f580decd428cabcf7.bindPopup(popup_861f57634f574d175822f2bd049854c8)
+        ;
+
+        
+    
+    
+            marker_983e27394cc4215f580decd428cabcf7.bindTooltip(
+                `<div>
+                     MATEUS - MARANGUAPE                                                                                  - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_983e27394cc4215f580decd428cabcf7.setIcon(div_icon_05caabac790fcc0dd8158d914bb7356d);
+            
+    
+            var marker_cbd1a92372b74aea2fe3c91c58be900c = L.marker(
+                [-3.7151685, -38.5465957],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_f284908a6ecc2a2c4febb3e5b0a438fc = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e20\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_cbd1a92372b74aea2fe3c91c58be900c.setIcon(div_icon_f284908a6ecc2a2c4febb3e5b0a438fc);
+        
+    
+        var popup_97cdfa6ea3156bc804158f2f2e1035cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d909fd7ad9f91124dd267210b439bc8d = $(`<div id="html_d909fd7ad9f91124dd267210b439bc8d" style="width: 100.0%; height: 100.0%;"><b>COMERCIAL SANTO ANTONIO                                                                             </b><br>Cód: 10771<br>Data: 21/07/2025</div>`)[0];
+                popup_97cdfa6ea3156bc804158f2f2e1035cf.setContent(html_d909fd7ad9f91124dd267210b439bc8d);
+            
+        
+
+        marker_cbd1a92372b74aea2fe3c91c58be900c.bindPopup(popup_97cdfa6ea3156bc804158f2f2e1035cf)
+        ;
+
+        
+    
+    
+            marker_cbd1a92372b74aea2fe3c91c58be900c.bindTooltip(
+                `<div>
+                     COMERCIAL SANTO ANTONIO                                                                              - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cbd1a92372b74aea2fe3c91c58be900c.setIcon(div_icon_f284908a6ecc2a2c4febb3e5b0a438fc);
+            
+    
+            var marker_176d915017a0f7023de2aace04aa3780 = L.marker(
+                [-3.76132708, -38.61643438],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_b7619f01ec2f96444ccf36dc71468971 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e21\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_176d915017a0f7023de2aace04aa3780.setIcon(div_icon_b7619f01ec2f96444ccf36dc71468971);
+        
+    
+        var popup_7ad299cd7d9c2bc64eaedccfae8649db = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa398ae25ef9f10c0ef0fd1270421fc8 = $(`<div id="html_fa398ae25ef9f10c0ef0fd1270421fc8" style="width: 100.0%; height: 100.0%;"><b>MATEUS - CAUCAIA                                                                                    </b><br>Cód: 11622<br>Data: 21/07/2025</div>`)[0];
+                popup_7ad299cd7d9c2bc64eaedccfae8649db.setContent(html_fa398ae25ef9f10c0ef0fd1270421fc8);
+            
+        
+
+        marker_176d915017a0f7023de2aace04aa3780.bindPopup(popup_7ad299cd7d9c2bc64eaedccfae8649db)
+        ;
+
+        
+    
+    
+            marker_176d915017a0f7023de2aace04aa3780.bindTooltip(
+                `<div>
+                     MATEUS - CAUCAIA                                                                                     - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_176d915017a0f7023de2aace04aa3780.setIcon(div_icon_b7619f01ec2f96444ccf36dc71468971);
+            
+    
+            var marker_a26bb2ac4e3f78c732a69b5b11a8db9e = L.marker(
+                [-3.83076563, -38.46236181],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_9a97481da3d55e24ca6d95862206662f = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e22\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_a26bb2ac4e3f78c732a69b5b11a8db9e.setIcon(div_icon_9a97481da3d55e24ca6d95862206662f);
+        
+    
+        var popup_7efaf2dceaebce47638f1fbbaeb9fd53 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61e38d8584ef5f3c3fa7bfb10ec93ee0 = $(`<div id="html_61e38d8584ef5f3c3fa7bfb10ec93ee0" style="width: 100.0%; height: 100.0%;"><b>MERCADAO TEND TUDO - LAGOA REDONDA                                                                  </b><br>Cód: 11669<br>Data: 21/07/2025</div>`)[0];
+                popup_7efaf2dceaebce47638f1fbbaeb9fd53.setContent(html_61e38d8584ef5f3c3fa7bfb10ec93ee0);
+            
+        
+
+        marker_a26bb2ac4e3f78c732a69b5b11a8db9e.bindPopup(popup_7efaf2dceaebce47638f1fbbaeb9fd53)
+        ;
+
+        
+    
+    
+            marker_a26bb2ac4e3f78c732a69b5b11a8db9e.bindTooltip(
+                `<div>
+                     MERCADAO TEND TUDO - LAGOA REDONDA                                                                   - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a26bb2ac4e3f78c732a69b5b11a8db9e.setIcon(div_icon_9a97481da3d55e24ca6d95862206662f);
+            
+    
+            var marker_dce6305587ba5aaaed51f7dda80d1b98 = L.marker(
+                [-3.8207176, -38.55885136],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_a03b3dead929b7539bac768314a94c56 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e23\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_dce6305587ba5aaaed51f7dda80d1b98.setIcon(div_icon_a03b3dead929b7539bac768314a94c56);
+        
+    
+        var popup_c8b638e7148a8e12dc49ba9c99f4eb8d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a39c7b6e58b40a9c98a0339b99d811a = $(`<div id="html_8a39c7b6e58b40a9c98a0339b99d811a" style="width: 100.0%; height: 100.0%;"><b>MATEUS - JOSE WALTER                                                                                </b><br>Cód: 11733<br>Data: 21/07/2025</div>`)[0];
+                popup_c8b638e7148a8e12dc49ba9c99f4eb8d.setContent(html_8a39c7b6e58b40a9c98a0339b99d811a);
+            
+        
+
+        marker_dce6305587ba5aaaed51f7dda80d1b98.bindPopup(popup_c8b638e7148a8e12dc49ba9c99f4eb8d)
+        ;
+
+        
+    
+    
+            marker_dce6305587ba5aaaed51f7dda80d1b98.bindTooltip(
+                `<div>
+                     MATEUS - JOSE WALTER                                                                                 - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dce6305587ba5aaaed51f7dda80d1b98.setIcon(div_icon_a03b3dead929b7539bac768314a94c56);
+            
+    
+            var marker_7fcc332143982b20122e8e5a774b275a = L.marker(
+                [-3.79508034, -38.47443215],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_ecfe7c23c43d6ee957b0eaa6de0b1cfb = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e24\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_7fcc332143982b20122e8e5a774b275a.setIcon(div_icon_ecfe7c23c43d6ee957b0eaa6de0b1cfb);
+        
+    
+        var popup_cc9c4cea93b2aedcad5ddd8347d6bd44 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c08773770e6f331c9f57ccd19e55041f = $(`<div id="html_c08773770e6f331c9f57ccd19e55041f" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL- SAPIRANGA                                                                           </b><br>Cód: 11743<br>Data: 21/07/2025</div>`)[0];
+                popup_cc9c4cea93b2aedcad5ddd8347d6bd44.setContent(html_c08773770e6f331c9f57ccd19e55041f);
+            
+        
+
+        marker_7fcc332143982b20122e8e5a774b275a.bindPopup(popup_cc9c4cea93b2aedcad5ddd8347d6bd44)
+        ;
+
+        
+    
+    
+            marker_7fcc332143982b20122e8e5a774b275a.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL- SAPIRANGA                                                                            - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fcc332143982b20122e8e5a774b275a.setIcon(div_icon_ecfe7c23c43d6ee957b0eaa6de0b1cfb);
+            
+    
+            var marker_12122168fdbc096408f15e398395a1af = L.marker(
+                [-3.73631734, -38.58626343],
+                {
+}
+            ).addTo(feature_group_7ed6e222c7cdeaf1a82e89b5be94c875);
+        
+    
+            var div_icon_d89757ec6dae216433a8f5f7b03408f7 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e25\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_12122168fdbc096408f15e398395a1af.setIcon(div_icon_d89757ec6dae216433a8f5f7b03408f7);
+        
+    
+        var popup_e015580c1b941e7f09918d8fdffbd337 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c593ca75627bd7031005120198de86bb = $(`<div id="html_c593ca75627bd7031005120198de86bb" style="width: 100.0%; height: 100.0%;"><b>MERCEARIA E FRIGORIFICO JOIA                                                                        </b><br>Cód: 12120<br>Data: 21/07/2025</div>`)[0];
+                popup_e015580c1b941e7f09918d8fdffbd337.setContent(html_c593ca75627bd7031005120198de86bb);
+            
+        
+
+        marker_12122168fdbc096408f15e398395a1af.bindPopup(popup_e015580c1b941e7f09918d8fdffbd337)
+        ;
+
+        
+    
+    
+            marker_12122168fdbc096408f15e398395a1af.bindTooltip(
+                `<div>
+                     MERCEARIA E FRIGORIFICO JOIA                                                                         - 21/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12122168fdbc096408f15e398395a1af.setIcon(div_icon_d89757ec6dae216433a8f5f7b03408f7);
+            
+    
+            feature_group_7ed6e222c7cdeaf1a82e89b5be94c875.addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+        
+    
+            var feature_group_3731c53d1ebb45e07f38978545631aa8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_9ecb786f71345c0f953191d0eb3d1f7a = L.marker(
+                [-3.67322246, -38.67026304],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_ae28d2b73118f509d466cbbad3a1afb1 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e26\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_9ecb786f71345c0f953191d0eb3d1f7a.setIcon(div_icon_ae28d2b73118f509d466cbbad3a1afb1);
+        
+    
+        var popup_7cc6b1e8d22ee82bc1ad94444400cd9d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ebb77282f1bf3560ba0385d5cc24ab2c = $(`<div id="html_ebb77282f1bf3560ba0385d5cc24ab2c" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - ICARAI                                                                                  </b><br>Cód: 11163<br>Data: 22/07/2025</div>`)[0];
+                popup_7cc6b1e8d22ee82bc1ad94444400cd9d.setContent(html_ebb77282f1bf3560ba0385d5cc24ab2c);
+            
+        
+
+        marker_9ecb786f71345c0f953191d0eb3d1f7a.bindPopup(popup_7cc6b1e8d22ee82bc1ad94444400cd9d)
+        ;
+
+        
+    
+    
+            marker_9ecb786f71345c0f953191d0eb3d1f7a.bindTooltip(
+                `<div>
+                     COMPREMAX - ICARAI                                                                                   - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9ecb786f71345c0f953191d0eb3d1f7a.setIcon(div_icon_ae28d2b73118f509d466cbbad3a1afb1);
+            
+    
+            var marker_b4a98c225a6573150ba411a4dc97cedc = L.marker(
+                [-3.80683521, -38.62994815],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_aaebcf0bfd8930f79e94704d07c2fe65 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e27\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_b4a98c225a6573150ba411a4dc97cedc.setIcon(div_icon_aaebcf0bfd8930f79e94704d07c2fe65);
+        
+    
+        var popup_4de490508eb9ba878aa58ba9edc09d0a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7dbfd9fa1e92ac4c68491d9025cddd91 = $(`<div id="html_7dbfd9fa1e92ac4c68491d9025cddd91" style="width: 100.0%; height: 100.0%;"><b>NOVO SIQUEIRA - LJ02                                                                                </b><br>Cód: 11513<br>Data: 22/07/2025</div>`)[0];
+                popup_4de490508eb9ba878aa58ba9edc09d0a.setContent(html_7dbfd9fa1e92ac4c68491d9025cddd91);
+            
+        
+
+        marker_b4a98c225a6573150ba411a4dc97cedc.bindPopup(popup_4de490508eb9ba878aa58ba9edc09d0a)
+        ;
+
+        
+    
+    
+            marker_b4a98c225a6573150ba411a4dc97cedc.bindTooltip(
+                `<div>
+                     NOVO SIQUEIRA - LJ02                                                                                 - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b4a98c225a6573150ba411a4dc97cedc.setIcon(div_icon_aaebcf0bfd8930f79e94704d07c2fe65);
+            
+    
+            var marker_53e86f2d3d7b6b29df875b0f48b7124c = L.marker(
+                [-3.86940402, -38.58397451],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_83e9acb2a96ab457feba854f20f68df1 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e28\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_53e86f2d3d7b6b29df875b0f48b7124c.setIcon(div_icon_83e9acb2a96ab457feba854f20f68df1);
+        
+    
+        var popup_57dbad235b19b96b936ad9fa31e854c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35172625df6e8a14d9e58daf5505fd31 = $(`<div id="html_35172625df6e8a14d9e58daf5505fd31" style="width: 100.0%; height: 100.0%;"><b>MERC. HIPER MENEZES                                                                                 </b><br>Cód: 12135<br>Data: 22/07/2025</div>`)[0];
+                popup_57dbad235b19b96b936ad9fa31e854c6.setContent(html_35172625df6e8a14d9e58daf5505fd31);
+            
+        
+
+        marker_53e86f2d3d7b6b29df875b0f48b7124c.bindPopup(popup_57dbad235b19b96b936ad9fa31e854c6)
+        ;
+
+        
+    
+    
+            marker_53e86f2d3d7b6b29df875b0f48b7124c.bindTooltip(
+                `<div>
+                     MERC. HIPER MENEZES                                                                                  - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_53e86f2d3d7b6b29df875b0f48b7124c.setIcon(div_icon_83e9acb2a96ab457feba854f20f68df1);
+            
+    
+            var marker_6ee1aaf7a535e4cc360249577f3a4d00 = L.marker(
+                [-3.86353849, -38.58846446],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_9f7fcb63871e8f21a83872a9fda7edd3 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e29\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_6ee1aaf7a535e4cc360249577f3a4d00.setIcon(div_icon_9f7fcb63871e8f21a83872a9fda7edd3);
+        
+    
+        var popup_cf93da3fe5ce1f3610a6f142505de0dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88cab782840feacb9c0fc641033cb1b9 = $(`<div id="html_88cab782840feacb9c0fc641033cb1b9" style="width: 100.0%; height: 100.0%;"><b>MERC. HIPER MENEZES 2                                                                               </b><br>Cód: 12136<br>Data: 22/07/2025</div>`)[0];
+                popup_cf93da3fe5ce1f3610a6f142505de0dd.setContent(html_88cab782840feacb9c0fc641033cb1b9);
+            
+        
+
+        marker_6ee1aaf7a535e4cc360249577f3a4d00.bindPopup(popup_cf93da3fe5ce1f3610a6f142505de0dd)
+        ;
+
+        
+    
+    
+            marker_6ee1aaf7a535e4cc360249577f3a4d00.bindTooltip(
+                `<div>
+                     MERC. HIPER MENEZES 2                                                                                - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6ee1aaf7a535e4cc360249577f3a4d00.setIcon(div_icon_9f7fcb63871e8f21a83872a9fda7edd3);
+            
+    
+            var marker_0725eb31562c5b0b7b5fa9e9b1639691 = L.marker(
+                [-3.87602572, -38.59192501],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_7158b97a2965005d8123e04be67ee08e = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e30\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_0725eb31562c5b0b7b5fa9e9b1639691.setIcon(div_icon_7158b97a2965005d8123e04be67ee08e);
+        
+    
+        var popup_66274b2a05aa6f869a0b01bb14a04025 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_675c0a2f006813604f45e5769754dbbd = $(`<div id="html_675c0a2f006813604f45e5769754dbbd" style="width: 100.0%; height: 100.0%;"><b>HIPER MENEZES ATACAREJO                                                                             </b><br>Cód: 12137<br>Data: 22/07/2025</div>`)[0];
+                popup_66274b2a05aa6f869a0b01bb14a04025.setContent(html_675c0a2f006813604f45e5769754dbbd);
+            
+        
+
+        marker_0725eb31562c5b0b7b5fa9e9b1639691.bindPopup(popup_66274b2a05aa6f869a0b01bb14a04025)
+        ;
+
+        
+    
+    
+            marker_0725eb31562c5b0b7b5fa9e9b1639691.bindTooltip(
+                `<div>
+                     HIPER MENEZES ATACAREJO                                                                              - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0725eb31562c5b0b7b5fa9e9b1639691.setIcon(div_icon_7158b97a2965005d8123e04be67ee08e);
+            
+    
+            var marker_da582ff889bc090b88e432eb0cb74010 = L.marker(
+                [-3.8718902, -38.67319439],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_acb5a5fa66047066740a4a6e6b3ed2fb = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e31\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_da582ff889bc090b88e432eb0cb74010.setIcon(div_icon_acb5a5fa66047066740a4a6e6b3ed2fb);
+        
+    
+        var popup_b007d59ed1a04c2c21e5a67947b75634 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da9b50fde0fcc8c1417f5399ddf66b98 = $(`<div id="html_da9b50fde0fcc8c1417f5399ddf66b98" style="width: 100.0%; height: 100.0%;"><b>MERCADINHO FELIZARDO                                                                                </b><br>Cód: 12139<br>Data: 22/07/2025</div>`)[0];
+                popup_b007d59ed1a04c2c21e5a67947b75634.setContent(html_da9b50fde0fcc8c1417f5399ddf66b98);
+            
+        
+
+        marker_da582ff889bc090b88e432eb0cb74010.bindPopup(popup_b007d59ed1a04c2c21e5a67947b75634)
+        ;
+
+        
+    
+    
+            marker_da582ff889bc090b88e432eb0cb74010.bindTooltip(
+                `<div>
+                     MERCADINHO FELIZARDO                                                                                 - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da582ff889bc090b88e432eb0cb74010.setIcon(div_icon_acb5a5fa66047066740a4a6e6b3ed2fb);
+            
+    
+            var marker_e36a09f29af97443e2659f532af0c985 = L.marker(
+                [-3.88373692, -38.67877327],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_2172181ade684f05b0644cd1734b60d5 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e32\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_e36a09f29af97443e2659f532af0c985.setIcon(div_icon_2172181ade684f05b0644cd1734b60d5);
+        
+    
+        var popup_10766cde41ec613601f8568770ea88bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0292b8554a9f4fbf58ed2139629ce4b0 = $(`<div id="html_0292b8554a9f4fbf58ed2139629ce4b0" style="width: 100.0%; height: 100.0%;"><b>SUPER FELIZARDO                                                                                     </b><br>Cód: 12141<br>Data: 22/07/2025</div>`)[0];
+                popup_10766cde41ec613601f8568770ea88bd.setContent(html_0292b8554a9f4fbf58ed2139629ce4b0);
+            
+        
+
+        marker_e36a09f29af97443e2659f532af0c985.bindPopup(popup_10766cde41ec613601f8568770ea88bd)
+        ;
+
+        
+    
+    
+            marker_e36a09f29af97443e2659f532af0c985.bindTooltip(
+                `<div>
+                     SUPER FELIZARDO                                                                                      - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e36a09f29af97443e2659f532af0c985.setIcon(div_icon_2172181ade684f05b0644cd1734b60d5);
+            
+    
+            var marker_595f5885f49e547417241b5487c26cd7 = L.marker(
+                [-3.8581986, -38.63149433],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_32826b2b3cda19a13ced5fb853759c0f = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e33\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_595f5885f49e547417241b5487c26cd7.setIcon(div_icon_32826b2b3cda19a13ced5fb853759c0f);
+        
+    
+        var popup_bb4d6820732367b0cc7cf14b7bf18b58 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_488571c9d9132392669357685823366e = $(`<div id="html_488571c9d9132392669357685823366e" style="width: 100.0%; height: 100.0%;"><b>RG SUPERMERCADO                                                                                     </b><br>Cód: 12143<br>Data: 22/07/2025</div>`)[0];
+                popup_bb4d6820732367b0cc7cf14b7bf18b58.setContent(html_488571c9d9132392669357685823366e);
+            
+        
+
+        marker_595f5885f49e547417241b5487c26cd7.bindPopup(popup_bb4d6820732367b0cc7cf14b7bf18b58)
+        ;
+
+        
+    
+    
+            marker_595f5885f49e547417241b5487c26cd7.bindTooltip(
+                `<div>
+                     RG SUPERMERCADO                                                                                      - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_595f5885f49e547417241b5487c26cd7.setIcon(div_icon_32826b2b3cda19a13ced5fb853759c0f);
+            
+    
+            var marker_0eb3cc56aeb825dea14652cd821b969c = L.marker(
+                [-3.625908, -38.7283622],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_363faa13d6361360eb547357bf4d3b6d = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e34\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_0eb3cc56aeb825dea14652cd821b969c.setIcon(div_icon_363faa13d6361360eb547357bf4d3b6d);
+        
+    
+        var popup_1980e21fa6f201b80bcc5b47e03a4d64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64f80f21298f9ca61ec62feed9ed1038 = $(`<div id="html_64f80f21298f9ca61ec62feed9ed1038" style="width: 100.0%; height: 100.0%;"><b>SUPER CUMBUCO - CUMBUCO - LJ 01                                                                     </b><br>Cód: 2240<br>Data: 22/07/2025</div>`)[0];
+                popup_1980e21fa6f201b80bcc5b47e03a4d64.setContent(html_64f80f21298f9ca61ec62feed9ed1038);
+            
+        
+
+        marker_0eb3cc56aeb825dea14652cd821b969c.bindPopup(popup_1980e21fa6f201b80bcc5b47e03a4d64)
+        ;
+
+        
+    
+    
+            marker_0eb3cc56aeb825dea14652cd821b969c.bindTooltip(
+                `<div>
+                     SUPER CUMBUCO - CUMBUCO - LJ 01                                                                      - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0eb3cc56aeb825dea14652cd821b969c.setIcon(div_icon_363faa13d6361360eb547357bf4d3b6d);
+            
+    
+            var marker_f46d31d298a32dc894b24cf647136e91 = L.marker(
+                [-3.76944093, -38.65433696],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_6ce904b72c943407109d21682a7c7db7 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e35\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_f46d31d298a32dc894b24cf647136e91.setIcon(div_icon_6ce904b72c943407109d21682a7c7db7);
+        
+    
+        var popup_99a9fabf32fe1ff9e56cdf79f3d0a361 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a20587761e6b2961612596c0494e685 = $(`<div id="html_2a20587761e6b2961612596c0494e685" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - CONJ NOVA METROPOLE                                                                     </b><br>Cód: 11844<br>Data: 22/07/2025</div>`)[0];
+                popup_99a9fabf32fe1ff9e56cdf79f3d0a361.setContent(html_2a20587761e6b2961612596c0494e685);
+            
+        
+
+        marker_f46d31d298a32dc894b24cf647136e91.bindPopup(popup_99a9fabf32fe1ff9e56cdf79f3d0a361)
+        ;
+
+        
+    
+    
+            marker_f46d31d298a32dc894b24cf647136e91.bindTooltip(
+                `<div>
+                     COMPREMAX - CONJ NOVA METROPOLE                                                                      - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f46d31d298a32dc894b24cf647136e91.setIcon(div_icon_6ce904b72c943407109d21682a7c7db7);
+            
+    
+            var marker_51b17f1aae3a586328da6c8e1809119a = L.marker(
+                [-3.7600164, -38.6160465],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_fcf706b95f475fcf6844afd0abc3c3d2 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e36\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_51b17f1aae3a586328da6c8e1809119a.setIcon(div_icon_fcf706b95f475fcf6844afd0abc3c3d2);
+        
+    
+        var popup_e1d9d15d8d3b94df9cbf2c9d0872b940 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c1cc598d14df41e484d97d6d7dd0890 = $(`<div id="html_5c1cc598d14df41e484d97d6d7dd0890" style="width: 100.0%; height: 100.0%;"><b>CIA DA CARNE                                                                                        </b><br>Cód: 10745<br>Data: 22/07/2025</div>`)[0];
+                popup_e1d9d15d8d3b94df9cbf2c9d0872b940.setContent(html_5c1cc598d14df41e484d97d6d7dd0890);
+            
+        
+
+        marker_51b17f1aae3a586328da6c8e1809119a.bindPopup(popup_e1d9d15d8d3b94df9cbf2c9d0872b940)
+        ;
+
+        
+    
+    
+            marker_51b17f1aae3a586328da6c8e1809119a.bindTooltip(
+                `<div>
+                     CIA DA CARNE                                                                                         - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_51b17f1aae3a586328da6c8e1809119a.setIcon(div_icon_fcf706b95f475fcf6844afd0abc3c3d2);
+            
+    
+            var marker_b0ee3a37ee3670c92be8388e323de25a = L.marker(
+                [-3.79989965, -38.5774981],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_bfaff8b77f7921a0c8492f0bd3eea737 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e37\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_b0ee3a37ee3670c92be8388e323de25a.setIcon(div_icon_bfaff8b77f7921a0c8492f0bd3eea737);
+        
+    
+        var popup_439571b7a8dd9a9f3d09bc499e604fe1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a9ae58f74692b4f410410470851ee4bf = $(`<div id="html_a9ae58f74692b4f410410470851ee4bf" style="width: 100.0%; height: 100.0%;"><b>SUPERMERCADO VAREJAO - MANOEL SATIRO                                                                </b><br>Cód: 2355<br>Data: 22/07/2025</div>`)[0];
+                popup_439571b7a8dd9a9f3d09bc499e604fe1.setContent(html_a9ae58f74692b4f410410470851ee4bf);
+            
+        
+
+        marker_b0ee3a37ee3670c92be8388e323de25a.bindPopup(popup_439571b7a8dd9a9f3d09bc499e604fe1)
+        ;
+
+        
+    
+    
+            marker_b0ee3a37ee3670c92be8388e323de25a.bindTooltip(
+                `<div>
+                     SUPERMERCADO VAREJAO - MANOEL SATIRO                                                                 - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b0ee3a37ee3670c92be8388e323de25a.setIcon(div_icon_bfaff8b77f7921a0c8492f0bd3eea737);
+            
+    
+            var marker_1eceb3cdccae05a114fd353b817e3b51 = L.marker(
+                [-3.8811139, -38.6756829],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_353e67c45c3228105116ac4066a332fa = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e38\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_1eceb3cdccae05a114fd353b817e3b51.setIcon(div_icon_353e67c45c3228105116ac4066a332fa);
+        
+    
+        var popup_d743bf36913edd0321b5934b6812dd18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77f7650b9cba6c773ac37c1d313bdd4a = $(`<div id="html_77f7650b9cba6c773ac37c1d313bdd4a" style="width: 100.0%; height: 100.0%;"><b>NOVA VENEZA                                                                                         </b><br>Cód: 4965<br>Data: 22/07/2025</div>`)[0];
+                popup_d743bf36913edd0321b5934b6812dd18.setContent(html_77f7650b9cba6c773ac37c1d313bdd4a);
+            
+        
+
+        marker_1eceb3cdccae05a114fd353b817e3b51.bindPopup(popup_d743bf36913edd0321b5934b6812dd18)
+        ;
+
+        
+    
+    
+            marker_1eceb3cdccae05a114fd353b817e3b51.bindTooltip(
+                `<div>
+                     NOVA VENEZA                                                                                          - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1eceb3cdccae05a114fd353b817e3b51.setIcon(div_icon_353e67c45c3228105116ac4066a332fa);
+            
+    
+            var marker_8650a5caffeb97628befb69d5305d837 = L.marker(
+                [-3.64063684, -38.70421562],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_04be56a2576aec1b57824aecb34c0438 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e39\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_8650a5caffeb97628befb69d5305d837.setIcon(div_icon_04be56a2576aec1b57824aecb34c0438);
+        
+    
+        var popup_f10bb75a07f4887e9b64db445443c4b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_76b3f400a08fa89f2a77eefda34291b7 = $(`<div id="html_76b3f400a08fa89f2a77eefda34291b7" style="width: 100.0%; height: 100.0%;"><b>SUPER CUMBUCO - CAUCAIA - LJ 02                                                                     </b><br>Cód: 9296<br>Data: 22/07/2025</div>`)[0];
+                popup_f10bb75a07f4887e9b64db445443c4b1.setContent(html_76b3f400a08fa89f2a77eefda34291b7);
+            
+        
+
+        marker_8650a5caffeb97628befb69d5305d837.bindPopup(popup_f10bb75a07f4887e9b64db445443c4b1)
+        ;
+
+        
+    
+    
+            marker_8650a5caffeb97628befb69d5305d837.bindTooltip(
+                `<div>
+                     SUPER CUMBUCO - CAUCAIA - LJ 02                                                                      - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8650a5caffeb97628befb69d5305d837.setIcon(div_icon_04be56a2576aec1b57824aecb34c0438);
+            
+    
+            var marker_9746fb9f2566fa9c31d5157817f3ebf4 = L.marker(
+                [-3.777836, -38.597821],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_77c5c483ef6af798a2a09e9a14a80006 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e40\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_9746fb9f2566fa9c31d5157817f3ebf4.setIcon(div_icon_77c5c483ef6af798a2a09e9a14a80006);
+        
+    
+        var popup_959e960312e9ccaab8a9aa9120f32daa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_540344fcc31f99873d1ad49356be3002 = $(`<div id="html_540344fcc31f99873d1ad49356be3002" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - VITAL BRASIL                                                                       </b><br>Cód: 9319<br>Data: 22/07/2025</div>`)[0];
+                popup_959e960312e9ccaab8a9aa9120f32daa.setContent(html_540344fcc31f99873d1ad49356be3002);
+            
+        
+
+        marker_9746fb9f2566fa9c31d5157817f3ebf4.bindPopup(popup_959e960312e9ccaab8a9aa9120f32daa)
+        ;
+
+        
+    
+    
+            marker_9746fb9f2566fa9c31d5157817f3ebf4.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - VITAL BRASIL                                                                        - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9746fb9f2566fa9c31d5157817f3ebf4.setIcon(div_icon_77c5c483ef6af798a2a09e9a14a80006);
+            
+    
+            var marker_f396ed455712d6e2f23160939416827e = L.marker(
+                [-3.7448789, -38.6495637],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_a5c7a57f188b5b6aa358dc5fde3e0ddc = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e41\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_f396ed455712d6e2f23160939416827e.setIcon(div_icon_a5c7a57f188b5b6aa358dc5fde3e0ddc);
+        
+    
+        var popup_ffba0beca88e21f1be3f02f317ef715e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c201f3431767e20135554f93a327f147 = $(`<div id="html_c201f3431767e20135554f93a327f147" style="width: 100.0%; height: 100.0%;"><b>GELIA MARA MELO DO NASCIMENTO                                                                       </b><br>Cód: 9598<br>Data: 22/07/2025</div>`)[0];
+                popup_ffba0beca88e21f1be3f02f317ef715e.setContent(html_c201f3431767e20135554f93a327f147);
+            
+        
+
+        marker_f396ed455712d6e2f23160939416827e.bindPopup(popup_ffba0beca88e21f1be3f02f317ef715e)
+        ;
+
+        
+    
+    
+            marker_f396ed455712d6e2f23160939416827e.bindTooltip(
+                `<div>
+                     GELIA MARA MELO DO NASCIMENTO                                                                        - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f396ed455712d6e2f23160939416827e.setIcon(div_icon_a5c7a57f188b5b6aa358dc5fde3e0ddc);
+            
+    
+            var marker_2fe1f1bad555adaf54e2cfd609a76e3e = L.marker(
+                [-3.7666193, -38.6538536],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_1b01b7d23493d340cc599e3cd7310b2b = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e42\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_2fe1f1bad555adaf54e2cfd609a76e3e.setIcon(div_icon_1b01b7d23493d340cc599e3cd7310b2b);
+        
+    
+        var popup_5797061db9410621c8de9005e4e109ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33201a27874008bc38b0a397156d0b0a = $(`<div id="html_33201a27874008bc38b0a397156d0b0a" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - METROPOLE                                                                               </b><br>Cód: 4089<br>Data: 22/07/2025</div>`)[0];
+                popup_5797061db9410621c8de9005e4e109ae.setContent(html_33201a27874008bc38b0a397156d0b0a);
+            
+        
+
+        marker_2fe1f1bad555adaf54e2cfd609a76e3e.bindPopup(popup_5797061db9410621c8de9005e4e109ae)
+        ;
+
+        
+    
+    
+            marker_2fe1f1bad555adaf54e2cfd609a76e3e.bindTooltip(
+                `<div>
+                     COMPREMAX - METROPOLE                                                                                - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2fe1f1bad555adaf54e2cfd609a76e3e.setIcon(div_icon_1b01b7d23493d340cc599e3cd7310b2b);
+            
+    
+            var marker_7dcbe17555029a0239001d591003ca50 = L.marker(
+                [-3.81089439, -38.62849329],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_ab9d0f59649a6465bb69ff3fd3db9634 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e43\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_7dcbe17555029a0239001d591003ca50.setIcon(div_icon_ab9d0f59649a6465bb69ff3fd3db9634);
+        
+    
+        var popup_52f9cc0f11c45be9adb21b6c14f9ac9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_479828b229ba9c827b4d1da82d04c3a9 = $(`<div id="html_479828b229ba9c827b4d1da82d04c3a9" style="width: 100.0%; height: 100.0%;"><b>MERC SAO JOAO                                                                                       </b><br>Cód: 4119<br>Data: 22/07/2025</div>`)[0];
+                popup_52f9cc0f11c45be9adb21b6c14f9ac9b.setContent(html_479828b229ba9c827b4d1da82d04c3a9);
+            
+        
+
+        marker_7dcbe17555029a0239001d591003ca50.bindPopup(popup_52f9cc0f11c45be9adb21b6c14f9ac9b)
+        ;
+
+        
+    
+    
+            marker_7dcbe17555029a0239001d591003ca50.bindTooltip(
+                `<div>
+                     MERC SAO JOAO                                                                                        - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7dcbe17555029a0239001d591003ca50.setIcon(div_icon_ab9d0f59649a6465bb69ff3fd3db9634);
+            
+    
+            var marker_220f8788bd729bdad5079d2f63373da4 = L.marker(
+                [-3.72905976, -38.65588134],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_8f14ff4dbf7b1efc27516fd3361ab3bb = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e44\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_220f8788bd729bdad5079d2f63373da4.setIcon(div_icon_8f14ff4dbf7b1efc27516fd3361ab3bb);
+        
+    
+        var popup_249ab56e6c841602b778c99beb11edeb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_711ba3cd51719a60a292e583f24ca184 = $(`<div id="html_711ba3cd51719a60a292e583f24ca184" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - OFERTAO MAX                                                                             </b><br>Cód: 4381<br>Data: 22/07/2025</div>`)[0];
+                popup_249ab56e6c841602b778c99beb11edeb.setContent(html_711ba3cd51719a60a292e583f24ca184);
+            
+        
+
+        marker_220f8788bd729bdad5079d2f63373da4.bindPopup(popup_249ab56e6c841602b778c99beb11edeb)
+        ;
+
+        
+    
+    
+            marker_220f8788bd729bdad5079d2f63373da4.bindTooltip(
+                `<div>
+                     COMPREMAX - OFERTAO MAX                                                                              - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_220f8788bd729bdad5079d2f63373da4.setIcon(div_icon_8f14ff4dbf7b1efc27516fd3361ab3bb);
+            
+    
+            var marker_7274384e1e5ed347b1e86f64b23c2a7e = L.marker(
+                [-3.8772362, -38.6706361],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_faffc7619a31fd27122cc4a67fcf8bb0 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e45\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_7274384e1e5ed347b1e86f64b23c2a7e.setIcon(div_icon_faffc7619a31fd27122cc4a67fcf8bb0);
+        
+    
+        var popup_c04b6fe20609c2c7883269277f934b5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9bed4505bd0c77627a22ef17133580c9 = $(`<div id="html_9bed4505bd0c77627a22ef17133580c9" style="width: 100.0%; height: 100.0%;"><b>MERCADINHO SUPER FELIZARDO                                                                          </b><br>Cód: 4484<br>Data: 22/07/2025</div>`)[0];
+                popup_c04b6fe20609c2c7883269277f934b5c.setContent(html_9bed4505bd0c77627a22ef17133580c9);
+            
+        
+
+        marker_7274384e1e5ed347b1e86f64b23c2a7e.bindPopup(popup_c04b6fe20609c2c7883269277f934b5c)
+        ;
+
+        
+    
+    
+            marker_7274384e1e5ed347b1e86f64b23c2a7e.bindTooltip(
+                `<div>
+                     MERCADINHO SUPER FELIZARDO                                                                           - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7274384e1e5ed347b1e86f64b23c2a7e.setIcon(div_icon_faffc7619a31fd27122cc4a67fcf8bb0);
+            
+    
+            var marker_e39e6f3eb0a8b2be5970ac50ce2b26dd = L.marker(
+                [-3.77334061, -38.62707738],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_529020387a9a43924da0a071cf5159c3 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e46\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_e39e6f3eb0a8b2be5970ac50ce2b26dd.setIcon(div_icon_529020387a9a43924da0a071cf5159c3);
+        
+    
+        var popup_afc49fc9abe93c556e664fa3b3b5491e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f588e11abae8d409dbea410510faab8 = $(`<div id="html_5f588e11abae8d409dbea410510faab8" style="width: 100.0%; height: 100.0%;"><b>COMPREMAX - JUREMA                                                                                  </b><br>Cód: 718<br>Data: 22/07/2025</div>`)[0];
+                popup_afc49fc9abe93c556e664fa3b3b5491e.setContent(html_5f588e11abae8d409dbea410510faab8);
+            
+        
+
+        marker_e39e6f3eb0a8b2be5970ac50ce2b26dd.bindPopup(popup_afc49fc9abe93c556e664fa3b3b5491e)
+        ;
+
+        
+    
+    
+            marker_e39e6f3eb0a8b2be5970ac50ce2b26dd.bindTooltip(
+                `<div>
+                     COMPREMAX - JUREMA                                                                                   - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e39e6f3eb0a8b2be5970ac50ce2b26dd.setIcon(div_icon_529020387a9a43924da0a071cf5159c3);
+            
+    
+            var marker_b63764c66bfca60de763e5f24a5334a4 = L.marker(
+                [-3.8958534, -38.6839187],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_c4d0ddc1672509bf75e4f816136d46b3 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e47\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_b63764c66bfca60de763e5f24a5334a4.setIcon(div_icon_c4d0ddc1672509bf75e4f816136d46b3);
+        
+    
+        var popup_afafe62975c0a6f61ebbbfc58b92780b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6656695fd893adb670c2f5934bb08efa = $(`<div id="html_6656695fd893adb670c2f5934bb08efa" style="width: 100.0%; height: 100.0%;"><b>SUPERMERCADO ATACAREJO IRMAO                                                                        </b><br>Cód: 1980<br>Data: 22/07/2025</div>`)[0];
+                popup_afafe62975c0a6f61ebbbfc58b92780b.setContent(html_6656695fd893adb670c2f5934bb08efa);
+            
+        
+
+        marker_b63764c66bfca60de763e5f24a5334a4.bindPopup(popup_afafe62975c0a6f61ebbbfc58b92780b)
+        ;
+
+        
+    
+    
+            marker_b63764c66bfca60de763e5f24a5334a4.bindTooltip(
+                `<div>
+                     SUPERMERCADO ATACAREJO IRMAO                                                                         - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b63764c66bfca60de763e5f24a5334a4.setIcon(div_icon_c4d0ddc1672509bf75e4f816136d46b3);
+            
+    
+            var marker_7b7730d1ecc1bdad0f97ba1c12812c90 = L.marker(
+                [-3.80892581, -38.62755341],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_dc6dd0eafc800a5cff48bfb166f79522 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e48\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_7b7730d1ecc1bdad0f97ba1c12812c90.setIcon(div_icon_dc6dd0eafc800a5cff48bfb166f79522);
+        
+    
+        var popup_6a969baca114f2afb85cfd3737a10993 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96b77e86f2475529a4bc569c8046cd2a = $(`<div id="html_96b77e86f2475529a4bc569c8046cd2a" style="width: 100.0%; height: 100.0%;"><b>NOVO SIQUEIRA                                                                                       </b><br>Cód: 2126<br>Data: 22/07/2025</div>`)[0];
+                popup_6a969baca114f2afb85cfd3737a10993.setContent(html_96b77e86f2475529a4bc569c8046cd2a);
+            
+        
+
+        marker_7b7730d1ecc1bdad0f97ba1c12812c90.bindPopup(popup_6a969baca114f2afb85cfd3737a10993)
+        ;
+
+        
+    
+    
+            marker_7b7730d1ecc1bdad0f97ba1c12812c90.bindTooltip(
+                `<div>
+                     NOVO SIQUEIRA                                                                                        - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7b7730d1ecc1bdad0f97ba1c12812c90.setIcon(div_icon_dc6dd0eafc800a5cff48bfb166f79522);
+            
+    
+            var marker_82bce507f49ead6cee5e0ba0ecf679f2 = L.marker(
+                [-3.7551255, -38.6225031],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_d504d5f838130a9bd32b34189a2fc4ee = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e49\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_82bce507f49ead6cee5e0ba0ecf679f2.setIcon(div_icon_d504d5f838130a9bd32b34189a2fc4ee);
+        
+    
+        var popup_d308dbd202cdc5801dabe69d1ed5d90f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_48297d3edb81ebb590a7a6fa0fb1f4fa = $(`<div id="html_48297d3edb81ebb590a7a6fa0fb1f4fa" style="width: 100.0%; height: 100.0%;"><b>ATACAREJO O IRMAO                                                                                   </b><br>Cód: 3247<br>Data: 22/07/2025</div>`)[0];
+                popup_d308dbd202cdc5801dabe69d1ed5d90f.setContent(html_48297d3edb81ebb590a7a6fa0fb1f4fa);
+            
+        
+
+        marker_82bce507f49ead6cee5e0ba0ecf679f2.bindPopup(popup_d308dbd202cdc5801dabe69d1ed5d90f)
+        ;
+
+        
+    
+    
+            marker_82bce507f49ead6cee5e0ba0ecf679f2.bindTooltip(
+                `<div>
+                     ATACAREJO O IRMAO                                                                                    - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_82bce507f49ead6cee5e0ba0ecf679f2.setIcon(div_icon_d504d5f838130a9bd32b34189a2fc4ee);
+            
+    
+            var marker_b7e11c820ea25279b5c03fa5ceaae2ce = L.marker(
+                [-3.833973, -38.6393986],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_b47a1a9b709522c7350456a2d7d6e369 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e50\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_b7e11c820ea25279b5c03fa5ceaae2ce.setIcon(div_icon_b47a1a9b709522c7350456a2d7d6e369);
+        
+    
+        var popup_920c003e90496c33668cc68758e80579 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3fd3fcea0744211013f6ee87bfff9e4e = $(`<div id="html_3fd3fcea0744211013f6ee87bfff9e4e" style="width: 100.0%; height: 100.0%;"><b>MERCADINHO O ANDRE                                                                                  </b><br>Cód: 3336<br>Data: 22/07/2025</div>`)[0];
+                popup_920c003e90496c33668cc68758e80579.setContent(html_3fd3fcea0744211013f6ee87bfff9e4e);
+            
+        
+
+        marker_b7e11c820ea25279b5c03fa5ceaae2ce.bindPopup(popup_920c003e90496c33668cc68758e80579)
+        ;
+
+        
+    
+    
+            marker_b7e11c820ea25279b5c03fa5ceaae2ce.bindTooltip(
+                `<div>
+                     MERCADINHO O ANDRE                                                                                   - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b7e11c820ea25279b5c03fa5ceaae2ce.setIcon(div_icon_b47a1a9b709522c7350456a2d7d6e369);
+            
+    
+            var marker_2a486dcfda8147f74f9db8c5dd1dfaf0 = L.marker(
+                [-3.89440312, -38.68720997],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_7ad22164f8986662cf1e30812df06a4b = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e51\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_2a486dcfda8147f74f9db8c5dd1dfaf0.setIcon(div_icon_7ad22164f8986662cf1e30812df06a4b);
+        
+    
+        var popup_e9b41938dd02193c84a29610709a25d7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9271c058faaff6b1c317d01e46a8faa1 = $(`<div id="html_9271c058faaff6b1c317d01e46a8faa1" style="width: 100.0%; height: 100.0%;"><b>SUPER NOVO EXPRESS                                                                                  </b><br>Cód: 1541<br>Data: 22/07/2025</div>`)[0];
+                popup_e9b41938dd02193c84a29610709a25d7.setContent(html_9271c058faaff6b1c317d01e46a8faa1);
+            
+        
+
+        marker_2a486dcfda8147f74f9db8c5dd1dfaf0.bindPopup(popup_e9b41938dd02193c84a29610709a25d7)
+        ;
+
+        
+    
+    
+            marker_2a486dcfda8147f74f9db8c5dd1dfaf0.bindTooltip(
+                `<div>
+                     SUPER NOVO EXPRESS                                                                                   - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2a486dcfda8147f74f9db8c5dd1dfaf0.setIcon(div_icon_7ad22164f8986662cf1e30812df06a4b);
+            
+    
+            var marker_c1777e71cb3a0c8d892b737ea5ce9084 = L.marker(
+                [-3.7418233, -38.6235276],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_0a1c74fa1c45f875c5b0a22ba3991941 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e52\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_c1777e71cb3a0c8d892b737ea5ce9084.setIcon(div_icon_0a1c74fa1c45f875c5b0a22ba3991941);
+        
+    
+        var popup_2a7ce7e1b5c2cf57216504104c4b5850 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b9235afd99b0818d6ccc3467b763edef = $(`<div id="html_b9235afd99b0818d6ccc3467b763edef" style="width: 100.0%; height: 100.0%;"><b>MERCADINHO DA RAIMUNDA                                                                              </b><br>Cód: 1553<br>Data: 22/07/2025</div>`)[0];
+                popup_2a7ce7e1b5c2cf57216504104c4b5850.setContent(html_b9235afd99b0818d6ccc3467b763edef);
+            
+        
+
+        marker_c1777e71cb3a0c8d892b737ea5ce9084.bindPopup(popup_2a7ce7e1b5c2cf57216504104c4b5850)
+        ;
+
+        
+    
+    
+            marker_c1777e71cb3a0c8d892b737ea5ce9084.bindTooltip(
+                `<div>
+                     MERCADINHO DA RAIMUNDA                                                                               - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c1777e71cb3a0c8d892b737ea5ce9084.setIcon(div_icon_0a1c74fa1c45f875c5b0a22ba3991941);
+            
+    
+            var marker_2020290a07006933d269e5d0beb5acf9 = L.marker(
+                [-3.8943696, -38.6881168],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_13c36cbd5277308ba8b3376ceea779bd = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e53\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_2020290a07006933d269e5d0beb5acf9.setIcon(div_icon_13c36cbd5277308ba8b3376ceea779bd);
+        
+    
+        var popup_b0f3ef83e03996415450bddcfcb616a3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bac1be3c54bb011b485c4ec781c730aa = $(`<div id="html_bac1be3c54bb011b485c4ec781c730aa" style="width: 100.0%; height: 100.0%;"><b>PANIFICADORA NOSSO PAO                                                                              </b><br>Cód: 1812<br>Data: 22/07/2025</div>`)[0];
+                popup_b0f3ef83e03996415450bddcfcb616a3.setContent(html_bac1be3c54bb011b485c4ec781c730aa);
+            
+        
+
+        marker_2020290a07006933d269e5d0beb5acf9.bindPopup(popup_b0f3ef83e03996415450bddcfcb616a3)
+        ;
+
+        
+    
+    
+            marker_2020290a07006933d269e5d0beb5acf9.bindTooltip(
+                `<div>
+                     PANIFICADORA NOSSO PAO                                                                               - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2020290a07006933d269e5d0beb5acf9.setIcon(div_icon_13c36cbd5277308ba8b3376ceea779bd);
+            
+    
+            var marker_6c9c03831bc4101a0d92bc2e5a5276d0 = L.marker(
+                [-3.90545487, -38.68615841],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_ea5408c81d3faf0d7765f023e8d9ab00 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e54\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_6c9c03831bc4101a0d92bc2e5a5276d0.setIcon(div_icon_ea5408c81d3faf0d7765f023e8d9ab00);
+        
+    
+        var popup_bff28a4f0c1ad692e9e06aae6483080e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a139f67ae6e2b3fe22f72aca86dbe10 = $(`<div id="html_8a139f67ae6e2b3fe22f72aca86dbe10" style="width: 100.0%; height: 100.0%;"><b>PANIFICADORA O MAX                                                                                  </b><br>Cód: 1817<br>Data: 22/07/2025</div>`)[0];
+                popup_bff28a4f0c1ad692e9e06aae6483080e.setContent(html_8a139f67ae6e2b3fe22f72aca86dbe10);
+            
+        
+
+        marker_6c9c03831bc4101a0d92bc2e5a5276d0.bindPopup(popup_bff28a4f0c1ad692e9e06aae6483080e)
+        ;
+
+        
+    
+    
+            marker_6c9c03831bc4101a0d92bc2e5a5276d0.bindTooltip(
+                `<div>
+                     PANIFICADORA O MAX                                                                                   - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6c9c03831bc4101a0d92bc2e5a5276d0.setIcon(div_icon_ea5408c81d3faf0d7765f023e8d9ab00);
+            
+    
+            var marker_d2f7a781703982e8c1e81d3a69d49166 = L.marker(
+                [-3.88608835, -38.6253182],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_0a2eb853ed633252fdab64ac0c0df3ec = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e55\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_d2f7a781703982e8c1e81d3a69d49166.setIcon(div_icon_0a2eb853ed633252fdab64ac0c0df3ec);
+        
+    
+        var popup_0e591507ad3ac59653c7488553aed2e4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c0b824a9e6571906b9480d9bdd7ed08 = $(`<div id="html_0c0b824a9e6571906b9480d9bdd7ed08" style="width: 100.0%; height: 100.0%;"><b>SUPERMERCADO E PANIFICADORA PANNEVERA                                                               </b><br>Cód: 447<br>Data: 22/07/2025</div>`)[0];
+                popup_0e591507ad3ac59653c7488553aed2e4.setContent(html_0c0b824a9e6571906b9480d9bdd7ed08);
+            
+        
+
+        marker_d2f7a781703982e8c1e81d3a69d49166.bindPopup(popup_0e591507ad3ac59653c7488553aed2e4)
+        ;
+
+        
+    
+    
+            marker_d2f7a781703982e8c1e81d3a69d49166.bindTooltip(
+                `<div>
+                     SUPERMERCADO E PANIFICADORA PANNEVERA                                                                - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d2f7a781703982e8c1e81d3a69d49166.setIcon(div_icon_0a2eb853ed633252fdab64ac0c0df3ec);
+            
+    
+            var marker_5a403d206b15a96116f7d05566cf9d17 = L.marker(
+                [-3.762106, -38.5819394],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_975292a58be7470b8f9ea0a79f1bffea = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e56\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_5a403d206b15a96116f7d05566cf9d17.setIcon(div_icon_975292a58be7470b8f9ea0a79f1bffea);
+        
+    
+        var popup_f55d56fce2120486390352226995d209 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30051eb06448ff6475fc05370b89aa02 = $(`<div id="html_30051eb06448ff6475fc05370b89aa02" style="width: 100.0%; height: 100.0%;"><b>SUPERMERCADO BISTECAO                                                                               </b><br>Cód: 455<br>Data: 22/07/2025</div>`)[0];
+                popup_f55d56fce2120486390352226995d209.setContent(html_30051eb06448ff6475fc05370b89aa02);
+            
+        
+
+        marker_5a403d206b15a96116f7d05566cf9d17.bindPopup(popup_f55d56fce2120486390352226995d209)
+        ;
+
+        
+    
+    
+            marker_5a403d206b15a96116f7d05566cf9d17.bindTooltip(
+                `<div>
+                     SUPERMERCADO BISTECAO                                                                                - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a403d206b15a96116f7d05566cf9d17.setIcon(div_icon_975292a58be7470b8f9ea0a79f1bffea);
+            
+    
+            var marker_431fcbf37145e1e4ecc28e17bc52c507 = L.marker(
+                [-3.7807845, -38.5966783],
+                {
+}
+            ).addTo(feature_group_3731c53d1ebb45e07f38978545631aa8);
+        
+    
+            var div_icon_c6f5cf3a2b09fac3c727562db9fbc7f7 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e57\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_431fcbf37145e1e4ecc28e17bc52c507.setIcon(div_icon_c6f5cf3a2b09fac3c727562db9fbc7f7);
+        
+    
+        var popup_cf0bbc6095f49975b181bd2d881d57b3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2577e258a0fb994a44a60c24c41dcf5a = $(`<div id="html_2577e258a0fb994a44a60c24c41dcf5a" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - BRAGANCA                                                                           </b><br>Cód: 153<br>Data: 22/07/2025</div>`)[0];
+                popup_cf0bbc6095f49975b181bd2d881d57b3.setContent(html_2577e258a0fb994a44a60c24c41dcf5a);
+            
+        
+
+        marker_431fcbf37145e1e4ecc28e17bc52c507.bindPopup(popup_cf0bbc6095f49975b181bd2d881d57b3)
+        ;
+
+        
+    
+    
+            marker_431fcbf37145e1e4ecc28e17bc52c507.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - BRAGANCA                                                                            - 22/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_431fcbf37145e1e4ecc28e17bc52c507.setIcon(div_icon_c6f5cf3a2b09fac3c727562db9fbc7f7);
+            
+    
+            feature_group_3731c53d1ebb45e07f38978545631aa8.addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+        
+    
+            var feature_group_2568fcb714e7fd5a7647498253e18118 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_0beee586c88c841ac439f74841234eee = L.marker(
+                [-3.73546304, -38.65846975],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_c9a4e37a6ccd5abeda4e18744d6e8d23 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e58\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_0beee586c88c841ac439f74841234eee.setIcon(div_icon_c9a4e37a6ccd5abeda4e18744d6e8d23);
+        
+    
+        var popup_b1df60131ca891cd5415a0e895732aec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ce4195690e753e1207c74b06c6dfa136 = $(`<div id="html_ce4195690e753e1207c74b06c6dfa136" style="width: 100.0%; height: 100.0%;"><b>SUPER CAUCAIA - LJ 01                                                                               </b><br>Cód: 181<br>Data: 23/07/2025</div>`)[0];
+                popup_b1df60131ca891cd5415a0e895732aec.setContent(html_ce4195690e753e1207c74b06c6dfa136);
+            
+        
+
+        marker_0beee586c88c841ac439f74841234eee.bindPopup(popup_b1df60131ca891cd5415a0e895732aec)
+        ;
+
+        
+    
+    
+            marker_0beee586c88c841ac439f74841234eee.bindTooltip(
+                `<div>
+                     SUPER CAUCAIA - LJ 01                                                                                - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0beee586c88c841ac439f74841234eee.setIcon(div_icon_c9a4e37a6ccd5abeda4e18744d6e8d23);
+            
+    
+            var marker_3aa5aabb85a9540b7f27236fa0c31a32 = L.marker(
+                [-3.7342526, -38.65836087],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_b7f3bd50cd9cb7856853da11c86caf1e = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e59\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_3aa5aabb85a9540b7f27236fa0c31a32.setIcon(div_icon_b7f3bd50cd9cb7856853da11c86caf1e);
+        
+    
+        var popup_00cbe5933ff2952d7606eb14b8b1e89b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0f0ced5c0d75df907a05d814bc6c00b0 = $(`<div id="html_0f0ced5c0d75df907a05d814bc6c00b0" style="width: 100.0%; height: 100.0%;"><b>SUPER CAUCAIA - LJ 02                                                                               </b><br>Cód: 239<br>Data: 23/07/2025</div>`)[0];
+                popup_00cbe5933ff2952d7606eb14b8b1e89b.setContent(html_0f0ced5c0d75df907a05d814bc6c00b0);
+            
+        
+
+        marker_3aa5aabb85a9540b7f27236fa0c31a32.bindPopup(popup_00cbe5933ff2952d7606eb14b8b1e89b)
+        ;
+
+        
+    
+    
+            marker_3aa5aabb85a9540b7f27236fa0c31a32.bindTooltip(
+                `<div>
+                     SUPER CAUCAIA - LJ 02                                                                                - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3aa5aabb85a9540b7f27236fa0c31a32.setIcon(div_icon_b7f3bd50cd9cb7856853da11c86caf1e);
+            
+    
+            var marker_16a079c032ad4125525b44786f2a670d = L.marker(
+                [-3.7966519, -38.6007377],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_314605f43dd35ca0679e3dd58b539fb2 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e60\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_16a079c032ad4125525b44786f2a670d.setIcon(div_icon_314605f43dd35ca0679e3dd58b539fb2);
+        
+    
+        var popup_6083f18d83524f0076a555b35ec2dde9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6954b0693e6b322d12f7e095ce1fc74c = $(`<div id="html_6954b0693e6b322d12f7e095ce1fc74c" style="width: 100.0%; height: 100.0%;"><b>SAO FRANCISCO - MATRIZ LJ 01                                                                        </b><br>Cód: 284<br>Data: 23/07/2025</div>`)[0];
+                popup_6083f18d83524f0076a555b35ec2dde9.setContent(html_6954b0693e6b322d12f7e095ce1fc74c);
+            
+        
+
+        marker_16a079c032ad4125525b44786f2a670d.bindPopup(popup_6083f18d83524f0076a555b35ec2dde9)
+        ;
+
+        
+    
+    
+            marker_16a079c032ad4125525b44786f2a670d.bindTooltip(
+                `<div>
+                     SAO FRANCISCO - MATRIZ LJ 01                                                                         - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_16a079c032ad4125525b44786f2a670d.setIcon(div_icon_314605f43dd35ca0679e3dd58b539fb2);
+            
+    
+            var marker_e28878df387a44ab4e202dcb6044eb80 = L.marker(
+                [-3.7842908, -38.5691114],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_c805c60d36b608f84b8abf33fed77024 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e61\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_e28878df387a44ab4e202dcb6044eb80.setIcon(div_icon_c805c60d36b608f84b8abf33fed77024);
+        
+    
+        var popup_f34afc3192f907c266a52458df7f0102 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_40dc2b300de30efb9fde2e1331bb386d = $(`<div id="html_40dc2b300de30efb9fde2e1331bb386d" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - MARAPONGA                                                                          </b><br>Cód: 611<br>Data: 23/07/2025</div>`)[0];
+                popup_f34afc3192f907c266a52458df7f0102.setContent(html_40dc2b300de30efb9fde2e1331bb386d);
+            
+        
+
+        marker_e28878df387a44ab4e202dcb6044eb80.bindPopup(popup_f34afc3192f907c266a52458df7f0102)
+        ;
+
+        
+    
+    
+            marker_e28878df387a44ab4e202dcb6044eb80.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - MARAPONGA                                                                           - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e28878df387a44ab4e202dcb6044eb80.setIcon(div_icon_c805c60d36b608f84b8abf33fed77024);
+            
+    
+            var marker_9131a85b2ac428fe55f52f66565aa892 = L.marker(
+                [-3.7802372, -38.5784333],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_4ad674b9fc72bc155c8c1f6c82ee0bd9 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e62\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_9131a85b2ac428fe55f52f66565aa892.setIcon(div_icon_4ad674b9fc72bc155c8c1f6c82ee0bd9);
+        
+    
+        var popup_6ff18964a0b3f373764a7477f599bbd5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_42117b42197911f315857314f28fa0c2 = $(`<div id="html_42117b42197911f315857314f28fa0c2" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - VILA PERI                                                                          </b><br>Cód: 620<br>Data: 23/07/2025</div>`)[0];
+                popup_6ff18964a0b3f373764a7477f599bbd5.setContent(html_42117b42197911f315857314f28fa0c2);
+            
+        
+
+        marker_9131a85b2ac428fe55f52f66565aa892.bindPopup(popup_6ff18964a0b3f373764a7477f599bbd5)
+        ;
+
+        
+    
+    
+            marker_9131a85b2ac428fe55f52f66565aa892.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - VILA PERI                                                                           - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9131a85b2ac428fe55f52f66565aa892.setIcon(div_icon_4ad674b9fc72bc155c8c1f6c82ee0bd9);
+            
+    
+            var marker_2f44e3ac795dd64a4e7d260d4b4141a4 = L.marker(
+                [-3.7865804, -38.5979579],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_ee3b2a1941a65d5317b84647be279533 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e63\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_2f44e3ac795dd64a4e7d260d4b4141a4.setIcon(div_icon_ee3b2a1941a65d5317b84647be279533);
+        
+    
+        var popup_ef9625ecfbad9609b28bb21d53906ea6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38afa02a50b8ccfe851864b3270b58f1 = $(`<div id="html_38afa02a50b8ccfe851864b3270b58f1" style="width: 100.0%; height: 100.0%;"><b>SAO FRANCISCO - FILIAL LJ 02                                                                        </b><br>Cód: 1967<br>Data: 23/07/2025</div>`)[0];
+                popup_ef9625ecfbad9609b28bb21d53906ea6.setContent(html_38afa02a50b8ccfe851864b3270b58f1);
+            
+        
+
+        marker_2f44e3ac795dd64a4e7d260d4b4141a4.bindPopup(popup_ef9625ecfbad9609b28bb21d53906ea6)
+        ;
+
+        
+    
+    
+            marker_2f44e3ac795dd64a4e7d260d4b4141a4.bindTooltip(
+                `<div>
+                     SAO FRANCISCO - FILIAL LJ 02                                                                         - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f44e3ac795dd64a4e7d260d4b4141a4.setIcon(div_icon_ee3b2a1941a65d5317b84647be279533);
+            
+    
+            var marker_381181783c55130ae8d3cb6f1d69ad5a = L.marker(
+                [-3.7271072, -38.7011604],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_2e65d90c86742f5c57f11cf3b22a702e = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e64\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_381181783c55130ae8d3cb6f1d69ad5a.setIcon(div_icon_2e65d90c86742f5c57f11cf3b22a702e);
+        
+    
+        var popup_ef3a3bf2b049ef2fd3ac22ba65d9beb9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f97cafaf3a04e627a2ae8fa4bc091f92 = $(`<div id="html_f97cafaf3a04e627a2ae8fa4bc091f92" style="width: 100.0%; height: 100.0%;"><b>MERCADINHO QUATRO IRMAOS                                                                            </b><br>Cód: 2140<br>Data: 23/07/2025</div>`)[0];
+                popup_ef3a3bf2b049ef2fd3ac22ba65d9beb9.setContent(html_f97cafaf3a04e627a2ae8fa4bc091f92);
+            
+        
+
+        marker_381181783c55130ae8d3cb6f1d69ad5a.bindPopup(popup_ef3a3bf2b049ef2fd3ac22ba65d9beb9)
+        ;
+
+        
+    
+    
+            marker_381181783c55130ae8d3cb6f1d69ad5a.bindTooltip(
+                `<div>
+                     MERCADINHO QUATRO IRMAOS                                                                             - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_381181783c55130ae8d3cb6f1d69ad5a.setIcon(div_icon_2e65d90c86742f5c57f11cf3b22a702e);
+            
+    
+            var marker_a4eb4c68f23855649c8e5f90bfaf7b56 = L.marker(
+                [-3.7289393, -38.6654165],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_590216ac05125ecdd781679ffd68c786 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e65\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_a4eb4c68f23855649c8e5f90bfaf7b56.setIcon(div_icon_590216ac05125ecdd781679ffd68c786);
+        
+    
+        var popup_427712f05d207fdee0cfa78252605adc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ec5ee93fae8058013f70c5b9de1bb18 = $(`<div id="html_1ec5ee93fae8058013f70c5b9de1bb18" style="width: 100.0%; height: 100.0%;"><b>MINI BOM PRECO                                                                                      </b><br>Cód: 4509<br>Data: 23/07/2025</div>`)[0];
+                popup_427712f05d207fdee0cfa78252605adc.setContent(html_1ec5ee93fae8058013f70c5b9de1bb18);
+            
+        
+
+        marker_a4eb4c68f23855649c8e5f90bfaf7b56.bindPopup(popup_427712f05d207fdee0cfa78252605adc)
+        ;
+
+        
+    
+    
+            marker_a4eb4c68f23855649c8e5f90bfaf7b56.bindTooltip(
+                `<div>
+                     MINI BOM PRECO                                                                                       - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a4eb4c68f23855649c8e5f90bfaf7b56.setIcon(div_icon_590216ac05125ecdd781679ffd68c786);
+            
+    
+            var marker_b5aaf22e5c88cea712187451d9b72781 = L.marker(
+                [-3.74863598, -38.51500582],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_c08e6c7a267d1f1dd9d331cfca1af0ab = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e66\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_b5aaf22e5c88cea712187451d9b72781.setIcon(div_icon_c08e6c7a267d1f1dd9d331cfca1af0ab);
+        
+    
+        var popup_904d9d9b463320d3574872dfbf28b4b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_20580b7ec9ef945b68f1c7c5727c4fe2 = $(`<div id="html_20580b7ec9ef945b68f1c7c5727c4fe2" style="width: 100.0%; height: 100.0%;"><b>SUPER PORTUGAL - JOAQUIM TAVORA                                                                     </b><br>Cód: 10978<br>Data: 23/07/2025</div>`)[0];
+                popup_904d9d9b463320d3574872dfbf28b4b0.setContent(html_20580b7ec9ef945b68f1c7c5727c4fe2);
+            
+        
+
+        marker_b5aaf22e5c88cea712187451d9b72781.bindPopup(popup_904d9d9b463320d3574872dfbf28b4b0)
+        ;
+
+        
+    
+    
+            marker_b5aaf22e5c88cea712187451d9b72781.bindTooltip(
+                `<div>
+                     SUPER PORTUGAL - JOAQUIM TAVORA                                                                      - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b5aaf22e5c88cea712187451d9b72781.setIcon(div_icon_c08e6c7a267d1f1dd9d331cfca1af0ab);
+            
+    
+            var marker_eff807e456f4c13b9708c1aab25af27e = L.marker(
+                [-3.71005321, -38.46808295],
+                {
+}
+            ).addTo(feature_group_2568fcb714e7fd5a7647498253e18118);
+        
+    
+            var div_icon_ad42a1aca8da502efdf32b4f080016b8 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e67\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_eff807e456f4c13b9708c1aab25af27e.setIcon(div_icon_ad42a1aca8da502efdf32b4f080016b8);
+        
+    
+        var popup_9f58ed1edc9bcb13eeca2dc2f7fe686d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8e44e9c090f3e0d9440c4ede48d41852 = $(`<div id="html_8e44e9c090f3e0d9440c4ede48d41852" style="width: 100.0%; height: 100.0%;"><b>MERCANTIL SERV LAR                                                                                  </b><br>Cód: 12124<br>Data: 23/07/2025</div>`)[0];
+                popup_9f58ed1edc9bcb13eeca2dc2f7fe686d.setContent(html_8e44e9c090f3e0d9440c4ede48d41852);
+            
+        
+
+        marker_eff807e456f4c13b9708c1aab25af27e.bindPopup(popup_9f58ed1edc9bcb13eeca2dc2f7fe686d)
+        ;
+
+        
+    
+    
+            marker_eff807e456f4c13b9708c1aab25af27e.bindTooltip(
+                `<div>
+                     MERCANTIL SERV LAR                                                                                   - 23/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eff807e456f4c13b9708c1aab25af27e.setIcon(div_icon_ad42a1aca8da502efdf32b4f080016b8);
+            
+    
+            feature_group_2568fcb714e7fd5a7647498253e18118.addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+        
+    
+            var feature_group_a11066d495f1480bc46c03ed9d34a936 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a51ee98bb4c6e7dc4a0a9ca1969c185e = L.marker(
+                [-3.76276707, -38.5819854],
+                {
+}
+            ).addTo(feature_group_a11066d495f1480bc46c03ed9d34a936);
+        
+    
+            var div_icon_e8218aa5eb9194dea09599024c64edc0 = L.divIcon({
+  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:purple;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e68\u003c/div\u003e",
+  "className": "empty",
+});
+            marker_a51ee98bb4c6e7dc4a0a9ca1969c185e.setIcon(div_icon_e8218aa5eb9194dea09599024c64edc0);
+        
+    
+        var popup_7a5d4127f446b1d89b54df581b309bca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9328e77be0e6523fea1e4ac9ff98e26a = $(`<div id="html_9328e77be0e6523fea1e4ac9ff98e26a" style="width: 100.0%; height: 100.0%;"><b>NOSSA SENHORA                                                                                       </b><br>Cód: 11038<br>Data: 26/07/2025</div>`)[0];
+                popup_7a5d4127f446b1d89b54df581b309bca.setContent(html_9328e77be0e6523fea1e4ac9ff98e26a);
+            
+        
+
+        marker_a51ee98bb4c6e7dc4a0a9ca1969c185e.bindPopup(popup_7a5d4127f446b1d89b54df581b309bca)
+        ;
+
+        
+    
+    
+            marker_a51ee98bb4c6e7dc4a0a9ca1969c185e.bindTooltip(
+                `<div>
+                     NOSSA SENHORA                                                                                        - 26/07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a51ee98bb4c6e7dc4a0a9ca1969c185e.setIcon(div_icon_e8218aa5eb9194dea09599024c64edc0);
+            
+    
+            feature_group_a11066d495f1480bc46c03ed9d34a936.addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+        
+    
+            var layer_control_eda26116db5483c6d8c8aa4cdcf00220_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_b7bb693bbd5f2936ab631ba26bcee65e,
+                },
+                overlays :  {
+                    "Sa\u00edda: 21/07/2025" : feature_group_7ed6e222c7cdeaf1a82e89b5be94c875,
+                    "Sa\u00edda: 22/07/2025" : feature_group_3731c53d1ebb45e07f38978545631aa8,
+                    "Sa\u00edda: 23/07/2025" : feature_group_2568fcb714e7fd5a7647498253e18118,
+                    "Sa\u00edda: 26/07/2025" : feature_group_a11066d495f1480bc46c03ed9d34a936,
+                },
+            };
+            let layer_control_eda26116db5483c6d8c8aa4cdcf00220 = L.control.layers(
+                layer_control_eda26116db5483c6d8c8aa4cdcf00220_layers.base_layers,
+                layer_control_eda26116db5483c6d8c8aa4cdcf00220_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_87d981f34f7dfdf58f3b106aaefeec7c);
+
+        
+</script>
+</html>
