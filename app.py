@@ -155,4 +155,4 @@ atualizar_mapa(3, "mapa_motorista_do_dia.html")
 atualizar_mapa(4, "mapa_interior_semana.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9000)
+    app.run(host="0.0.0.0", port=3000)
