@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Define que os prints e logs aparecem em tempo real
 ENV PYTHONUNBUFFERED=1
 
-# Instala dependências Python
+# Instala dependência Python
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
