@@ -17,9 +17,7 @@ HTML_TEMPLATE = """
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
             font-family: Arial, sans-serif;
             background-color: #F2F2F2;
@@ -33,20 +31,36 @@ HTML_TEMPLATE = """
             display: flex;
             align-items: center;
         }
-        header img {
-            height: 50px;
-            margin-right: 20px;
-        }
-        h1 {
-            font-size: 1.8em;
-            margin: 0;
-        }
+        header img { height: 50px; margin-right: 20px; }
+        h1 { font-size: 1.8em; margin: 0; }
+
+        /* Layout */
         .container {
             padding: 60px 20px 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .columns {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        .column {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+        .column h2 {
+            color: #0066B3;
+            margin: 0 0 16px 0;
+            font-size: 1.3em;
+        }
+
+        /* Botões */
         .btn {
             background-color: #0066B3;
             color: white;
@@ -61,11 +75,15 @@ HTML_TEMPLATE = """
             width: 280px;
             margin: 10px 0;
         }
-        .btn:hover {
-            background-color: #3399FF;
-        }
-        .btn i {
-            margin-right: 8px;
+        .btn:hover { background-color: #3399FF; }
+        .btn i { margin-right: 8px; }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .columns {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -76,36 +94,54 @@ HTML_TEMPLATE = """
     </header>
 
     <div class="container">
-        <form action="/mapa_1" method="get">
-            <button class="btn" type="submit">
-                <i class="fas fa-truck"></i> 🚚 Mapa com Motorista (Rota Amanhã)
-            </button>
-        </form>
+        <div class="columns">
+            <!-- Coluna Esquerda: Capital -->
+<div class="column">
+  <h2>Capital</h2>
 
-        <form action="/mapa_2" method="get">
-            <button class="btn" type="submit">
-                <i class="fas fa-calendar-day"></i> 🕐 Mapa pedidos pendentes 
-            </button>
-        </form>
+  <form action="/mapa_2" method="get">
+    <button class="btn" type="submit">
+      <i class="fas fa-calendar-day"></i> 🕐 Mapa geral de pedidos (LJ 81)
+    </button>
+  </form>
 
-        <form action="/mapa_3" method="get">
-            <button class="btn" type="submit">
-                <i class="fas fa-user"></i> 🕺 Mapa Motorista do Dia
-            </button>
-        </form>
-         <form action="/mapa_4" method="get">
-            <button class="btn" type="submit">
-                <i class="fas fa-user"></i> 🏡 Mapa Interior semanal
-            </button>
-        </form>
+  <form action="/mapa_3" method="get">
+    <button class="btn" type="submit">
+      <i class="fas fa-user"></i> 🕺 Mapa Entrega Atual (LJ 81)
+    </button>
+  </form>
 
-        <a href="http://10.1.1.166:8000/" target="_blank" class="btn">
-            <i class="fa-solid fa-map-location-dot"></i> 🌎 Mapa rotas com filtro
-        </a>
+  <form action="/mapa_1" method="get">
+    <button class="btn" type="submit">
+      <i class="fas fa-truck"></i> 🚚 Mapa programação de entrega (LJ 81)
+    </button>
+  </form>
+</div>
+            
+
+            <!-- Coluna do Meio: Mapa Geral -->
+            <div class="column">
+                <h2>Mapa Geral</h2>
+                <a href="http://10.1.1.166:8000/" target="_blank" class="btn">
+                    <i class="fa-solid fa-map-location-dot"></i> 🌎 Mapa Geral de Clientes (81 e 82)
+                </a>
+            </div>
+
+            <!-- Coluna Direita: Interior -->
+            <div class="column">
+                <h2>Interior</h2>
+                <form action="/mapa_4" method="get">
+                    <button class="btn" type="submit">
+                        <i class="fas fa-user"></i> 🏡 Mapa Interior semanal (LJ 82)
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>
 """
+
 
 @app.route("/")
 def index():
@@ -146,7 +182,7 @@ def atualizar_mapa(tipo, nome_arquivo):
     except Exception as e:
         print(f"❌ Erro ao atualizar {nome_arquivo}: {e}")
 
-    threading.Timer(300, atualizar_mapa, args=(tipo, nome_arquivo)).start()
+    threading.Timer(1200, atualizar_mapa, args=(tipo, nome_arquivo)).start()
 
 # Iniciar atualização automática dos três mapas
 atualizar_mapa(1, "mapa_motorista.html")
