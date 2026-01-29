@@ -21,5 +21,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 # Copia todos os arquivos da aplicação
 COPY . .
 
-# Comando para rodar a aplicação
-CMD ["gunicorn", "--bind", "0.0.0.0:3000", "app:app", "--timeout", "300"]
+# Comando para rodar a aplicação com otimizações
+# 2 workers + 4 threads = 8 conexões simultâneas
+# --preload carrega app uma vez e compartilha entre workers
+CMD ["gunicorn", "--bind", "0.0.0.0:3000", "app:app", "--timeout", "300", "--workers", "2", "--threads", "4", "--worker-class", "gthread", "--worker-tmp-dir", "/dev/shm", "--preload"]

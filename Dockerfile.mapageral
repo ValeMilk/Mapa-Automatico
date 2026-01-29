@@ -1,0 +1,26 @@
+FROM python:3.11-bullseye
+
+WORKDIR /app
+
+# Instala dependências do sistema e ODBC do SQL Server
+RUN apt-get update && apt-get install -y \
+    curl gnupg2 apt-transport-https ca-certificates \
+    gcc g++ make unixodbc-dev libodbc1 odbcinst1debian2 libssl-dev \
+ && curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc \
+ && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+ && apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONUNBUFFERED=1
+
+# Instala dependências Python
+COPY requirements-mapageral.txt .
+RUN pip install --upgrade pip && pip install -r requirements-mapageral.txt
+
+# Copia apenas os arquivos necessários
+COPY "mapa geral.py" /app/app.py
+COPY static/ /app/static/
+
+# Comando otimizado com Gunicorn
+# 2 workers + 4 threads = 8 conexões simultâneas
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app", "--timeout", "300", "--workers", "2", "--threads", "4", "--worker-class", "gthread", "--worker-tmp-dir", "/dev/shm", "--preload"]

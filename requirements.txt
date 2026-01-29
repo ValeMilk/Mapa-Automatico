@@ -1,7 +1,9 @@
 
 Flask
+Flask-Compress
 gunicorn
 pandas
 folium
 pyodbc
+SQLAlchemy
 ortools

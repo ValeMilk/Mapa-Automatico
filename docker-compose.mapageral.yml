@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mapa-geral:
+    build:
+      context: .
+      dockerfile: Dockerfile.mapageral
+    container_name: mapa_geral_app
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1

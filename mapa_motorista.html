@@ -3,14 +3,6 @@
 <head>
     
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -25,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_7bbbb07d18178aee1f295a49c50e0b79 {
+                #map_7740b2e04ee168f18b05acd1f0bda72b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -34,20 +26,43 @@
                 }
                 .leaflet-container { font-size: 1rem; }
             </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
         
 </head>
 <body>
     
-    <div style='position:fixed;bottom:50px;left:50px;width:300px;background:white;border:2px solid grey;z-index:9999;padding:10px;box-shadow:2px 2px 5px rgba(0,0,0,0.3);font-size:14px;'><b>Clientes totais:</b> 23<br><b>Faturamento total:</b> R$ 97,786.13<br><b>Atualizado:</b> 13/08/2025<br><b>Data de Saída:</b> 14/08/2025<br><br><b>Prioridades:</b> ☀️=MANHÃ, ⚡= ATÉ 16h, 🕒=DIURNO<br><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:orange;border-radius:50%;margin-right:8px;'></div><b>CARGA FRANGOLANDIA 14/08/25                                                                         </b>: R$ 49,387.40</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:purple;border-radius:50%;margin-right:8px;'></div><b>EDSON                                                                                               </b>: R$ 1,923.41</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:red;border-radius:50%;margin-right:8px;'></div><b>FELIX                                                                                               </b>: R$ 22,602.42</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:green;border-radius:50%;margin-right:8px;'></div><b>LUAN                                                                                                </b>: R$ 11,642.82</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:darkred;border-radius:50%;margin-right:8px;'></div><b>ROBERTO                                                                                             </b>: R$ 6,895.04</div><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:blue;border-radius:50%;margin-right:8px;'></div><b>WEMINSON                                                                                            </b>: R$ 5,335.04</div></div>
+    <div style='position:fixed;bottom:50px;left:50px;width:300px;background:white;border:2px solid grey;z-index:9999;padding:10px;box-shadow:2px 2px 5px rgba(0,0,0,0.3);font-size:14px;'><b>Clientes totais:</b> 1<br><b>Faturamento total:</b> R$ 955,70<br><b>Atualizado:</b> 29/01/2026<br><b>Data de Saída:</b> 30/01/2026<br><br><b>Prioridades:</b> ☀️=MANHÃ, ⚡= ATÉ 16h, 🕒=DIURNO<br><div style='display:flex;align-items:center;margin-bottom:5px;'><div style='width:15px;height:15px;background:red;border-radius:50%;margin-right:8px;'></div><b>BARATÃO AGENDAMENTO                                                                                 </b>: R$ 955,70</div></div>
     
-            <div class="folium-map" id="map_7bbbb07d18178aee1f295a49c50e0b79" ></div>
+            <div class="folium-map" id="map_7740b2e04ee168f18b05acd1f0bda72b" ></div>
         
 </body>
 <script>
     
     
-            var map_7bbbb07d18178aee1f295a49c50e0b79 = L.map(
-                "map_7bbbb07d18178aee1f295a49c50e0b79",
+            var map_7740b2e04ee168f18b05acd1f0bda72b = L.map(
+                "map_7740b2e04ee168f18b05acd1f0bda72b",
                 {
                     center: [-3.7572635, -38.5854081],
                     crs: L.CRS.EPSG3857,
@@ -64,7 +79,7 @@
 
         
     
-            var tile_layer_8f73049b5980cee6dbd0e15db70c55e9 = L.tileLayer(
+            var tile_layer_679a47b786fc4f3e63ae3d24a23269f7 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -81,17 +96,17 @@
             );
         
     
-            tile_layer_8f73049b5980cee6dbd0e15db70c55e9.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
+            tile_layer_679a47b786fc4f3e63ae3d24a23269f7.addTo(map_7740b2e04ee168f18b05acd1f0bda72b);
         
     
-            var marker_6f468a4ae9039c238ed630af31004548 = L.marker(
+            var marker_d1aa5ce8f39762aa53404142e3566a7a = L.marker(
                 [-3.7572635, -38.5854081],
                 {
 }
-            ).addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
+            ).addTo(map_7740b2e04ee168f18b05acd1f0bda72b);
         
     
-            var icon_d079e52f7ca081ee26022194b69ab3f6 = L.AwesomeMarkers.icon(
+            var icon_74a02d43f90c2e10125a50c69d692c62 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "gray",
   "iconColor": "white",
@@ -102,7 +117,7 @@
             );
         
     
-            marker_6f468a4ae9039c238ed630af31004548.bindTooltip(
+            marker_d1aa5ce8f39762aa53404142e3566a7a.bindTooltip(
                 `<div>
                      CD - VALEMILK
                  </div>`,
@@ -112,32 +127,54 @@
             );
         
     
-                marker_6f468a4ae9039c238ed630af31004548.setIcon(icon_d079e52f7ca081ee26022194b69ab3f6);
+                marker_d1aa5ce8f39762aa53404142e3566a7a.setIcon(icon_74a02d43f90c2e10125a50c69d692c62);
             
     
-            var feature_group_621b9a76065a44c8fa1c93b4f29cfef5 = L.featureGroup(
+            map_7740b2e04ee168f18b05acd1f0bda72b.fitBounds(
+                [[-3.7572635, -38.5854081], [-3.817788, -38.589921]],
+                {"padding": [30, 30]}
+            );
+        
+    
+            var feature_group_bdbc5995d0740f0f427556ffb31543f5 = L.featureGroup(
                 {
 }
             );
         
     
-            var marker_aa4271c567d0990eaf3917183a8454b0 = L.marker(
-                [-3.8546626, -38.6021541],
+            var marker_cc3bdc8188ffde7e7238dbe990b085ad = L.marker(
+                [-3.817788, -38.589921],
                 {
 }
-            ).addTo(feature_group_621b9a76065a44c8fa1c93b4f29cfef5);
+            ).addTo(feature_group_bdbc5995d0740f0f427556ffb31543f5);
         
     
-            var div_icon_8ddad177a8752257b55c946be251c5cd = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:orange;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003cbr\u003e\u26a1\u003c/div\u003e",
+            var div_icon_c3ba02b49ef198d6f492a3e3d367536a = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position:relative; width:34px; height:34px; border-radius:50%;\n        background:red; display:flex; flex-direction:column;\n        align-items:center; justify-content:center; color:#fff; font-weight:700;\n        box-shadow:0 0 0 2px rgba(255,255,255,.6);\n    \"\u003e\n        \u003cspan style=\"font-size:14px; line-height:14px; margin-top:1px;\"\u003e1\u003c/span\u003e\n        \u003cspan style=\"font-size:12px; line-height:12px; margin-top:0px;\"\u003e\u2600\ufe0f\u003c/span\u003e\n    \u003c/div\u003e\n    ",
   "className": "empty",
 });
-            marker_aa4271c567d0990eaf3917183a8454b0.setIcon(div_icon_8ddad177a8752257b55c946be251c5cd);
         
     
-            marker_aa4271c567d0990eaf3917183a8454b0.bindTooltip(
+        var popup_928ac63adbd5cafec2857beefa629590 = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_06ff71bc67ce314bcc272f71f1038bf3 = $(`<div id="html_06ff71bc67ce314bcc272f71f1038bf3" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Inter,Arial,sans-serif; font-size:13px; line-height:1.4;">       <div style="font-weight:700; font-size:14px; margin-bottom:6px;">BARATAO - CONJ ESPERANÇA                                                                            </div>       <table style="border-collapse:collapse; width:100%;">         <tr><td style="padding:2px 6px;"><b>Código</b></td><td style="padding:2px 6px;">2734</td></tr>         <tr><td style="padding:2px 6px;"><b>OP</b></td><td style="padding:2px 6px;">38</td></tr>         <tr><td style="padding:2px 6px;"><b>Motorista</b></td><td style="padding:2px 6px;">BARATÃO AGENDAMENTO                                                                                 </td></tr>         <tr><td style="padding:2px 6px;"><b>Prioridade</b></td><td style="padding:2px 6px;">☀️ MANHÃ</td></tr>         <tr><td style="padding:2px 6px;"><b>Peso</b></td><td style="padding:2px 6px;">23.58 kg</td></tr>         <tr><td style="padding:2px 6px;"><b>Valor</b></td><td style="padding:2px 6px;">R$ 955,70</td></tr>         <tr><td style="padding:2px 6px;"><b>Data de Saída</b></td><td style="padding:2px 6px;">30/01/2026</td></tr>         <tr><td style="padding:2px 6px;"><b>Rota</b></td><td style="padding:2px 6px;">-</td></tr>         </table>     </div>     </div>`)[0];
+                popup_928ac63adbd5cafec2857beefa629590.setContent(html_06ff71bc67ce314bcc272f71f1038bf3);
+            
+        
+
+        marker_cc3bdc8188ffde7e7238dbe990b085ad.bindPopup(popup_928ac63adbd5cafec2857beefa629590)
+        ;
+
+        
+    
+    
+            marker_cc3bdc8188ffde7e7238dbe990b085ad.bindTooltip(
                 `<div>
-                     1 - 2909 - FRANGOLANDIA - CD                                                                                    (⚡)
+                     1 - 2734 - BARATAO - CONJ ESPERANÇA                                                                            <br><b>VALOR:</b> R$ 955,70
                  </div>`,
                 {
   "sticky": true,
@@ -145,811 +182,35 @@
             );
         
     
-                marker_aa4271c567d0990eaf3917183a8454b0.setIcon(div_icon_8ddad177a8752257b55c946be251c5cd);
+                marker_cc3bdc8188ffde7e7238dbe990b085ad.setIcon(div_icon_c3ba02b49ef198d6f492a3e3d367536a);
             
     
-            var poly_line_09c46687dcf0cae3e64d15f0d9c359b5 = L.polyline(
-                [[-3.7572635, -38.5854081], [-3.8546626, -38.6021541]],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_621b9a76065a44c8fa1c93b4f29cfef5);
-        
-    
-            feature_group_621b9a76065a44c8fa1c93b4f29cfef5.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
-        
-    
-            var feature_group_5a36c612b0bcd2fd10ed2d249c74d440 = L.featureGroup(
-                {
-}
-            );
-        
-    
-            var marker_3dc2f694198e0670498cc1afd365fb34 = L.marker(
-                [-3.758694, -38.625415],
-                {
-}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var div_icon_cc7486a1c214bb7f8fadb959eb40a0b0 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:purple;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003cbr\u003e\u2600\ufe0f\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_3dc2f694198e0670498cc1afd365fb34.setIcon(div_icon_cc7486a1c214bb7f8fadb959eb40a0b0);
-        
-    
-            marker_3dc2f694198e0670498cc1afd365fb34.bindTooltip(
-                `<div>
-                     1 - 2279 - EXITO - ACAPULCO                                                                                     (☀️)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_3dc2f694198e0670498cc1afd365fb34.setIcon(div_icon_cc7486a1c214bb7f8fadb959eb40a0b0);
-            
-    
-            var poly_line_834f1f9cecedd79a0cc41b2320613ca5 = L.polyline(
-                [[-3.7572635, -38.5854081], [-3.758694, -38.625415]],
-                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var marker_2c1bec4a85e9d6768e403e28506bb1f7 = L.marker(
-                [-3.7747928, -38.6226301],
-                {
-}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var div_icon_769f4cfd96bc0a56438bfe0c1246fafe = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:purple;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e2\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_2c1bec4a85e9d6768e403e28506bb1f7.setIcon(div_icon_769f4cfd96bc0a56438bfe0c1246fafe);
-        
-    
-            marker_2c1bec4a85e9d6768e403e28506bb1f7.bindTooltip(
-                `<div>
-                     2 - 4760 - MERCADINHO XIMENES FILHO                                                                             (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_2c1bec4a85e9d6768e403e28506bb1f7.setIcon(div_icon_769f4cfd96bc0a56438bfe0c1246fafe);
-            
-    
-            var poly_line_afc6e88249a76750703673694961929c = L.polyline(
-                [[-3.758694, -38.625415], [-3.7747928, -38.6226301]],
-                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var marker_8525df1d3cf015b192e10ed0c6e02da6 = L.marker(
-                [-3.76838301, -38.63246723],
-                {
-}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var div_icon_6e03be01fa5527fecb0d4c92ad8b95c6 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:purple;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e3\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_8525df1d3cf015b192e10ed0c6e02da6.setIcon(div_icon_6e03be01fa5527fecb0d4c92ad8b95c6);
-        
-    
-            marker_8525df1d3cf015b192e10ed0c6e02da6.bindTooltip(
-                `<div>
-                     3 - 11069 - SUPER PRECO BOM - ARATURI                                                                            (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_8525df1d3cf015b192e10ed0c6e02da6.setIcon(div_icon_6e03be01fa5527fecb0d4c92ad8b95c6);
-            
-    
-            var poly_line_46a137611d061482357cd4855024d2db = L.polyline(
-                [[-3.7747928, -38.6226301], [-3.76838301, -38.63246723]],
-                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var marker_493f11a34655f2023063a26660e224c8 = L.marker(
-                [-3.76348683, -38.6404932],
-                {
-}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var div_icon_1b22150b847249a9d3031791c0a4afbd = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:purple;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e4\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_493f11a34655f2023063a26660e224c8.setIcon(div_icon_1b22150b847249a9d3031791c0a4afbd);
-        
-    
-            marker_493f11a34655f2023063a26660e224c8.bindTooltip(
-                `<div>
-                     4 - 11651 - MERCADINHO ARATURI                                                                                   (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_493f11a34655f2023063a26660e224c8.setIcon(div_icon_1b22150b847249a9d3031791c0a4afbd);
-            
-    
-            var poly_line_01ee146d063788a69be4dba6364c79b2 = L.polyline(
-                [[-3.76838301, -38.63246723], [-3.76348683, -38.6404932]],
-                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var marker_92310d8b6709a985246654e3338d909c = L.marker(
-                [-3.75761186, -38.61031199],
-                {
-}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            var div_icon_bb6d09cfdd25f89a26f67ffdb0f9c308 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:purple;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e5\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_92310d8b6709a985246654e3338d909c.setIcon(div_icon_bb6d09cfdd25f89a26f67ffdb0f9c308);
-        
-    
-            marker_92310d8b6709a985246654e3338d909c.bindTooltip(
-                `<div>
-                     5 - 11412 - MIRELLY - CONJ CEARA                                                                                 (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_92310d8b6709a985246654e3338d909c.setIcon(div_icon_bb6d09cfdd25f89a26f67ffdb0f9c308);
-            
-    
-            var poly_line_e10a987937b75b8567056aed5186d9fc = L.polyline(
-                [[-3.76348683, -38.6404932], [-3.75761186, -38.61031199]],
-                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_5a36c612b0bcd2fd10ed2d249c74d440);
-        
-    
-            feature_group_5a36c612b0bcd2fd10ed2d249c74d440.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
-        
-    
-            var feature_group_42cbb53f21819fe93b19da1c98bb59e1 = L.featureGroup(
-                {
-}
-            );
-        
-    
-            var marker_ff651e6c2c2c7a02ae549bc648f3b05a = L.marker(
-                [-3.7335995, -38.5586262],
-                {
-}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var div_icon_de9d0c77f4603c50ea4baf6c135f6d13 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003cbr\u003e\u2600\ufe0f\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_ff651e6c2c2c7a02ae549bc648f3b05a.setIcon(div_icon_de9d0c77f4603c50ea4baf6c135f6d13);
-        
-    
-            marker_ff651e6c2c2c7a02ae549bc648f3b05a.bindTooltip(
-                `<div>
-                     1 - 4221 - PAO DE ACUCAR - BEZERRA DE MENEZES (2375)                                                            (☀️)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_ff651e6c2c2c7a02ae549bc648f3b05a.setIcon(div_icon_de9d0c77f4603c50ea4baf6c135f6d13);
-            
-    
-            var poly_line_af26675d304eb273a10dfd3bdce454c0 = L.polyline(
-                [[-3.7572635, -38.5854081], [-3.7335995, -38.5586262]],
+            var poly_line_fcb1a8db8ff3515fbcf6889a4541c167 = L.polyline(
+                [[-3.7572635, -38.5854081], [-3.817788, -38.589921]],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
+            ).addTo(feature_group_bdbc5995d0740f0f427556ffb31543f5);
         
     
-            var marker_8deefacfb20d0e1a71b7c1cb745e546b = L.marker(
-                [-3.7211932, -38.5583364],
-                {
-}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
+            feature_group_bdbc5995d0740f0f427556ffb31543f5.addTo(map_7740b2e04ee168f18b05acd1f0bda72b);
         
     
-            var div_icon_6a8fa91187c404982891bf04befbdd99 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e2\u003cbr\u003e\u2600\ufe0f\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_8deefacfb20d0e1a71b7c1cb745e546b.setIcon(div_icon_6a8fa91187c404982891bf04befbdd99);
-        
-    
-            marker_8deefacfb20d0e1a71b7c1cb745e546b.bindTooltip(
-                `<div>
-                     2 - 193 - EXITO - MONTE CASTELO                                                                                (☀️)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_8deefacfb20d0e1a71b7c1cb745e546b.setIcon(div_icon_6a8fa91187c404982891bf04befbdd99);
-            
-    
-            var poly_line_2fa1d738956239b8981c2ddbfb946466 = L.polyline(
-                [[-3.7335995, -38.5586262], [-3.7211932, -38.5583364]],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var marker_ecc28f8d4166cd2f78ff93b6eb1816fe = L.marker(
-                [-3.7123457, -38.5589927],
-                {
-}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var div_icon_2e5cc21e0a1a347f7def7b48da3cac79 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e3\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_ecc28f8d4166cd2f78ff93b6eb1816fe.setIcon(div_icon_2e5cc21e0a1a347f7def7b48da3cac79);
-        
-    
-            marker_ecc28f8d4166cd2f78ff93b6eb1816fe.bindTooltip(
-                `<div>
-                     3 - 1226 - MERCANTIL NOVO BOX LTDA                                                                              (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_ecc28f8d4166cd2f78ff93b6eb1816fe.setIcon(div_icon_2e5cc21e0a1a347f7def7b48da3cac79);
-            
-    
-            var poly_line_e3e2952cc6a5f3c604eb5a60306049f0 = L.polyline(
-                [[-3.7211932, -38.5583364], [-3.7123457, -38.5589927]],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var marker_25ad55c1ae48075fb904578e38748861 = L.marker(
-                [-3.72013, -38.54911],
-                {
-}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var div_icon_b125184c5c691e6929e36fd33e70e0de = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e4\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_25ad55c1ae48075fb904578e38748861.setIcon(div_icon_b125184c5c691e6929e36fd33e70e0de);
-        
-    
-            marker_25ad55c1ae48075fb904578e38748861.bindTooltip(
-                `<div>
-                     4 - 9339 - COMETA (JACARECANGA)                                                                                 (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_25ad55c1ae48075fb904578e38748861.setIcon(div_icon_b125184c5c691e6929e36fd33e70e0de);
-            
-    
-            var poly_line_39c32f54b21fb7cde7cccfd365de9438 = L.polyline(
-                [[-3.7123457, -38.5589927], [-3.72013, -38.54911]],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var marker_2ef6c24bdf3ac180d93814961a71019d = L.marker(
-                [-3.7216531, -38.540229],
-                {
-}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var div_icon_d79150a8d364b40323c80a7154e22c83 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e5\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_2ef6c24bdf3ac180d93814961a71019d.setIcon(div_icon_d79150a8d364b40323c80a7154e22c83);
-        
-    
-            marker_2ef6c24bdf3ac180d93814961a71019d.bindTooltip(
-                `<div>
-                     5 - 10946 - COMETA (CENTRO)                                                                                      (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_2ef6c24bdf3ac180d93814961a71019d.setIcon(div_icon_d79150a8d364b40323c80a7154e22c83);
-            
-    
-            var poly_line_6ea6d4a47df84d2b655a02620b9d8685 = L.polyline(
-                [[-3.72013, -38.54911], [-3.7216531, -38.540229]],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var marker_1f049decd7c91a52ca7305544ae332e1 = L.marker(
-                [-3.7049139, -38.5780082],
-                {
-}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            var div_icon_e886455d03bbcc22a1c5f32c7bcbcb67 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:red;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e6\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_1f049decd7c91a52ca7305544ae332e1.setIcon(div_icon_e886455d03bbcc22a1c5f32c7bcbcb67);
-        
-    
-            marker_1f049decd7c91a52ca7305544ae332e1.bindTooltip(
-                `<div>
-                     6 - 989 - COMETA (CASTELO BRANCO)                                                                              (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_1f049decd7c91a52ca7305544ae332e1.setIcon(div_icon_e886455d03bbcc22a1c5f32c7bcbcb67);
-            
-    
-            var poly_line_b57d4d81ede7f1b4c90702f4c3d6a3e6 = L.polyline(
-                [[-3.7216531, -38.540229], [-3.7049139, -38.5780082]],
-                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_42cbb53f21819fe93b19da1c98bb59e1);
-        
-    
-            feature_group_42cbb53f21819fe93b19da1c98bb59e1.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
-        
-    
-            var feature_group_64338597ddca164136494c82bbf16150 = L.featureGroup(
-                {
-}
-            );
-        
-    
-            var marker_f61ef5a9ddc87d5a77c011d5991bc0c1 = L.marker(
-                [-3.7532492, -38.5276962],
-                {
-}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var div_icon_675606a83a45d34b92574877a8243bc1 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_f61ef5a9ddc87d5a77c011d5991bc0c1.setIcon(div_icon_675606a83a45d34b92574877a8243bc1);
-        
-    
-            marker_f61ef5a9ddc87d5a77c011d5991bc0c1.bindTooltip(
-                `<div>
-                     1 - 9341 - COMETA (FATIMA)                                                                                      (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_f61ef5a9ddc87d5a77c011d5991bc0c1.setIcon(div_icon_675606a83a45d34b92574877a8243bc1);
-            
-    
-            var poly_line_5deed802c064c8aa2af755c596c28549 = L.polyline(
-                [[-3.7572635, -38.5854081], [-3.7532492, -38.5276962]],
-                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var marker_dae1d228f0b4856aea35fad58b76a864 = L.marker(
-                [-3.7407932, -38.516113],
-                {
-}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var div_icon_e8d6047e1ab07432a9a3758b919cc027 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e2\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_dae1d228f0b4856aea35fad58b76a864.setIcon(div_icon_e8d6047e1ab07432a9a3758b919cc027);
-        
-    
-            marker_dae1d228f0b4856aea35fad58b76a864.bindTooltip(
-                `<div>
-                     2 - 942 - COMETA (ILDEFONSO ALBANO)                                                                            (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_dae1d228f0b4856aea35fad58b76a864.setIcon(div_icon_e8d6047e1ab07432a9a3758b919cc027);
-            
-    
-            var poly_line_bf119f298e43e455240387d5f902dfc8 = L.polyline(
-                [[-3.7532492, -38.5276962], [-3.7407932, -38.516113]],
-                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var marker_4af7d29f6dcab3abdd42e4edb32170a4 = L.marker(
-                [-3.7338116, -38.5136501],
-                {
-}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var div_icon_6a8efc2941cd146da1bd0d161dbade65 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e3\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_4af7d29f6dcab3abdd42e4edb32170a4.setIcon(div_icon_6a8efc2941cd146da1bd0d161dbade65);
-        
-    
-            marker_4af7d29f6dcab3abdd42e4edb32170a4.bindTooltip(
-                `<div>
-                     3 - 958 - COMETA (PINTO MADEIRA)                                                                               (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_4af7d29f6dcab3abdd42e4edb32170a4.setIcon(div_icon_6a8efc2941cd146da1bd0d161dbade65);
-            
-    
-            var poly_line_8245e520b77f4b058c0007ea74b2621e = L.polyline(
-                [[-3.7407932, -38.516113], [-3.7338116, -38.5136501]],
-                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var marker_e8031bc0d2df0a2f5b2f13a5908b44b1 = L.marker(
-                [-3.7411822, -38.5041525],
-                {
-}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            var div_icon_2cc89607cf839f60415eb6e90a577cdc = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:green;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e4\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_e8031bc0d2df0a2f5b2f13a5908b44b1.setIcon(div_icon_2cc89607cf839f60415eb6e90a577cdc);
-        
-    
-            marker_e8031bc0d2df0a2f5b2f13a5908b44b1.bindTooltip(
-                `<div>
-                     4 - 4029 - COMETA (TIBURCIO CAVALCANTE)                                                                         (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_e8031bc0d2df0a2f5b2f13a5908b44b1.setIcon(div_icon_2cc89607cf839f60415eb6e90a577cdc);
-            
-    
-            var poly_line_e310ba0a56a021b3de26e13c0cced633 = L.polyline(
-                [[-3.7338116, -38.5136501], [-3.7411822, -38.5041525]],
-                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_64338597ddca164136494c82bbf16150);
-        
-    
-            feature_group_64338597ddca164136494c82bbf16150.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
-        
-    
-            var feature_group_bde61da6bf42e040a02a9ca9a8a80f81 = L.featureGroup(
-                {
-}
-            );
-        
-    
-            var marker_45744df25237e7bc13efd09783d386c0 = L.marker(
-                [-3.81050075, -38.57394099],
-                {
-}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var div_icon_7a095927c549bcaccc957153e6d444d0 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:darkred;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_45744df25237e7bc13efd09783d386c0.setIcon(div_icon_7a095927c549bcaccc957153e6d444d0);
-        
-    
-            marker_45744df25237e7bc13efd09783d386c0.bindTooltip(
-                `<div>
-                     1 - 10948 - COMETA (MONDUBIM)                                                                                    (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_45744df25237e7bc13efd09783d386c0.setIcon(div_icon_7a095927c549bcaccc957153e6d444d0);
-            
-    
-            var poly_line_eec0356ed39e604e2e8cc149cfd1f7a6 = L.polyline(
-                [[-3.7572635, -38.5854081], [-3.81050075, -38.57394099]],
-                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var marker_0ba54534e3b11d880e42d825955b4f3c = L.marker(
-                [-3.81623338, -38.53127553],
-                {
-}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var div_icon_eb10c8d8a933769cb87ba827b078a735 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:darkred;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e2\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_0ba54534e3b11d880e42d825955b4f3c.setIcon(div_icon_eb10c8d8a933769cb87ba827b078a735);
-        
-    
-            marker_0ba54534e3b11d880e42d825955b4f3c.bindTooltip(
-                `<div>
-                     2 - 11804 - SEMPRE AKI - LJ03                                                                                    (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_0ba54534e3b11d880e42d825955b4f3c.setIcon(div_icon_eb10c8d8a933769cb87ba827b078a735);
-            
-    
-            var poly_line_e02a99fb09d999ee78e1cb7c5c576800 = L.polyline(
-                [[-3.81050075, -38.57394099], [-3.81623338, -38.53127553]],
-                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var marker_e71495e00374fb2b380dd89b455a6d6c = L.marker(
-                [-3.83641402, -38.52142461],
-                {
-}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var div_icon_2b942155b06b74e2c82ec254bd345d99 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:darkred;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e3\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_e71495e00374fb2b380dd89b455a6d6c.setIcon(div_icon_2b942155b06b74e2c82ec254bd345d99);
-        
-    
-            marker_e71495e00374fb2b380dd89b455a6d6c.bindTooltip(
-                `<div>
-                     3 - 11803 - SEMPRE AKI - LJ02                                                                                    (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_e71495e00374fb2b380dd89b455a6d6c.setIcon(div_icon_2b942155b06b74e2c82ec254bd345d99);
-            
-    
-            var poly_line_80381e97a7460c955d74dad273507a8e = L.polyline(
-                [[-3.81623338, -38.53127553], [-3.83641402, -38.52142461]],
-                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var marker_40774ea7d3d926564964d6f87f59cdd7 = L.marker(
-                [-3.83076563, -38.46236181],
-                {
-}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            var div_icon_93d6a69526691ff49238da1b45eff684 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:darkred;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e4\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_40774ea7d3d926564964d6f87f59cdd7.setIcon(div_icon_93d6a69526691ff49238da1b45eff684);
-        
-    
-            marker_40774ea7d3d926564964d6f87f59cdd7.bindTooltip(
-                `<div>
-                     4 - 11669 - MERCADAO TEND TUDO - LAGOA REDONDA                                                                   (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_40774ea7d3d926564964d6f87f59cdd7.setIcon(div_icon_93d6a69526691ff49238da1b45eff684);
-            
-    
-            var poly_line_90a70d6f8236f578e6b6beb855ab83b1 = L.polyline(
-                [[-3.83641402, -38.52142461], [-3.83076563, -38.46236181]],
-                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_bde61da6bf42e040a02a9ca9a8a80f81);
-        
-    
-            feature_group_bde61da6bf42e040a02a9ca9a8a80f81.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
-        
-    
-            var feature_group_12d1c090bcfb5c7f06243646d4177234 = L.featureGroup(
-                {
-}
-            );
-        
-    
-            var marker_4e93be6bc2c00f807e269cab54562b1d = L.marker(
-                [-3.7759137, -38.5788541],
-                {
-}
-            ).addTo(feature_group_12d1c090bcfb5c7f06243646d4177234);
-        
-    
-            var div_icon_df4a38d2d0bb2d8c91df81ed3f7d9b51 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e1\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_4e93be6bc2c00f807e269cab54562b1d.setIcon(div_icon_df4a38d2d0bb2d8c91df81ed3f7d9b51);
-        
-    
-            marker_4e93be6bc2c00f807e269cab54562b1d.bindTooltip(
-                `<div>
-                     1 - 251 - MERC PINHEIRO E CARNEIRO                                                                             (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_4e93be6bc2c00f807e269cab54562b1d.setIcon(div_icon_df4a38d2d0bb2d8c91df81ed3f7d9b51);
-            
-    
-            var poly_line_07061c3ac28cb7fe9b4cb7baa778aa55 = L.polyline(
-                [[-3.7572635, -38.5854081], [-3.7759137, -38.5788541]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_12d1c090bcfb5c7f06243646d4177234);
-        
-    
-            var marker_54680f3a5b441bc3583355063a263077 = L.marker(
-                [-3.8109052, -38.6092229],
-                {
-}
-            ).addTo(feature_group_12d1c090bcfb5c7f06243646d4177234);
-        
-    
-            var div_icon_da4d6fa701f3339e1cef9c4a05df6741 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e2\u003cbr\u003e\u26a1\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_54680f3a5b441bc3583355063a263077.setIcon(div_icon_da4d6fa701f3339e1cef9c4a05df6741);
-        
-    
-            marker_54680f3a5b441bc3583355063a263077.bindTooltip(
-                `<div>
-                     2 - 2351 - COMETA (OSORIO DE PAIVA)                                                                             (⚡)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_54680f3a5b441bc3583355063a263077.setIcon(div_icon_da4d6fa701f3339e1cef9c4a05df6741);
-            
-    
-            var poly_line_ffbf7c1d476a9f03a2622c4d6fda52cf = L.polyline(
-                [[-3.7759137, -38.5788541], [-3.8109052, -38.6092229]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_12d1c090bcfb5c7f06243646d4177234);
-        
-    
-            var marker_f8af3a21063a93e2f71892a0c44d300e = L.marker(
-                [-3.8359504, -38.5950891],
-                {
-}
-            ).addTo(feature_group_12d1c090bcfb5c7f06243646d4177234);
-        
-    
-            var div_icon_31f92a562f840f9e6ce30dbc822f3df0 = L.divIcon({
-  "html": "\u003cdiv style=\u0027width:30px;height:30px;border-radius:50%;background:blue;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;\u0027\u003e3\u003cbr\u003e\ud83d\udd52\u003c/div\u003e",
-  "className": "empty",
-});
-            marker_f8af3a21063a93e2f71892a0c44d300e.setIcon(div_icon_31f92a562f840f9e6ce30dbc822f3df0);
-        
-    
-            marker_f8af3a21063a93e2f71892a0c44d300e.bindTooltip(
-                `<div>
-                     3 - 1708 - NOSSA SRA DE FATIMA                                                                                  (🕒)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_f8af3a21063a93e2f71892a0c44d300e.setIcon(div_icon_31f92a562f840f9e6ce30dbc822f3df0);
-            
-    
-            var poly_line_02db8bf2bd216b77723a3263220c5283 = L.polyline(
-                [[-3.8109052, -38.6092229], [-3.8359504, -38.5950891]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(feature_group_12d1c090bcfb5c7f06243646d4177234);
-        
-    
-            feature_group_12d1c090bcfb5c7f06243646d4177234.addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
-        
-    
-            var layer_control_ba1e4337eb5e89d27b273e4c62a03425_layers = {
+            var layer_control_3f0b7a3fec95e4ce962f75516e39f0bb_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_8f73049b5980cee6dbd0e15db70c55e9,
+                    "openstreetmap" : tile_layer_679a47b786fc4f3e63ae3d24a23269f7,
                 },
                 overlays :  {
-                    "Motorista: CARGA FRANGOLANDIA 14/08/25                                                                         " : feature_group_621b9a76065a44c8fa1c93b4f29cfef5,
-                    "Motorista: EDSON                                                                                               " : feature_group_5a36c612b0bcd2fd10ed2d249c74d440,
-                    "Motorista: FELIX                                                                                               " : feature_group_42cbb53f21819fe93b19da1c98bb59e1,
-                    "Motorista: LUAN                                                                                                " : feature_group_64338597ddca164136494c82bbf16150,
-                    "Motorista: ROBERTO                                                                                             " : feature_group_bde61da6bf42e040a02a9ca9a8a80f81,
-                    "Motorista: WEMINSON                                                                                            " : feature_group_12d1c090bcfb5c7f06243646d4177234,
+                    "Motorista: BARAT\u00c3O AGENDAMENTO                                                                                 " : feature_group_bdbc5995d0740f0f427556ffb31543f5,
                 },
             };
-            let layer_control_ba1e4337eb5e89d27b273e4c62a03425 = L.control.layers(
-                layer_control_ba1e4337eb5e89d27b273e4c62a03425_layers.base_layers,
-                layer_control_ba1e4337eb5e89d27b273e4c62a03425_layers.overlays,
+            let layer_control_3f0b7a3fec95e4ce962f75516e39f0bb = L.control.layers(
+                layer_control_3f0b7a3fec95e4ce962f75516e39f0bb_layers.base_layers,
+                layer_control_3f0b7a3fec95e4ce962f75516e39f0bb_layers.overlays,
                 {
   "position": "topright",
   "collapsed": false,
   "autoZIndex": true,
 }
-            ).addTo(map_7bbbb07d18178aee1f295a49c50e0b79);
+            ).addTo(map_7740b2e04ee168f18b05acd1f0bda72b);
 
         
 </script>
