@@ -68,13 +68,6 @@ def build_popup_html(row, origem):
     data_fmt = pd.to_datetime(dt).strftime('%d/%m/%Y') if pd.notna(dt) else '-'
     rota = safe_str(row.get('A14_DESC', '-'))
 
-    try:
-        dist_km = haversine_distance(origem, (lat, lon))
-    except:
-        dist_km = None
-
-    
-
     html = f"""
     <div style="font-family:Inter,Arial,sans-serif; font-size:13px; line-height:1.4;">
       <div style="font-weight:700; font-size:14px; margin-bottom:6px;">{nome}</div>

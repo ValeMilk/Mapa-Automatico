@@ -36,30 +36,37 @@ Sistema de geração e visualização de mapas de rotas para entregas da Vale Mi
 
 ## 🚀 Deploy Rápido na VPS
 
-### Método 1: Instalação Automática
+### Método Recomendado: Via GitHub
 
 ```bash
+# 1. Conectar na VPS
 ssh root@SEU_IP_VPS
-curl -fsSL https://raw.githubusercontent.com/ValeMilk/Mapa-Automatico/main/install.sh | bash
+
+# 2. Clonar repositório
+cd /opt
+git clone https://github.com/SEU_USUARIO/valemilk-maps.git
+cd valemilk-maps
+
+# 3. Configurar ambiente
+cp .env.example .env
+nano .env  # Edite com suas credenciais do SQL Server
+
+# 4. Executar deploy
+chmod +x deploy-vps.sh
+bash deploy-vps.sh
 ```
 
-### Método 2: Manual
+### Atualizar Aplicação
 
 ```bash
-# 1. Clonar repositório
-git clone https://github.com/ValeMilk/Mapa-Automatico.git
-cd Mapa-Automatico
-
-# 2. Configurar ambiente
-cp .env.example .env
-nano .env  # Edite com suas configurações
-
-# 3. Executar deploy
-chmod +x deploy.sh
-./deploy.sh
+cd /opt/valemilk-maps
+bash atualizar.sh  # Script automático de atualização
 ```
 
-📚 **Guia completo:** [DEPLOY.md](DEPLOY.md)
+📚 **Guias completos:** 
+- [DEPLOY_GITHUB.md](DEPLOY_GITHUB.md) - Deploy via Git
+- [DEPLOY_VPS_SIMPLES.md](DEPLOY_VPS_SIMPLES.md) - Deploy com VPN
+- [LEIA-ME-VPS.md](LEIA-ME-VPS.md) - Guia rápido
 
 ## 💻 Desenvolvimento Local
 
