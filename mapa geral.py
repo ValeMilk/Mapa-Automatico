@@ -122,30 +122,18 @@ def generate_map_html():
     centro = [df["latitude"].mean(), df["longitude"].mean()]
     m = folium.Map(location=centro, zoom_start=6, width="100%", height="100%", tiles="OpenStreetMap")
 
-    # Cores por supervisor
+    # Cores por supervisor — hue uniformemente distribuído no HSV, garante cores distintas
     df["SUPERVISOR"] = df["SUPERVISOR"].fillna("N/A").astype(str)
-    # Lista fixa de cores — 12 cores distintas para evitar repetição
-    fixed_colors = [
-        "#f50c0c", "#0c5ffa", "#208317", "#000000",
-        "#ff8c00", "#9400d3", "#008080", "#8b4513",
-        "#e91e8c", "#00838f", "#6d4c41", "#1565c0",
-    ]
-
-    # Supervisores ordenados
     unique_sup = sorted(df["SUPERVISOR"].unique(), key=lambda x: x.upper())
+    n_sup = max(len(unique_sup), 1)
 
-    # Garante cor única por supervisor; se ultrapassar a paleta, gera cor via hash
-    def _unique_color(idx, name):
-        if idx < len(fixed_colors):
-            return fixed_colors[idx]
-        import hashlib
-        hue = int(hashlib.md5(name.encode()).hexdigest()[:6], 16) / 0xFFFFFF
-        return "#{:02x}{:02x}{:02x}".format(
-            int((hue * 255) % 200 + 55),
-            int(((hue * 360) % 255 + 40) % 255),
-            int(((hue * 720) % 255 + 80) % 255),
-        )
-    sup_color = {sup: _unique_color(i, sup) for i, sup in enumerate(unique_sup)}
+    def _hsv_color(idx, total):
+        from colorsys import hsv_to_rgb
+        h = idx / total
+        r, g, b = hsv_to_rgb(h, 0.75, 0.90)
+        return "#{:02x}{:02x}{:02x}".format(int(r * 255), int(g * 255), int(b * 255))
+
+    sup_color = {sup: _hsv_color(i, n_sup) for i, sup in enumerate(unique_sup)}
 
     fg = folium.FeatureGroup(name="Clientes", show=True)
     fg.add_to(m)
