@@ -124,14 +124,28 @@ def generate_map_html():
 
     # Cores por supervisor
     df["SUPERVISOR"] = df["SUPERVISOR"].fillna("N/A").astype(str)
-    # Lista fixa de cores
-    fixed_colors = ["#f50c0c", "#0c5ffa", "#208317", "#000000"]
+    # Lista fixa de cores — 12 cores distintas para evitar repetição
+    fixed_colors = [
+        "#f50c0c", "#0c5ffa", "#208317", "#000000",
+        "#ff8c00", "#9400d3", "#008080", "#8b4513",
+        "#e91e8c", "#00838f", "#6d4c41", "#1565c0",
+    ]
 
     # Supervisores ordenados
     unique_sup = sorted(df["SUPERVISOR"].unique(), key=lambda x: x.upper())
 
-    # Mapeia supervisores para cores, repetindo se tiver mais de 4 supervisores
-    sup_color = {sup: fixed_colors[i % len(fixed_colors)] for i, sup in enumerate(unique_sup)}
+    # Garante cor única por supervisor; se ultrapassar a paleta, gera cor via hash
+    def _unique_color(idx, name):
+        if idx < len(fixed_colors):
+            return fixed_colors[idx]
+        import hashlib
+        hue = int(hashlib.md5(name.encode()).hexdigest()[:6], 16) / 0xFFFFFF
+        return "#{:02x}{:02x}{:02x}".format(
+            int((hue * 255) % 200 + 55),
+            int(((hue * 360) % 255 + 40) % 255),
+            int(((hue * 720) % 255 + 80) % 255),
+        )
+    sup_color = {sup: _unique_color(i, sup) for i, sup in enumerate(unique_sup)}
 
     fg = folium.FeatureGroup(name="Clientes", show=True)
     fg.add_to(m)

@@ -123,11 +123,26 @@ def generate_map_html():
     centro = [df["latitude"].mean(), df["longitude"].mean()]
     m = folium.Map(location=centro, zoom_start=6, width="100%", height="100%", tiles="OpenStreetMap")
 
-    # Cores por supervisor (fixas)
+    # Cores por supervisor (fixas) — 12 cores distintas para evitar repetição
     df["SUPERVISOR"] = df["SUPERVISOR"].fillna("N/A").astype(str)
-    fixed_colors = ["#f50c0c", "#0c5ffa", "#208317", "#000000"]
+    fixed_colors = [
+        "#f50c0c", "#0c5ffa", "#208317", "#000000",
+        "#ff8c00", "#9400d3", "#008080", "#8b4513",
+        "#e91e8c", "#00838f", "#6d4c41", "#1565c0",
+    ]
     unique_sup = sorted(df["SUPERVISOR"].unique(), key=lambda x: x.upper())
-    sup_color = {sup: fixed_colors[i % len(fixed_colors)] for i, sup in enumerate(unique_sup)}
+
+    def _unique_color(idx, name):
+        if idx < len(fixed_colors):
+            return fixed_colors[idx]
+        import hashlib
+        hue = int(hashlib.md5(name.encode()).hexdigest()[:6], 16) / 0xFFFFFF
+        return "#{:02x}{:02x}{:02x}".format(
+            int((hue * 255) % 200 + 55),
+            int(((hue * 360) % 255 + 40) % 255),
+            int(((hue * 720) % 255 + 80) % 255),
+        )
+    sup_color = {sup: _unique_color(i, sup) for i, sup in enumerate(unique_sup)}
 
     fg = folium.FeatureGroup(name="Clientes", show=True)
 
