@@ -2,6 +2,7 @@
 Módulo para geração do Mapa Geral de Clientes (Lojas 81 e 82)
 """
 import hashlib
+import os
 from colorsys import hsv_to_rgb
 from html import escape as html_escape
 from sqlalchemy import create_engine
@@ -83,6 +84,19 @@ def generate_map_html():
     except Exception as e:
         return f"<pre style='color:red'>ERRO AO LER DO BANCO:\n{e}</pre>"
 
+    # Carregar dados de Rede e Subrede do CSV
+    try:
+        csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'rede e subrede.csv')
+        df_rede = pd.read_csv(csv_path, dtype=str, usecols=['A00_ID', 'REDE', 'SUBREDE'])
+        df_rede['A00_ID'] = df_rede['A00_ID'].astype(str).str.strip()
+        df['A00_ID'] = df['A00_ID'].astype(str).str.strip()
+        df = df.merge(df_rede, on='A00_ID', how='left')
+        df['REDE'] = df['REDE'].fillna('').astype(str).str.strip()
+        df['SUBREDE'] = df['SUBREDE'].fillna('').astype(str).str.strip()
+    except Exception:
+        df['REDE'] = ''
+        df['SUBREDE'] = ''
+
     # Coordenadas válidas
     df = df.copy()
     df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
@@ -130,6 +144,8 @@ def generate_map_html():
                 <tr><td style="padding: 3px; font-weight: bold;">Rota:</td><td style="padding: 3px;">{esc_txt(r.AREA_DESC)}</td></tr>
                 <tr><td style="padding: 3px; font-weight: bold;">Vendedor:</td><td style="padding: 3px;">{esc_txt(r.NOME_VENDEDOR)}</td></tr>
                 <tr><td style="padding: 3px; font-weight: bold;">Supervisor:</td><td style="padding: 3px;">{esc_txt(r.SUPERVISOR)}</td></tr>
+                <tr><td style="padding: 3px; font-weight: bold;">Rede:</td><td style="padding: 3px;">{esc_txt(r.REDE) or '-'}</td></tr>
+                <tr><td style="padding: 3px; font-weight: bold;">Subrede:</td><td style="padding: 3px;">{esc_txt(r.SUBREDE) or '-'}</td></tr>
             </table>
         </div>
         """
@@ -142,6 +158,8 @@ def generate_map_html():
              data-vendedor="{esc_attr(r.NOME_VENDEDOR)}"
              data-supervisor="{esc_attr(r.SUPERVISOR)}"
              data-regional="{esc_attr(r.REGIONAL)}"
+             data-rede="{esc_attr(r.REDE)}"
+             data-subrede="{esc_attr(r.SUBREDE)}"
              style="background-color:{sup_color[r.SUPERVISOR]}; 
                     border-radius:50%; width:24px; height:24px; 
                     display:flex; align-items:center; justify-content:center;">
@@ -186,6 +204,10 @@ def generate_map_html():
     name_group       = make_filter_group("name-group", "Cliente", df["A00_FANTASIA"].dropna().unique())
     vendedor_group   = make_filter_group("vendedor-group", "Vendedor", df["NOME_VENDEDOR"].dropna().unique())
     supervisor_group = make_filter_group("supervisor-group", "Supervisor", df["SUPERVISOR"].dropna().unique())
+    rede_values      = [v for v in df["REDE"].unique() if v and v != 'nan']
+    subrede_values   = [v for v in df["SUBREDE"].unique() if v and v != 'nan']
+    rede_group       = make_filter_group("rede-group", "Rede", rede_values) if rede_values else ""
+    subrede_group    = make_filter_group("subrede-group", "Subrede", subrede_values) if subrede_values else ""
 
     overlay = f"""
 <style>
@@ -338,6 +360,8 @@ def generate_map_html():
     {name_group}
     {vendedor_group}
     {supervisor_group}
+    {rede_group}
+    {subrede_group}
   </div>
   <div class="filter-actions">
     <button id="btn-search">🔍 Buscar</button>
@@ -420,7 +444,9 @@ def generate_map_html():
             rota: markerDiv.getAttribute('data-rota') || '',
             vendedor: markerDiv.getAttribute('data-vendedor') || '',
             supervisor: markerDiv.getAttribute('data-supervisor') || '',
-            regional: markerDiv.getAttribute('data-regional') || ''
+            regional: markerDiv.getAttribute('data-regional') || '',
+            rede: markerDiv.getAttribute('data-rede') || '',
+            subrede: markerDiv.getAttribute('data-subrede') || ''
           }};
           markerData.push(data);
         }}
@@ -463,6 +489,8 @@ def generate_map_html():
       var selectedClientes = Array.from(document.querySelectorAll('#name-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
       var selectedVendedores = Array.from(document.querySelectorAll('#vendedor-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
       var selectedSupervisores = Array.from(document.querySelectorAll('#supervisor-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
+      var selectedRedes = Array.from(document.querySelectorAll('#rede-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
+      var selectedSubredes = Array.from(document.querySelectorAll('#subrede-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
       
       console.log('=== FILTROS SELECIONADOS ===');
       console.log('Regionais:', selectedRegionais);
@@ -471,6 +499,8 @@ def generate_map_html():
       console.log('Clientes:', selectedClientes);
       console.log('Vendedores:', selectedVendedores);
       console.log('Supervisores:', selectedSupervisores);
+      console.log('Redes:', selectedRedes);
+      console.log('Subredes:', selectedSubredes);
       
       var visibleCount = 0;
       var hiddenCount = 0;
@@ -506,6 +536,14 @@ def generate_map_html():
           show = false;
           reasons.push('supervisor não match');
         }}
+        if (selectedRedes.length > 0 && selectedRedes.indexOf(item.rede) === -1) {{
+          show = false;
+          reasons.push('rede não match');
+        }}
+        if (selectedSubredes.length > 0 && selectedSubredes.indexOf(item.subrede) === -1) {{
+          show = false;
+          reasons.push('subrede não match');
+        }}
         
         if (debugCount < 3) {{
           console.log('Item', debugCount + 1, ':', {{
@@ -515,6 +553,8 @@ def generate_map_html():
             regional: item.regional,
             vendedor: item.vendedor,
             supervisor: item.supervisor,
+            rede: item.rede,
+            subrede: item.subrede,
             show: show,
             reasons: reasons
           }});
