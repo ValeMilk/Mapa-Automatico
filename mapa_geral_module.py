@@ -561,17 +561,15 @@ def generate_map_html():
     // Botão Limpar
     document.getElementById('btn-clear').addEventListener('click', function() {{
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
-      markerData.forEach(function(item) {{
-        if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
-        var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
-        if (el) el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
-      }});
-      countVisible();
+      var search = document.getElementById('filter-search');
+      if (search) {{ search.value = ''; search.dispatchEvent(new Event('input')); }}
+      applyFilters();
     }});
 
     // Botão Desmarcar
     document.getElementById('btn-deselect').addEventListener('click', function() {{
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
+      applyFilters();
     }});
   }}
 
