@@ -1,0 +1,16 @@
+# Mapas gerados em runtime — não copiar para a imagem
+mapa_geral_clientes.html
+mapa_motorista.html
+mapa_cliente.html
+mapa_motorista_do_dia.html
+mapa_interior_semana.html
+mapa_interior_geral.html
+
+# Git e editor
+.git
+.gitignore
+*.md
+__pycache__
+*.pyc
+*.pyo
+.env
