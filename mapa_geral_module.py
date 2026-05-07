@@ -1,5 +1,5 @@
-"""
-Módulo para geração do Mapa Geral de Clientes (Lojas 81 e 82)
+﻿"""
+MÃ³dulo para geraÃ§Ã£o do Mapa Geral de Clientes (Lojas 81 e 82)
 """
 import hashlib
 import os
@@ -10,7 +10,7 @@ import pandas as pd
 import folium
 import urllib
 
-# ========= Conexão =========
+# ========= ConexÃ£o =========
 odbc_str = (
     "DRIVER={ODBC Driver 17 for SQL Server};"
     "SERVER=10.1.0.3\\SQLSTANDARD;"
@@ -44,14 +44,14 @@ WHERE c.A00_STATUS = 1
   AND ar.A14_DESC NOT IN (
       '999 - L80-INDUSTRIA',
       '700 - L81 - REMESSA VENDA',
-      '142 - L82-PARACURU-LICITAÇÃO',
-      '147 - L82-PARAIPABA-LICITAÇÃO',
-      '149 - L82-SGA-LICITAÇÃO',
+      '142 - L82-PARACURU-LICITAÃ‡ÃƒO',
+      '147 - L82-PARAIPABA-LICITAÃ‡ÃƒO',
+      '149 - L82-SGA-LICITAÃ‡ÃƒO',
       '000 - L82-EXTRA ROTA'
 );
 """
 
-# ========= Utilitários =========
+# ========= UtilitÃ¡rios =========
 def esc_txt(s):
     return html_escape("" if s is None else str(s), quote=False)
 
@@ -70,13 +70,13 @@ def make_filter_group(group_id, label, values):
     return f"""
     <div class="filter-group" id="{group_id}">
         <label>{label}</label>
-        <input type="text" class="filter-search" placeholder="🔎 Buscar {label.lower()}..." />
+        <input type="text" class="filter-search" placeholder="ðŸ”Ž Buscar {label.lower()}..." />
         <label><input type="checkbox" class="check-all" /> Selecionar todos</label>
         <div class="scrollbox">{checkbox_items}</div>
     </div>
     """
 
-# ========= Geração do Mapa =========
+# ========= GeraÃ§Ã£o do Mapa =========
 def generate_map_html():
     """Gera o HTML do mapa geral de clientes"""
     try:
@@ -97,7 +97,7 @@ def generate_map_html():
         df['REDE'] = ''
         df['SUBREDE'] = ''
 
-    # Coordenadas válidas
+    # Coordenadas vÃ¡lidas
     df = df.copy()
     df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
     df["longitude"] = pd.to_numeric(df["longitude"], errors="coerce")
@@ -117,13 +117,13 @@ def generate_map_html():
     df['REGIONAL'] = df['AREA_DESC'].apply(get_regional)
     
     if df.empty:
-        return "<h3>Nenhum cliente com coordenadas válidas.</h3>"
+        return "<h3>Nenhum cliente com coordenadas vÃ¡lidas.</h3>"
 
     # Mapa base
     centro = [df["latitude"].mean(), df["longitude"].mean()]
     m = folium.Map(location=centro, zoom_start=6, width="100%", height="100%", tiles="OpenStreetMap")
 
-    # Cores por supervisor — hue uniformemente distribuído no HSV, garante cores distintas
+    # Cores por supervisor â€” hue uniformemente distribuÃ­do no HSV, garante cores distintas
     df["SUPERVISOR"] = df["SUPERVISOR"].fillna("N/A").astype(str)
     unique_sup = sorted(df["SUPERVISOR"].unique(), key=lambda x: x.upper())
     n_sup = max(len(unique_sup), 1)
@@ -328,7 +328,7 @@ def generate_map_html():
 <!-- Sidebar -->
 <div id="sidebar">
   <div id="sidebar-header">
-    <h3>🔎 Filtros de Clientes</h3>
+    <h3>ðŸ”Ž Filtros de Clientes</h3>
   </div>
   <div id="sidebar-body">
     {regional_group}
@@ -341,11 +341,11 @@ def generate_map_html():
     {subrede_group}
   </div>
   <div id="sidebar-footer">
-    <button id="btn-clear">🔄 Limpar</button>
-    <button id="btn-deselect">❌ Desmarcar</button>
+    <button id="btn-clear">ðŸ”„ Limpar</button>
+    <button id="btn-deselect">âŒ Desmarcar</button>
   </div>
 </div>
-<button id="sidebar-toggle" title="Mostrar/ocultar filtros">◀</button>
+<button id="sidebar-toggle" title="Mostrar/ocultar filtros">â—€</button>
 
 <div id="counter">Registros: <span id="marker-count">{total_markers}</span></div>
 
@@ -360,14 +360,14 @@ def generate_map_html():
       sidebar.classList.remove('collapsed');
       document.body.classList.remove('sidebar-collapsed');
       toggleBtn.style.left = '300px';
-      toggleBtn.textContent = '◀';
+      toggleBtn.textContent = 'â—€';
     }} else {{
       sidebar.classList.add('collapsed');
       document.body.classList.add('sidebar-collapsed');
       toggleBtn.style.left = '0';
-      toggleBtn.textContent = '▶';
+      toggleBtn.textContent = 'â–¶';
     }}
-    // Forçar redimensionamento do mapa
+    // ForÃ§ar redimensionamento do mapa
     setTimeout(function() {{
       if (typeof L !== 'undefined') {{
         document.querySelectorAll('.leaflet-map-pane').forEach(function() {{}});
@@ -385,7 +385,7 @@ def generate_map_html():
   // ===== Cores por supervisor (para restaurar) =====
   var SUP_COLOR = {sup_color_js};
 
-  // ===== Inicialização filtros =====
+  // ===== InicializaÃ§Ã£o filtros =====
   function initFilters() {{
     var map = null;
     var group = null;
@@ -404,7 +404,7 @@ def generate_map_html():
     }});
     if (!group) {{ setTimeout(initFilters, 500); return; }}
 
-    // Contagem visíveis
+    // Contagem visÃ­veis
     function countVisible() {{
       var n = 0;
       group.eachLayer(function(l) {{ if (map.hasLayer(l)) n++; }});
@@ -508,7 +508,7 @@ def generate_map_html():
         }}
       }});
 
-      // Cores dinâmicas por vendedor se exatamente 1 supervisor filtrado
+      // Cores dinÃ¢micas por vendedor se exatamente 1 supervisor filtrado
       var uniqueVisVendedores = Object.keys(visibleVendedores).sort();
       if (selSups.length === 1) {{
         var nVend = Math.max(uniqueVisVendedores.length, 1);
@@ -558,7 +558,7 @@ def generate_map_html():
       return Array.from(el.querySelectorAll('.scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
     }}
 
-    // Botão Limpar
+    // BotÃ£o Limpar
     document.getElementById('btn-clear').addEventListener('click', function() {{
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
       markerData.forEach(function(item) {{
@@ -568,7 +568,7 @@ def generate_map_html():
       countVisible();
     }});
 
-    // Botão Desmarcar
+    // BotÃ£o Desmarcar
     document.getElementById('btn-deselect').addEventListener('click', function() {{
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
     }});
@@ -588,408 +588,4 @@ def generate_map_html():
     )
 
     return html
-  
-  #filter-popup {{
-    display: none; position: fixed; top: 50%; left: 50%; 
-    transform: translate(-50%, -50%);
-    background: white; padding: 0; border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1100; 
-    width: 420px; max-width: 95vw; max-height: 85vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow: hidden;
-  }}
-  #filter-popup.active {{ display: flex; flex-direction: column; }}
-  
-  .filter-header {{
-    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
-    color: white; padding: 20px; display: flex; justify-content: space-between;
-    align-items: center; border-radius: 16px 16px 0 0;
-  }}
-  .filter-header h3 {{
-    margin: 0; font-size: 18px; font-weight: 600;
-  }}
-  .filter-popup-close {{
-    background: rgba(255,255,255,0.2); color: white;
-    border: none; width: 32px; height: 32px; border-radius: 50%; 
-    cursor: pointer; font-size: 18px; display: flex; align-items: center;
-    justify-content: center; transition: all 0.2s ease;
-  }}
-  .filter-popup-close:hover {{
-    background: rgba(255,255,255,0.3); transform: rotate(90deg);
-  }}
-  
-  .filter-content {{
-    padding: 20px; overflow-y: auto; flex: 1;
-  }}
-  
-  .filter-group {{ 
-    margin-bottom: 20px; background: #f8f9fa; padding: 15px;
-    border-radius: 10px; border: 1px solid #e9ecef;
-  }}
-  .filter-group > label:first-child {{ 
-    font-weight: 600; font-size: 13px; display: block; 
-    margin-bottom: 10px; color: #495057; text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }}
-  .filter-search {{
-    width: 100%; padding: 10px 12px; margin-bottom: 10px; 
-    border-radius: 8px; border: 2px solid #dee2e6; font-size: 13px;
-    transition: all 0.2s ease; background: white;
-  }}
-  .filter-search:focus {{
-    outline: none; border-color: #0066cc; box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
-  }}
-  
-  .check-all {{
-    margin-bottom: 8px !important; accent-color: #0066cc;
-  }}
-  .filter-group > label:has(.check-all) {{
-    display: flex !important; align-items: center; gap: 6px;
-    font-weight: 500 !important; font-size: 12px !important;
-    color: #6c757d !important; text-transform: none !important;
-    margin-bottom: 8px !important; cursor: pointer;
-  }}
-  
-  .scrollbox {{
-    background: white; padding: 8px; border-radius: 8px; 
-    max-height: 150px; overflow-y: auto; border: 1px solid #dee2e6;
-  }}
-  .scrollbox::-webkit-scrollbar {{ width: 8px; }}
-  .scrollbox::-webkit-scrollbar-track {{ background: #f1f1f1; border-radius: 10px; }}
-  .scrollbox::-webkit-scrollbar-thumb {{ background: #0066cc; border-radius: 10px; }}
-  .scrollbox::-webkit-scrollbar-thumb:hover {{ background: #004c99; }}
-  
-  .scrollbox label {{ 
-    display: flex; align-items: center; gap: 8px; padding: 6px 8px;
-    font-size: 13px; line-height: 1.4; cursor: pointer; border-radius: 6px;
-    transition: background 0.15s ease; color: #212529;
-  }}
-  .scrollbox label:hover {{ background: #f8f9fa; }}
-  .scrollbox input[type="checkbox"] {{
-    width: 16px; height: 16px; cursor: pointer; accent-color: #0066cc;
-  }}
-  
-  .filter-actions {{
-    padding: 15px 20px; background: #f8f9fa; border-top: 1px solid #dee2e6;
-    display: flex; gap: 10px; flex-wrap: wrap;
-  }}
-  .filter-actions button {{
-    flex: 1; min-width: 100px; padding: 10px 16px; border: none;
-    border-radius: 8px; font-size: 13px; font-weight: 600;
-    cursor: pointer; transition: all 0.2s ease;
-  }}
-  #btn-search {{
-    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
-    color: white; flex: 1 1 100%;
-  }}
-  #btn-search:hover {{
-    transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,102,204,0.4);
-  }}
-  #btn-clear {{
-    background: #6c757d; color: white;
-  }}
-  #btn-clear:hover {{ background: #5a6268; }}
-  #btn-deselect {{
-    background: #dc3545; color: white;
-  }}
-  #btn-deselect:hover {{ background: #c82333; }}
-  #btn-toggle {{
-    background: #17a2b8; color: white;
-  }}
-  #btn-toggle:hover {{ background: #138496; }}
-  
-  #counter {{
-    position: fixed; top: 15px; left: 50%; transform: translateX(-50%);
-    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
-    color: white; padding: 10px 20px; border-radius: 25px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 14px; font-weight: 600; z-index: 1100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }}
-  #counter span {{ font-size: 16px; }}
-</style>
 
-<button id="filter-toggle">🔍 Filtros</button>
-<div id="counter">Registros: <span id="marker-count">{total_markers}</span></div>
-
-<div id="filter-popup">
-  <div class="filter-header">
-    <h3>🔎 Filtros de Clientes</h3>
-    <button class="filter-popup-close" onclick="document.getElementById('filter-popup').classList.remove('active')">✕</button>
-  </div>
-  <div class="filter-content">
-    {regional_group}
-    {area_group}
-    {id_group}
-    {name_group}
-    {vendedor_group}
-    {supervisor_group}
-    {rede_group}
-    {subrede_group}
-  </div>
-  <div class="filter-actions">
-    <button id="btn-search">🔍 Buscar</button>
-    <button id="btn-clear">🔄 Limpar</button>
-    <button id="btn-deselect">❌ Desmarcar</button>
-    <button id="btn-toggle">👁️ Toggle</button>
-  </div>
-</div>
-
-<script>
-  document.getElementById("filter-toggle").onclick = function() {{
-    document.getElementById("filter-popup").classList.add("active");
-  }};
-  
-  // Esperar o DOM e Leaflet carregarem completamente
-  function initFilters() {{
-    // Buscar o mapa e feature group dinamicamente
-    var map = null;
-    var group = null;
-    
-    // Tentar encontrar o objeto do mapa Leaflet
-    if (typeof L !== 'undefined') {{
-      for (var key in window) {{
-        try {{
-          if (window[key] && window[key]._leaflet_id && window[key].getCenter) {{
-            map = window[key];
-            console.log('Mapa encontrado:', key);
-            break;
-          }}
-        }} catch(e) {{}}
-      }}
-    }}
-    
-    if (!map) {{
-      console.error('Mapa não encontrado! Tentando novamente em 500ms...');
-      setTimeout(initFilters, 500);
-      return;
-    }}
-    
-    // Encontrar o FeatureGroup
-    map.eachLayer(function(layer) {{
-      if (layer instanceof L.FeatureGroup) {{
-        group = layer;
-        console.log('FeatureGroup encontrado');
-      }}
-    }});
-    
-    if (!group) {{
-      console.error('FeatureGroup não encontrado! Tentando novamente em 500ms...');
-      setTimeout(initFilters, 500);
-      return;
-    }}
-    
-    console.log('✓ Mapa e FeatureGroup inicializados com sucesso');
-    
-    // Contagem de marcadores
-    function countVisible() {{
-      var n = 0;
-      group.eachLayer(function(l) {{
-        if (map.hasLayer(l)) n += 1;
-      }});
-      var el = document.getElementById('marker-count');
-      if (el) el.textContent = n;
-    }}
-    map.on('layeradd layerremove', countVisible);
-    countVisible();
-    
-    // Construir índice de marcadores
-    var markerData = [];
-    group.eachLayer(function(marker) {{
-      // Buscar o elemento HTML do marcador
-      var icon = marker.getElement();
-      if (icon) {{
-        var markerDiv = icon.querySelector('.custom-marker');
-        if (markerDiv) {{
-          var data = {{
-            marker: marker,
-            id: markerDiv.getAttribute('data-id') || '',
-            cliente: markerDiv.getAttribute('data-cliente') || '',
-            rota: markerDiv.getAttribute('data-rota') || '',
-            vendedor: markerDiv.getAttribute('data-vendedor') || '',
-            supervisor: markerDiv.getAttribute('data-supervisor') || '',
-            regional: markerDiv.getAttribute('data-regional') || '',
-            rede: markerDiv.getAttribute('data-rede') || '',
-            subrede: markerDiv.getAttribute('data-subrede') || ''
-          }};
-          markerData.push(data);
-        }}
-      }}
-    }});
-    
-    console.log('Total marcadores indexados:', markerData.length);
-    if (markerData.length > 0) {{
-      console.log('Exemplo de dados extraídos:', markerData[0]);
-    }}
-    
-    // Busca interna nos grupos de filtros
-    document.querySelectorAll('.filter-search').forEach(function(input) {{
-      input.addEventListener('input', function() {{
-        var term = this.value.toLowerCase();
-        var scrollbox = this.parentElement.querySelector('.scrollbox');
-        scrollbox.querySelectorAll('label').forEach(function(label) {{
-          var text = label.textContent.toLowerCase();
-          label.style.display = text.includes(term) ? 'flex' : 'none';
-        }});
-      }});
-    }});
-    
-    // Selecionar todos
-    document.querySelectorAll('.check-all').forEach(function(checkbox) {{
-      checkbox.addEventListener('change', function() {{
-        var scrollbox = this.parentElement.parentElement.querySelector('.scrollbox');
-        var checkboxes = scrollbox.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(function(cb) {{
-          cb.checked = checkbox.checked;
-        }});
-      }});
-    }});
-    
-    // Botão Buscar
-    document.getElementById('btn-search').addEventListener('click', function() {{
-      var selectedRegionais = Array.from(document.querySelectorAll('#regional-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedRotas = Array.from(document.querySelectorAll('#area-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedIds = Array.from(document.querySelectorAll('#id-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedClientes = Array.from(document.querySelectorAll('#name-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedVendedores = Array.from(document.querySelectorAll('#vendedor-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedSupervisores = Array.from(document.querySelectorAll('#supervisor-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedRedes = Array.from(document.querySelectorAll('#rede-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      var selectedSubredes = Array.from(document.querySelectorAll('#subrede-group .scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
-      
-      console.log('=== FILTROS SELECIONADOS ===');
-      console.log('Regionais:', selectedRegionais);
-      console.log('Rotas:', selectedRotas);
-      console.log('IDs:', selectedIds);
-      console.log('Clientes:', selectedClientes);
-      console.log('Vendedores:', selectedVendedores);
-      console.log('Supervisores:', selectedSupervisores);
-      console.log('Redes:', selectedRedes);
-      console.log('Subredes:', selectedSubredes);
-      
-      var visibleCount = 0;
-      var hiddenCount = 0;
-      var debugCount = 0;
-      
-      markerData.forEach(function(item) {{
-        var show = true;
-        var reasons = [];
-        
-        if (selectedRegionais.length > 0 && selectedRegionais.indexOf(item.regional) === -1) {{
-          show = false;
-          reasons.push('regional não match');
-        }}
-        if (selectedRotas.length > 0) {{
-          if (selectedRotas.indexOf(item.rota) === -1) {{
-            show = false;
-            reasons.push('rota não match: "' + item.rota + '" não está em ' + JSON.stringify(selectedRotas));
-          }}
-        }}
-        if (selectedIds.length > 0 && selectedIds.indexOf(item.id) === -1) {{
-          show = false;
-          reasons.push('id não match');
-        }}
-        if (selectedClientes.length > 0 && selectedClientes.indexOf(item.cliente) === -1) {{
-          show = false;
-          reasons.push('cliente não match');
-        }}
-        if (selectedVendedores.length > 0 && selectedVendedores.indexOf(item.vendedor) === -1) {{
-          show = false;
-          reasons.push('vendedor não match');
-        }}
-        if (selectedSupervisores.length > 0 && selectedSupervisores.indexOf(item.supervisor) === -1) {{
-          show = false;
-          reasons.push('supervisor não match');
-        }}
-        if (selectedRedes.length > 0 && selectedRedes.indexOf(item.rede) === -1) {{
-          show = false;
-          reasons.push('rede não match');
-        }}
-        if (selectedSubredes.length > 0 && selectedSubredes.indexOf(item.subrede) === -1) {{
-          show = false;
-          reasons.push('subrede não match');
-        }}
-        
-        if (debugCount < 3) {{
-          console.log('Item', debugCount + 1, ':', {{
-            id: item.id,
-            cliente: item.cliente,
-            rota: item.rota,
-            regional: item.regional,
-            vendedor: item.vendedor,
-            supervisor: item.supervisor,
-            rede: item.rede,
-            subrede: item.subrede,
-            show: show,
-            reasons: reasons
-          }});
-          debugCount++;
-        }}
-        
-        if (show) {{
-          if (!map.hasLayer(item.marker)) {{
-            group.addLayer(item.marker);
-          }}
-          visibleCount++;
-        }} else {{
-          if (map.hasLayer(item.marker)) {{
-            group.removeLayer(item.marker);
-          }}
-          hiddenCount++;
-        }}
-      }});
-      
-      console.log('=== RESULTADO ===');
-      console.log('Visíveis:', visibleCount, 'Ocultos:', hiddenCount);
-      countVisible();
-      document.getElementById('filter-popup').classList.remove('active');
-    }});
-    
-    // Botão Limpar
-    document.getElementById('btn-clear').addEventListener('click', function() {{
-      document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{
-        cb.checked = false;
-      }});
-      markerData.forEach(function(item) {{
-        if (!map.hasLayer(item.marker)) {{
-          group.addLayer(item.marker);
-        }}
-      }});
-      countVisible();
-    }});
-    
-    // Botão Desmarcar
-    document.getElementById('btn-deselect').addEventListener('click', function() {{
-      document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{
-        cb.checked = false;
-      }});
-    }});
-    
-    // Botão Toggle
-    document.getElementById('btn-toggle').addEventListener('click', function() {{
-      markerData.forEach(function(item) {{
-        if (map.hasLayer(item.marker)) {{
-          group.removeLayer(item.marker);
-        }} else {{
-          group.addLayer(item.marker);
-        }}
-      }});
-      countVisible();
-    }});
-  }}
-  
-  // Iniciar quando DOM estiver pronto
-  if (document.readyState === 'loading') {{
-    document.addEventListener('DOMContentLoaded', initFilters);
-  }} else {{
-    // DOM já carregado, mas dar tempo para Leaflet inicializar
-    setTimeout(initFilters, 1000);
-  }}
-</script>
-"""
-
-    html = html.replace(
-        "</body>",
-        legend_html + overlay + "</body>"
-    )
-
-    return html
