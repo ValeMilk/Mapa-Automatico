@@ -215,21 +215,379 @@ def generate_map_html():
     rede_group       = make_filter_group("rede-group", "Rede", rede_values) if rede_values else ""
     subrede_group    = make_filter_group("subrede-group", "Subrede", subrede_values) if subrede_values else ""
 
+    # Serializar sup_color para JS
+    sup_color_js = "{" + ", ".join(f'"{k}": "{v}"' for k, v in sup_color.items()) + "}"
+    json_sups_js = "[" + ", ".join(f'{{"name": "{k}", "color": "{v}"}}' for k, v in sup_color.items()) + "]"
+
     overlay = f"""
 <style>
   * {{ box-sizing: border-box; }}
-  
-  #filter-toggle {{
-    position: fixed; top: 15px; left: 15px;
+
+  /* ===== SIDEBAR ===== */
+  #sidebar {{
+    position: fixed; top: 0; left: 0; height: 100vh; width: 300px;
+    background: #fff; z-index: 1200;
+    display: flex; flex-direction: column;
+    box-shadow: 4px 0 20px rgba(0,0,0,.15);
+    transition: transform 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }}
+  #sidebar.collapsed {{ transform: translateX(-300px); }}
+
+  #sidebar-header {{
     background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
-    color: white; border: none; padding: 12px 20px;
-    z-index: 1101; border-radius: 8px; cursor: pointer; 
-    font-weight: 600; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: white; padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
   }}
-  #filter-toggle:hover {{
-    transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  #sidebar-header h3 {{ margin: 0; font-size: 16px; font-weight: 600; }}
+
+  #sidebar-body {{
+    flex: 1; overflow-y: auto; padding: 12px;
+    scrollbar-width: thin; scrollbar-color: #0066cc #f1f1f1;
   }}
+  #sidebar-body::-webkit-scrollbar {{ width: 6px; }}
+  #sidebar-body::-webkit-scrollbar-thumb {{ background: #0066cc; border-radius: 10px; }}
+
+  #sidebar-footer {{
+    padding: 12px; border-top: 1px solid #dee2e6;
+    display: flex; gap: 8px; flex-shrink: 0;
+  }}
+  #sidebar-footer button {{
+    flex: 1; padding: 9px; border: none; border-radius: 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }}
+  #btn-clear {{ background: #6c757d; color: white; }}
+  #btn-clear:hover {{ background: #5a6268; }}
+  #btn-deselect {{ background: #dc3545; color: white; }}
+  #btn-deselect:hover {{ background: #c82333; }}
+
+  /* Toggle button (tab outside sidebar) */
+  #sidebar-toggle {{
+    position: fixed; top: 50%; left: 300px;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white; border: none; width: 28px; height: 56px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer; z-index: 1201; font-size: 14px;
+    transition: left 0.3s ease; display: flex; align-items: center; justify-content: center;
+    box-shadow: 3px 0 10px rgba(0,0,0,.2);
+  }}
+  body.sidebar-collapsed #sidebar-toggle {{ left: 0; }}
+
+  /* ===== FILTER GROUPS ===== */
+  .filter-group {{
+    margin-bottom: 14px; background: #f8f9fa; padding: 12px;
+    border-radius: 10px; border: 1px solid #e9ecef;
+  }}
+  .filter-group > label:first-child {{
+    font-weight: 600; font-size: 12px; display: block;
+    margin-bottom: 8px; color: #495057; text-transform: uppercase; letter-spacing: 0.5px;
+  }}
+  .filter-search {{
+    width: 100%; padding: 7px 10px; margin-bottom: 8px;
+    border-radius: 7px; border: 2px solid #dee2e6; font-size: 12px; transition: all 0.2s;
+  }}
+  .filter-search:focus {{ outline: none; border-color: #0066cc; box-shadow: 0 0 0 3px rgba(0,102,204,.1); }}
+  .filter-group > label:has(.check-all) {{
+    display: flex !important; align-items: center; gap: 6px;
+    font-weight: 500 !important; font-size: 12px !important;
+    color: #6c757d !important; text-transform: none !important;
+    margin-bottom: 6px !important; cursor: pointer;
+  }}
+  .scrollbox {{
+    background: white; padding: 6px; border-radius: 7px;
+    max-height: 130px; overflow-y: auto; border: 1px solid #dee2e6;
+    scrollbar-width: thin; scrollbar-color: #0066cc #f1f1f1;
+  }}
+  .scrollbox::-webkit-scrollbar {{ width: 6px; }}
+  .scrollbox::-webkit-scrollbar-thumb {{ background: #0066cc; border-radius: 10px; }}
+  .scrollbox label {{
+    display: flex; align-items: center; gap: 7px; padding: 5px 6px;
+    font-size: 12px; cursor: pointer; border-radius: 5px; transition: background .15s; color: #212529;
+  }}
+  .scrollbox label:hover {{ background: #e9f0fb; }}
+  .scrollbox input[type="checkbox"] {{ width: 15px; height: 15px; accent-color: #0066cc; }}
+
+  /* ===== COUNTER ===== */
+  #counter {{
+    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white; padding: 8px 18px; border-radius: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px; font-weight: 600; z-index: 1100;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2); pointer-events: none;
+  }}
+
+  /* deslocar mapa quando sidebar aberta */
+  .leaflet-container {{ margin-left: 300px; width: calc(100% - 300px) !important; transition: all 0.3s; }}
+  body.sidebar-collapsed .leaflet-container {{ margin-left: 0; width: 100% !important; }}
+  #counter {{ transition: left 0.3s; }}
+</style>
+
+<!-- Sidebar -->
+<div id="sidebar">
+  <div id="sidebar-header">
+    <h3>🔎 Filtros de Clientes</h3>
+  </div>
+  <div id="sidebar-body">
+    {regional_group}
+    {area_group}
+    {id_group}
+    {name_group}
+    {vendedor_group}
+    {supervisor_group}
+    {rede_group}
+    {subrede_group}
+  </div>
+  <div id="sidebar-footer">
+    <button id="btn-clear">🔄 Limpar</button>
+    <button id="btn-deselect">❌ Desmarcar</button>
+  </div>
+</div>
+<button id="sidebar-toggle" title="Mostrar/ocultar filtros">◀</button>
+
+<div id="counter">Registros: <span id="marker-count">{total_markers}</span></div>
+
+<script>
+  // ===== Sidebar toggle =====
+  var sidebar = document.getElementById('sidebar');
+  var toggleBtn = document.getElementById('sidebar-toggle');
+  var sidebarOpen = true;
+  toggleBtn.addEventListener('click', function() {{
+    sidebarOpen = !sidebarOpen;
+    if (sidebarOpen) {{
+      sidebar.classList.remove('collapsed');
+      document.body.classList.remove('sidebar-collapsed');
+      toggleBtn.style.left = '300px';
+      toggleBtn.textContent = '◀';
+    }} else {{
+      sidebar.classList.add('collapsed');
+      document.body.classList.add('sidebar-collapsed');
+      toggleBtn.style.left = '0';
+      toggleBtn.textContent = '▶';
+    }}
+    // Forçar redimensionamento do mapa
+    setTimeout(function() {{
+      if (typeof L !== 'undefined') {{
+        document.querySelectorAll('.leaflet-map-pane').forEach(function() {{}});
+        for (var k in window) {{
+          try {{
+            if (window[k] && window[k]._leaflet_id && window[k].invalidateSize) {{
+              window[k].invalidateSize();
+            }}
+          }} catch(e) {{}}
+        }}
+      }}
+    }}, 310);
+  }});
+
+  // ===== Cores por supervisor (para restaurar) =====
+  var SUP_COLOR = {sup_color_js};
+
+  // ===== Inicialização filtros =====
+  function initFilters() {{
+    var map = null;
+    var group = null;
+    if (typeof L !== 'undefined') {{
+      for (var key in window) {{
+        try {{
+          if (window[key] && window[key]._leaflet_id && window[key].getCenter) {{
+            map = window[key]; break;
+          }}
+        }} catch(e) {{}}
+      }}
+    }}
+    if (!map) {{ setTimeout(initFilters, 500); return; }}
+    map.eachLayer(function(layer) {{
+      if (layer instanceof L.FeatureGroup) group = layer;
+    }});
+    if (!group) {{ setTimeout(initFilters, 500); return; }}
+
+    // Contagem visíveis
+    function countVisible() {{
+      var n = 0;
+      group.eachLayer(function(l) {{ if (map.hasLayer(l)) n++; }});
+      var el = document.getElementById('marker-count');
+      if (el) el.textContent = n;
+    }}
+    map.on('layeradd layerremove', countVisible);
+    countVisible();
+
+    // Indexar marcadores
+    var markerData = [];
+    group.eachLayer(function(marker) {{
+      var icon = marker.getElement();
+      if (icon) {{
+        var d = icon.querySelector('.custom-marker');
+        if (d) {{
+          markerData.push({{
+            marker: marker,
+            el: d,
+            id: d.getAttribute('data-id') || '',
+            cliente: d.getAttribute('data-cliente') || '',
+            rota: d.getAttribute('data-rota') || '',
+            vendedor: d.getAttribute('data-vendedor') || '',
+            supervisor: d.getAttribute('data-supervisor') || '',
+            regional: d.getAttribute('data-regional') || '',
+            rede: d.getAttribute('data-rede') || '',
+            subrede: d.getAttribute('data-subrede') || ''
+          }});
+        }}
+      }}
+    }});
+
+    // Busca nos scrollboxes
+    document.querySelectorAll('.filter-search').forEach(function(input) {{
+      input.addEventListener('input', function() {{
+        var term = this.value.toLowerCase();
+        var scrollbox = this.parentElement.querySelector('.scrollbox');
+        scrollbox.querySelectorAll('label').forEach(function(label) {{
+          label.style.display = label.textContent.toLowerCase().includes(term) ? 'flex' : 'none';
+        }});
+      }});
+    }});
+
+    // Selecionar todos
+    document.querySelectorAll('.check-all').forEach(function(cb) {{
+      cb.addEventListener('change', function() {{
+        var scrollbox = this.parentElement.parentElement.querySelector('.scrollbox');
+        scrollbox.querySelectorAll('input[type="checkbox"]').forEach(function(c) {{ c.checked = cb.checked; }});
+        applyFilters();
+      }});
+    }});
+
+    // Aplicar filtros em tempo real
+    document.querySelectorAll('.filter-group .scrollbox input[type="checkbox"]').forEach(function(cb) {{
+      cb.addEventListener('change', applyFilters);
+    }});
+
+    function hsvToHex(h, s, v) {{
+      var r, g, b;
+      var i = Math.floor(h * 6);
+      var f = h * 6 - i;
+      var p = v * (1 - s); var q = v * (1 - f * s); var t = v * (1 - (1 - f) * s);
+      switch(i % 6) {{
+        case 0: r=v; g=t; b=p; break; case 1: r=q; g=v; b=p; break;
+        case 2: r=p; g=v; b=t; break; case 3: r=p; g=q; b=v; break;
+        case 4: r=t; g=p; b=v; break; case 5: r=v; g=p; b=q; break;
+      }}
+      return '#' + [r,g,b].map(function(x) {{ return Math.round(x*255).toString(16).padStart(2,'0'); }}).join('');
+    }}
+
+    function applyFilters() {{
+      var selRegionais  = getChecked('#regional-group');
+      var selRotas      = getChecked('#area-group');
+      var selIds        = getChecked('#id-group');
+      var selClientes   = getChecked('#name-group');
+      var selVendedores = getChecked('#vendedor-group');
+      var selSups       = getChecked('#supervisor-group');
+      var selRedes      = getChecked('#rede-group');
+      var selSubredes   = getChecked('#subrede-group');
+
+      var visibleVendedores = {{}};
+      var visibleCount = 0;
+
+      markerData.forEach(function(item) {{
+        var show = true;
+        if (selRegionais.length  && selRegionais.indexOf(item.regional)   === -1) show = false;
+        if (selRotas.length      && selRotas.indexOf(item.rota)           === -1) show = false;
+        if (selIds.length        && selIds.indexOf(item.id)               === -1) show = false;
+        if (selClientes.length   && selClientes.indexOf(item.cliente)     === -1) show = false;
+        if (selVendedores.length && selVendedores.indexOf(item.vendedor)  === -1) show = false;
+        if (selSups.length       && selSups.indexOf(item.supervisor)      === -1) show = false;
+        if (selRedes.length      && selRedes.indexOf(item.rede)           === -1) show = false;
+        if (selSubredes.length   && selSubredes.indexOf(item.subrede)     === -1) show = false;
+
+        if (show) {{
+          if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
+          visibleCount++;
+          if (item.vendedor) visibleVendedores[item.vendedor] = true;
+        }} else {{
+          if (map.hasLayer(item.marker)) group.removeLayer(item.marker);
+        }}
+      }});
+
+      // Cores dinâmicas por vendedor se exatamente 1 supervisor filtrado
+      var uniqueVisVendedores = Object.keys(visibleVendedores).sort();
+      if (selSups.length === 1) {{
+        var nVend = Math.max(uniqueVisVendedores.length, 1);
+        var vendColor = {{}};
+        uniqueVisVendedores.forEach(function(v, i) {{
+          vendColor[v] = hsvToHex(i / nVend, 0.75, 0.90);
+        }});
+        markerData.forEach(function(item) {{
+          if (map.hasLayer(item.marker) && item.el) {{
+            item.el.style.backgroundColor = vendColor[item.vendedor] || '#999';
+          }}
+        }});
+        // Atualizar legenda
+        var legendContent = '<b>Vendedor</b><div style="margin-top:6px">';
+        uniqueVisVendedores.forEach(function(v) {{
+          legendContent += "<div style='display:flex;align-items:center;gap:8px;margin:2px 0'>" +
+            "<span style='display:inline-block;width:12px;height:12px;border-radius:50%;background:" + vendColor[v] + ";border:1px solid #0002'></span>" +
+            v + "</div>";
+        }});
+        legendContent += '</div>';
+        document.getElementById('legend').innerHTML = legendContent;
+      }} else {{
+        // Restaurar cores por supervisor
+        markerData.forEach(function(item) {{
+          if (item.el) {{
+            item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+          }}
+        }});
+        // Restaurar legenda
+        var legendContent = '<b>Supervisor</b><div style="margin-top:6px">';
+        var sups = {json_sups_js};
+        sups.forEach(function(entry) {{
+          legendContent += "<div style='display:flex;align-items:center;gap:8px;margin:2px 0'>" +
+            "<span style='display:inline-block;width:12px;height:12px;border-radius:50%;background:" + entry.color + ";border:1px solid #0002'></span>" +
+            entry.name + "</div>";
+        }});
+        legendContent += '</div>';
+        document.getElementById('legend').innerHTML = legendContent;
+      }}
+
+      document.getElementById('marker-count').textContent = visibleCount;
+    }}
+
+    function getChecked(selector) {{
+      var el = document.querySelector(selector);
+      if (!el) return [];
+      return Array.from(el.querySelectorAll('.scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
+    }}
+
+    // Botão Limpar
+    document.getElementById('btn-clear').addEventListener('click', function() {{
+      document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
+      markerData.forEach(function(item) {{
+        if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
+        if (item.el) item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+      }});
+      countVisible();
+    }});
+
+    // Botão Desmarcar
+    document.getElementById('btn-deselect').addEventListener('click', function() {{
+      document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
+    }});
+  }}
+
+  if (document.readyState === 'loading') {{
+    document.addEventListener('DOMContentLoaded', initFilters);
+  }} else {{
+    setTimeout(initFilters, 1000);
+  }}
+</script>
+"""
+
+    html = html.replace(
+        "</body>",
+        legend_html + overlay + "</body>"
+    )
+
+    return html
   
   #filter-popup {{
     display: none; position: fixed; top: 50%; left: 50%; 

@@ -134,11 +134,14 @@ def generate_map_html():
         return "#{:02x}{:02x}{:02x}".format(int(r * 255), int(g * 255), int(b * 255))
 
     sup_color = {sup: _hsv_color(i, n_sup) for i, sup in enumerate(unique_sup)}
+    sup_color_js = "{" + ", ".join(f'"{k}": "{v}"' for k, v in sup_color.items()) + "}"
+    json_sups_js = "[" + ", ".join(f'{{"name": "{k}", "color": "{v}"}}' for k, v in sup_color.items()) + "]"
 
     fg = folium.FeatureGroup(name="Clientes", show=True)
     fg.add_to(m)
 
     # Marcadores
+    total_markers = 0
     for _, r in df.iterrows():
         popup = (
             f"<b>ID:</b> {esc_txt(r.A00_ID)}<br>"
@@ -148,9 +151,14 @@ def generate_map_html():
             f"<b>Supervisor:</b> {esc_txt(r.SUPERVISOR)}"
         )
 
-        # Ícone customizado com cor #hex
         icon_html = f"""
-        <div style="background-color:{sup_color[r.SUPERVISOR]}; 
+        <div class="custom-marker"
+             data-id="{esc_attr(r.A00_ID)}"
+             data-cliente="{esc_attr(r.A00_FANTASIA)}"
+             data-rota="{esc_attr(r.AREA_DESC)}"
+             data-vendedor="{esc_attr(r.NOME_VENDEDOR)}"
+             data-supervisor="{esc_attr(r.SUPERVISOR)}"
+             style="background-color:{sup_color[r.SUPERVISOR]}; 
                     border-radius:50%; width:24px; height:24px; 
                     display:flex; align-items:center; justify-content:center;">
             <i class="fa fa-shopping-cart" style="color:white; font-size:14px;"></i>
@@ -161,6 +169,7 @@ def generate_map_html():
             popup=popup,
             icon=folium.DivIcon(html=icon_html)
         ).add_to(fg)
+        total_markers += 1
 
     folium.LayerControl(collapsed=False).add_to(m)
 
@@ -185,9 +194,6 @@ def generate_map_html():
     )
 
     # Filtros
-    map_name = m.get_name()
-    fg_name = fg.get_name()
-
     area_group       = make_filter_group("area-group", "Rota", df["AREA_DESC"].dropna().unique())
     id_group         = make_filter_group("id-group", "ID", df["A00_ID"].astype(str).unique())
     name_group       = make_filter_group("name-group", "Cliente", df["A00_FANTASIA"].dropna().unique())
@@ -196,83 +202,280 @@ def generate_map_html():
 
     overlay = f"""
 <style>
-  #filter-toggle {{
-    position: fixed; top: 10px; left: 10px;
-    background: white; border: none; padding: 6px 12px;
-    z-index: 1101; border-radius: 4px; cursor: pointer; font-weight: bold;
+  * {{ box-sizing: border-box; }}
+
+  #sidebar {{
+    position: fixed; top: 0; left: 0; height: 100vh; width: 300px;
+    background: #fff; z-index: 1200;
+    display: flex; flex-direction: column;
+    box-shadow: 4px 0 20px rgba(0,0,0,.15);
+    transition: transform 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }}
-  #filter-popup {{
-    display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    background: #0066cc; color: white; padding: 20px; border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4); z-index: 1100; width: 320px;
-    max-height: 90vh; overflow-y: auto; font-family: sans-serif;
+  #sidebar.collapsed {{ transform: translateX(-300px); }}
+  #sidebar-header {{
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white; padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
   }}
-  #filter-popup.active {{ display: block; }}
-  .filter-popup-close {{
-    float: right; background: white; color: #0066cc;
-    border: none; padding: 2px 8px; border-radius: 10px; cursor: pointer; font-weight: bold;
+  #sidebar-header h3 {{ margin: 0; font-size: 16px; font-weight: 600; }}
+  #sidebar-body {{
+    flex: 1; overflow-y: auto; padding: 12px;
+    scrollbar-width: thin; scrollbar-color: #0066cc #f1f1f1;
   }}
-  .filter-group {{ margin-bottom: 10px; }}
-  .filter-group label {{ font-weight: bold; font-size: 12px; display: block; margin-top: 8px; }}
+  #sidebar-body::-webkit-scrollbar {{ width: 6px; }}
+  #sidebar-body::-webkit-scrollbar-thumb {{ background: #0066cc; border-radius: 10px; }}
+  #sidebar-footer {{
+    padding: 12px; border-top: 1px solid #dee2e6;
+    display: flex; gap: 8px; flex-shrink: 0;
+  }}
+  #sidebar-footer button {{
+    flex: 1; padding: 9px; border: none; border-radius: 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }}
+  #btn-clear {{ background: #6c757d; color: white; }}
+  #btn-clear:hover {{ background: #5a6268; }}
+  #btn-deselect {{ background: #dc3545; color: white; }}
+  #btn-deselect:hover {{ background: #c82333; }}
+  #sidebar-toggle {{
+    position: fixed; top: 50%; left: 300px; transform: translateY(-50%);
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white; border: none; width: 28px; height: 56px;
+    border-radius: 0 8px 8px 0; cursor: pointer; z-index: 1201; font-size: 14px;
+    transition: left 0.3s ease; display: flex; align-items: center; justify-content: center;
+    box-shadow: 3px 0 10px rgba(0,0,0,.2);
+  }}
+  body.sidebar-collapsed #sidebar-toggle {{ left: 0; }}
+  .filter-group {{
+    margin-bottom: 14px; background: #f8f9fa; padding: 12px;
+    border-radius: 10px; border: 1px solid #e9ecef;
+  }}
+  .filter-group > label:first-child {{
+    font-weight: 600; font-size: 12px; display: block;
+    margin-bottom: 8px; color: #495057; text-transform: uppercase; letter-spacing: 0.5px;
+  }}
   .filter-search {{
-    width: 100%; padding: 4px; margin-bottom: 4px; border-radius: 4px; border: none; font-size: 12px;
+    width: 100%; padding: 7px 10px; margin-bottom: 8px;
+    border-radius: 7px; border: 2px solid #dee2e6; font-size: 12px; transition: all 0.2s;
+  }}
+  .filter-search:focus {{ outline: none; border-color: #0066cc; box-shadow: 0 0 0 3px rgba(0,102,204,.1); }}
+  .filter-group > label:has(.check-all) {{
+    display: flex !important; align-items: center; gap: 6px;
+    font-weight: 500 !important; font-size: 12px !important;
+    color: #6c757d !important; text-transform: none !important;
+    margin-bottom: 6px !important; cursor: pointer;
   }}
   .scrollbox {{
-    background: white; padding: 4px; border-radius: 4px; max-height: 120px;
-    overflow-y: auto; color: black; font-size: 12px;
+    background: white; padding: 6px; border-radius: 7px;
+    max-height: 130px; overflow-y: auto; border: 1px solid #dee2e6;
   }}
-  .scrollbox label {{ display: flex; align-items: center; gap: 4px; padding: 1px 0; font-size: 12px; line-height: 1.1; }}
+  .scrollbox label {{
+    display: flex; align-items: center; gap: 7px; padding: 5px 6px;
+    font-size: 12px; cursor: pointer; border-radius: 5px; transition: background .15s; color: #212529;
+  }}
+  .scrollbox label:hover {{ background: #e9f0fb; }}
+  .scrollbox input[type="checkbox"] {{ width: 15px; height: 15px; accent-color: #0066cc; }}
   #counter {{
-    position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
-    background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 6px;
-    font-family: sans-serif; font-size: 14px; z-index: 1100;
+    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white; padding: 8px 18px; border-radius: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px; font-weight: 600; z-index: 1100;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2); pointer-events: none;
   }}
+  .leaflet-container {{ margin-left: 300px; width: calc(100% - 300px) !important; transition: all 0.3s; }}
+  body.sidebar-collapsed .leaflet-container {{ margin-left: 0; width: 100% !important; }}
 </style>
 
-<button id="filter-toggle">🔍 Filtros</button>
-<div id="counter">Registros visíveis: <span id="marker-count">0</span></div>
-
-<div id="filter-popup">
-  <button class="filter-popup-close" onclick="document.getElementById('filter-popup').classList.remove('active')">❌</button>
-  {area_group}
-  {id_group}
-  {name_group}
-  {vendedor_group}
-  {supervisor_group}
-  <button id="btn-search" class="btn-buscar">Buscar</button>
-  <div class="btn-group" style="display:flex;gap:6px;margin-top:10px;">
-    <button id="btn-clear" class="btn-clear">Limpar</button>
-    <button id="btn-deselect" class="btn-desmarcar">Desmarcar</button>
-    <button id="btn-toggle" class="btn-toggle">Toggle Filtro</button>
+<div id="sidebar">
+  <div id="sidebar-header"><h3>🔎 Filtros de Clientes</h3></div>
+  <div id="sidebar-body">
+    {area_group}
+    {id_group}
+    {name_group}
+    {vendedor_group}
+    {supervisor_group}
+  </div>
+  <div id="sidebar-footer">
+    <button id="btn-clear">🔄 Limpar</button>
+    <button id="btn-deselect">❌ Desmarcar</button>
   </div>
 </div>
+<button id="sidebar-toggle" title="Mostrar/ocultar filtros">◀</button>
+<div id="counter">Registros: <span id="marker-count">{total_markers}</span></div>
 
 <script>
-  document.getElementById("filter-toggle").onclick = function() {{
-    document.getElementById("filter-popup").classList.add("active");
-  }};
-  (function() {{
-    var map = {map_name};
-    var group = {fg_name};
+  var SUP_COLOR = {sup_color_js};
+
+  var sidebar = document.getElementById('sidebar');
+  var toggleBtn = document.getElementById('sidebar-toggle');
+  var sidebarOpen = true;
+  toggleBtn.addEventListener('click', function() {{
+    sidebarOpen = !sidebarOpen;
+    if (sidebarOpen) {{
+      sidebar.classList.remove('collapsed');
+      document.body.classList.remove('sidebar-collapsed');
+      toggleBtn.style.left = '300px';
+      toggleBtn.textContent = '◀';
+    }} else {{
+      sidebar.classList.add('collapsed');
+      document.body.classList.add('sidebar-collapsed');
+      toggleBtn.style.left = '0';
+      toggleBtn.textContent = '▶';
+    }}
+    setTimeout(function() {{
+      for (var k in window) {{
+        try {{ if (window[k] && window[k]._leaflet_id && window[k].invalidateSize) window[k].invalidateSize(); }} catch(e) {{}}
+      }}
+    }}, 310);
+  }});
+
+  function initFilters() {{
+    var map = null, group = null;
+    if (typeof L !== 'undefined') {{
+      for (var key in window) {{
+        try {{ if (window[key] && window[key]._leaflet_id && window[key].getCenter) {{ map = window[key]; break; }} }} catch(e) {{}}
+      }}
+    }}
+    if (!map) {{ setTimeout(initFilters, 500); return; }}
+    map.eachLayer(function(l) {{ if (l instanceof L.FeatureGroup) group = l; }});
+    if (!group) {{ setTimeout(initFilters, 500); return; }}
+
     function countVisible() {{
       var n = 0;
-      group.eachLayer(function(l) {{
-        if (map.hasLayer(l)) n += 1;
-      }});
-      var el = document.getElementById('marker-count');
-      if (el) el.textContent = n;
+      group.eachLayer(function(l) {{ if (map.hasLayer(l)) n++; }});
+      document.getElementById('marker-count').textContent = n;
     }}
-    map.on('layeradd layerremove zoomend moveend', countVisible);
-    setInterval(countVisible, 1000);
+    map.on('layeradd layerremove', countVisible);
     countVisible();
-    window._recountMarkers = countVisible;
-  }})();
+
+    var markerData = [];
+    group.eachLayer(function(marker) {{
+      var icon = marker.getElement();
+      if (icon) {{
+        var d = icon.querySelector('.custom-marker');
+        if (d) markerData.push({{
+          marker: marker, el: d,
+          id: d.getAttribute('data-id') || '',
+          cliente: d.getAttribute('data-cliente') || '',
+          rota: d.getAttribute('data-rota') || '',
+          vendedor: d.getAttribute('data-vendedor') || '',
+          supervisor: d.getAttribute('data-supervisor') || ''
+        }});
+      }}
+    }});
+
+    document.querySelectorAll('.filter-search').forEach(function(input) {{
+      input.addEventListener('input', function() {{
+        var term = this.value.toLowerCase();
+        this.parentElement.querySelector('.scrollbox').querySelectorAll('label').forEach(function(label) {{
+          label.style.display = label.textContent.toLowerCase().includes(term) ? 'flex' : 'none';
+        }});
+      }});
+    }});
+
+    document.querySelectorAll('.check-all').forEach(function(cb) {{
+      cb.addEventListener('change', function() {{
+        this.parentElement.parentElement.querySelector('.scrollbox').querySelectorAll('input[type="checkbox"]').forEach(function(c) {{ c.checked = cb.checked; }});
+        applyFilters();
+      }});
+    }});
+
+    document.querySelectorAll('.filter-group .scrollbox input[type="checkbox"]').forEach(function(cb) {{
+      cb.addEventListener('change', applyFilters);
+    }});
+
+    function hsvToHex(h, s, v) {{
+      var r,g,b,i=Math.floor(h*6),f=h*6-i,p=v*(1-s),q=v*(1-f*s),t=v*(1-(1-f)*s);
+      switch(i%6){{case 0:r=v;g=t;b=p;break;case 1:r=q;g=v;b=p;break;case 2:r=p;g=v;b=t;break;case 3:r=p;g=q;b=v;break;case 4:r=t;g=p;b=v;break;case 5:r=v;g=p;b=q;break;}}
+      return '#'+[r,g,b].map(function(x){{return Math.round(x*255).toString(16).padStart(2,'0');}}).join('');
+    }}
+
+    function getChecked(selector) {{
+      var el = document.querySelector(selector);
+      if (!el) return [];
+      return Array.from(el.querySelectorAll('.scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
+    }}
+
+    function applyFilters() {{
+      var selRotas      = getChecked('#area-group');
+      var selIds        = getChecked('#id-group');
+      var selClientes   = getChecked('#name-group');
+      var selVendedores = getChecked('#vendedor-group');
+      var selSups       = getChecked('#supervisor-group');
+      var visibleVendedores = {{}};
+      var visibleCount = 0;
+
+      markerData.forEach(function(item) {{
+        var show = true;
+        if (selRotas.length      && selRotas.indexOf(item.rota)           === -1) show = false;
+        if (selIds.length        && selIds.indexOf(item.id)               === -1) show = false;
+        if (selClientes.length   && selClientes.indexOf(item.cliente)     === -1) show = false;
+        if (selVendedores.length && selVendedores.indexOf(item.vendedor)  === -1) show = false;
+        if (selSups.length       && selSups.indexOf(item.supervisor)      === -1) show = false;
+
+        if (show) {{
+          if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
+          visibleCount++;
+          if (item.vendedor) visibleVendedores[item.vendedor] = true;
+        }} else {{
+          if (map.hasLayer(item.marker)) group.removeLayer(item.marker);
+        }}
+      }});
+
+      var uniqueVisVendedores = Object.keys(visibleVendedores).sort();
+      if (selSups.length === 1) {{
+        var nVend = Math.max(uniqueVisVendedores.length, 1);
+        var vendColor = {{}};
+        uniqueVisVendedores.forEach(function(v,i) {{ vendColor[v] = hsvToHex(i/nVend, 0.75, 0.90); }});
+        markerData.forEach(function(item) {{
+          if (map.hasLayer(item.marker) && item.el) item.el.style.backgroundColor = vendColor[item.vendedor] || '#999';
+        }});
+        var lc = '<b>Vendedor</b><div style="margin-top:6px">';
+        uniqueVisVendedores.forEach(function(v) {{
+          lc += "<div style='display:flex;align-items:center;gap:8px;margin:2px 0'><span style='display:inline-block;width:12px;height:12px;border-radius:50%;background:"+vendColor[v]+";border:1px solid #0002'></span>"+v+"</div>";
+        }});
+        lc += '</div>';
+        document.getElementById('legend').innerHTML = lc;
+      }} else {{
+        markerData.forEach(function(item) {{
+          if (item.el) item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+        }});
+        var sups = {json_sups_js};
+        var lc = '<b>Supervisor</b><div style="margin-top:6px">';
+        sups.forEach(function(entry) {{
+          lc += "<div style='display:flex;align-items:center;gap:8px;margin:2px 0'><span style='display:inline-block;width:12px;height:12px;border-radius:50%;background:"+entry.color+";border:1px solid #0002'></span>"+entry.name+"</div>";
+        }});
+        lc += '</div>';
+        document.getElementById('legend').innerHTML = lc;
+      }}
+      document.getElementById('marker-count').textContent = visibleCount;
+    }}
+
+    document.getElementById('btn-clear').addEventListener('click', function() {{
+      document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
+      markerData.forEach(function(item) {{
+        if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
+        if (item.el) item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+      }});
+      countVisible();
+    }});
+    document.getElementById('btn-deselect').addEventListener('click', function() {{
+      document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
+    }});
+  }}
+
+  if (document.readyState === 'loading') {{
+    document.addEventListener('DOMContentLoaded', initFilters);
+  }} else {{
+    setTimeout(initFilters, 1000);
+  }}
 </script>
 """
 
     html = html.replace(
         "</body>",
-        legend_html + overlay + '<script src="/static/filters.js"></script></body>'
+        legend_html + overlay + "</body>"
     )
 
     return html
