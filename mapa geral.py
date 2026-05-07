@@ -429,7 +429,10 @@ def generate_map_html():
         var vendColor = {{}};
         uniqueVisVendedores.forEach(function(v,i) {{ vendColor[v] = hsvToHex(i/nVend, 0.75, 0.90); }});
         markerData.forEach(function(item) {{
-          if (map.hasLayer(item.marker) && item.el) item.el.style.backgroundColor = vendColor[item.vendedor] || '#999';
+          if (map.hasLayer(item.marker)) {{
+            var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
+            if (el) el.style.backgroundColor = vendColor[item.vendedor] || '#999';
+          }}
         }});
         var lc = '<b>Vendedor</b><div style="margin-top:6px">';
         uniqueVisVendedores.forEach(function(v) {{
@@ -439,7 +442,8 @@ def generate_map_html():
         document.getElementById('legend').innerHTML = lc;
       }} else {{
         markerData.forEach(function(item) {{
-          if (item.el) item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+          var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
+          if (el) el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
         }});
         var sups = {json_sups_js};
         var lc = '<b>Supervisor</b><div style="margin-top:6px">';
@@ -456,7 +460,8 @@ def generate_map_html():
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
       markerData.forEach(function(item) {{
         if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
-        if (item.el) item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+        var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
+        if (el) el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
       }});
       countVisible();
     }});

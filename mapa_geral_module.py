@@ -1,5 +1,5 @@
-﻿"""
-MÃ³dulo para geraÃ§Ã£o do Mapa Geral de Clientes (Lojas 81 e 82)
+"""
+Módulo para geração do Mapa Geral de Clientes (Lojas 81 e 82)
 """
 import hashlib
 import os
@@ -10,7 +10,7 @@ import pandas as pd
 import folium
 import urllib
 
-# ========= ConexÃ£o =========
+# ========= Conexão =========
 odbc_str = (
     "DRIVER={ODBC Driver 17 for SQL Server};"
     "SERVER=10.1.0.3\\SQLSTANDARD;"
@@ -44,14 +44,14 @@ WHERE c.A00_STATUS = 1
   AND ar.A14_DESC NOT IN (
       '999 - L80-INDUSTRIA',
       '700 - L81 - REMESSA VENDA',
-      '142 - L82-PARACURU-LICITAÃ‡ÃƒO',
-      '147 - L82-PARAIPABA-LICITAÃ‡ÃƒO',
-      '149 - L82-SGA-LICITAÃ‡ÃƒO',
+      '142 - L82-PARACURU-LICITAÇÃO',
+      '147 - L82-PARAIPABA-LICITAÇÃO',
+      '149 - L82-SGA-LICITAÇÃO',
       '000 - L82-EXTRA ROTA'
 );
 """
 
-# ========= UtilitÃ¡rios =========
+# ========= Utilitários =========
 def esc_txt(s):
     return html_escape("" if s is None else str(s), quote=False)
 
@@ -70,13 +70,13 @@ def make_filter_group(group_id, label, values):
     return f"""
     <div class="filter-group" id="{group_id}">
         <label>{label}</label>
-        <input type="text" class="filter-search" placeholder="ðŸ”Ž Buscar {label.lower()}..." />
+        <input type="text" class="filter-search" placeholder="🔎 Buscar {label.lower()}..." />
         <label><input type="checkbox" class="check-all" /> Selecionar todos</label>
         <div class="scrollbox">{checkbox_items}</div>
     </div>
     """
 
-# ========= GeraÃ§Ã£o do Mapa =========
+# ========= Geração do Mapa =========
 def generate_map_html():
     """Gera o HTML do mapa geral de clientes"""
     try:
@@ -97,7 +97,7 @@ def generate_map_html():
         df['REDE'] = ''
         df['SUBREDE'] = ''
 
-    # Coordenadas vÃ¡lidas
+    # Coordenadas válidas
     df = df.copy()
     df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
     df["longitude"] = pd.to_numeric(df["longitude"], errors="coerce")
@@ -117,13 +117,13 @@ def generate_map_html():
     df['REGIONAL'] = df['AREA_DESC'].apply(get_regional)
     
     if df.empty:
-        return "<h3>Nenhum cliente com coordenadas vÃ¡lidas.</h3>"
+        return "<h3>Nenhum cliente com coordenadas válidas.</h3>"
 
     # Mapa base
     centro = [df["latitude"].mean(), df["longitude"].mean()]
     m = folium.Map(location=centro, zoom_start=6, width="100%", height="100%", tiles="OpenStreetMap")
 
-    # Cores por supervisor â€” hue uniformemente distribuÃ­do no HSV, garante cores distintas
+    # Cores por supervisor — hue uniformemente distribuído no HSV, garante cores distintas
     df["SUPERVISOR"] = df["SUPERVISOR"].fillna("N/A").astype(str)
     unique_sup = sorted(df["SUPERVISOR"].unique(), key=lambda x: x.upper())
     n_sup = max(len(unique_sup), 1)
@@ -328,7 +328,7 @@ def generate_map_html():
 <!-- Sidebar -->
 <div id="sidebar">
   <div id="sidebar-header">
-    <h3>ðŸ”Ž Filtros de Clientes</h3>
+    <h3>🔎 Filtros de Clientes</h3>
   </div>
   <div id="sidebar-body">
     {regional_group}
@@ -341,11 +341,11 @@ def generate_map_html():
     {subrede_group}
   </div>
   <div id="sidebar-footer">
-    <button id="btn-clear">ðŸ”„ Limpar</button>
-    <button id="btn-deselect">âŒ Desmarcar</button>
+    <button id="btn-clear">🔄 Limpar</button>
+    <button id="btn-deselect">❌ Desmarcar</button>
   </div>
 </div>
-<button id="sidebar-toggle" title="Mostrar/ocultar filtros">â—€</button>
+<button id="sidebar-toggle" title="Mostrar/ocultar filtros">◀</button>
 
 <div id="counter">Registros: <span id="marker-count">{total_markers}</span></div>
 
@@ -360,14 +360,14 @@ def generate_map_html():
       sidebar.classList.remove('collapsed');
       document.body.classList.remove('sidebar-collapsed');
       toggleBtn.style.left = '300px';
-      toggleBtn.textContent = 'â—€';
+      toggleBtn.textContent = '◀';
     }} else {{
       sidebar.classList.add('collapsed');
       document.body.classList.add('sidebar-collapsed');
       toggleBtn.style.left = '0';
-      toggleBtn.textContent = 'â–¶';
+      toggleBtn.textContent = '▶';
     }}
-    // ForÃ§ar redimensionamento do mapa
+    // Forçar redimensionamento do mapa
     setTimeout(function() {{
       if (typeof L !== 'undefined') {{
         document.querySelectorAll('.leaflet-map-pane').forEach(function() {{}});
@@ -385,7 +385,7 @@ def generate_map_html():
   // ===== Cores por supervisor (para restaurar) =====
   var SUP_COLOR = {sup_color_js};
 
-  // ===== InicializaÃ§Ã£o filtros =====
+  // ===== Inicialização filtros =====
   function initFilters() {{
     var map = null;
     var group = null;
@@ -404,7 +404,7 @@ def generate_map_html():
     }});
     if (!group) {{ setTimeout(initFilters, 500); return; }}
 
-    // Contagem visÃ­veis
+    // Contagem visíveis
     function countVisible() {{
       var n = 0;
       group.eachLayer(function(l) {{ if (map.hasLayer(l)) n++; }});
@@ -508,7 +508,7 @@ def generate_map_html():
         }}
       }});
 
-      // Cores dinÃ¢micas por vendedor se exatamente 1 supervisor filtrado
+      // Cores dinâmicas por vendedor se exatamente 1 supervisor filtrado
       var uniqueVisVendedores = Object.keys(visibleVendedores).sort();
       if (selSups.length === 1) {{
         var nVend = Math.max(uniqueVisVendedores.length, 1);
@@ -517,8 +517,9 @@ def generate_map_html():
           vendColor[v] = hsvToHex(i / nVend, 0.75, 0.90);
         }});
         markerData.forEach(function(item) {{
-          if (map.hasLayer(item.marker) && item.el) {{
-            item.el.style.backgroundColor = vendColor[item.vendedor] || '#999';
+          if (map.hasLayer(item.marker)) {{
+            var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
+            if (el) el.style.backgroundColor = vendColor[item.vendedor] || '#999';
           }}
         }});
         // Atualizar legenda
@@ -533,9 +534,8 @@ def generate_map_html():
       }} else {{
         // Restaurar cores por supervisor
         markerData.forEach(function(item) {{
-          if (item.el) {{
-            item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
-          }}
+          var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
+          if (el) el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
         }});
         // Restaurar legenda
         var legendContent = '<b>Supervisor</b><div style="margin-top:6px">';
@@ -558,17 +558,18 @@ def generate_map_html():
       return Array.from(el.querySelectorAll('.scrollbox input:checked')).map(function(cb) {{ return cb.value; }});
     }}
 
-    // BotÃ£o Limpar
+    // Botão Limpar
     document.getElementById('btn-clear').addEventListener('click', function() {{
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
       markerData.forEach(function(item) {{
         if (!map.hasLayer(item.marker)) group.addLayer(item.marker);
-        if (item.el) item.el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
+        var el = document.querySelector('.custom-marker[data-id="' + item.id + '"]');
+        if (el) el.style.backgroundColor = SUP_COLOR[item.supervisor] || '#999';
       }});
       countVisible();
     }});
 
-    // BotÃ£o Desmarcar
+    // Botão Desmarcar
     document.getElementById('btn-deselect').addEventListener('click', function() {{
       document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(function(cb) {{ cb.checked = false; }});
     }});
@@ -588,4 +589,4 @@ def generate_map_html():
     )
 
     return html
-
+  
